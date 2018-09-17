@@ -2,7 +2,7 @@
   <div id="app">
     <top-navbar></top-navbar>
     <router-view></router-view>
-    <foot-nav-bar></foot-nav-bar>
+    <foot-navbar></foot-navbar>
   </div>
 </template>
 
@@ -11,12 +11,12 @@
 // eslint-disable-next-line to ignore the next line.
 /* eslint-disable */
 import TopNavbar from './components/Layout/TopNavbar.vue'
-import FootNavBar from './components/Layout/FootNavbar.vue'
+import FootNavbar from './components/Layout/FootNavbar.vue'
 export default {
   name: 'app',
   components: {
     TopNavbar,
-    FootNavBar
+    FootNavbar
   },
 }
 </script>
