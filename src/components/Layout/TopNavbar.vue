@@ -54,16 +54,16 @@
           <div class="collapse navbar-collapse main-menu" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <router-link class="page-scroll" to="/#pricing">Pricing</router-link>
+                <router-link class="page-scroll" :to="{path:'/#pricing'}">Pricing</router-link>
               </li>
               <li>
-                <router-link class="page-scroll" to="/#benefits">Amazing Benefts</router-link>
+                <router-link class="page-scroll" :to="{path:'/#benefits'}">Amazing Benefts</router-link>
               </li>
               <li>
-                <router-link class="page-scroll" to="/#howtouse">How To Use</router-link>
+                <router-link class="page-scroll" :to="{path:'/#howtouse'}">How To Use</router-link>
               </li>
               <li>
-                <router-link class="page-scroll" to="/#whymedflit">Why Medflit</router-link>
+                <router-link class="page-scroll" :to="{path:'/#whymedflit'}">Why Medflit</router-link>
               </li>
               <li>
                 <router-link :to="{ name: 'Condition' }">Condition</router-link>

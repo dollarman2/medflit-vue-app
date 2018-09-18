@@ -15,7 +15,6 @@ Vue.use(Router)
 /* eslint-disable */
 /* eslint-disable no-new */
 export default new Router({
-    mode: 'history',
     scrollBehavior: function(to, from, savedPosition) {
         if (to.hash) {
             return { selector: to.hash }
