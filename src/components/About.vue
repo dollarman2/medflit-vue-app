@@ -68,7 +68,6 @@
           },
 
           addMessage() {
-              alert();
               var id = (this.option) ? this.option : 1;
               var location = (this.location) ? this.location : 'Lagos';
               this.$router.push('/search/'+id+'/'+location);

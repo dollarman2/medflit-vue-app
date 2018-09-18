@@ -25,10 +25,10 @@
               <ul class="nav navbar-nav navbar-right">
                   <li><a href="https://version2.medflithealthsolution.com/login" class="nav-link"><i class="nc-icon nc-bank"></i> <strong>Login </strong></a></li>
                   <li><a href="https://version2.medflithealthsolution.com/register" class="nav-link"><i class="nc-icon nc-paper"></i> <strong>Register</strong></a></li>
-                  <li><a href="https://medflit.com/">Patients &nbsp;&nbsp;&nbsp;  |</a></li>
-                  <li><a href="https://medflit.com/providers">Providers &nbsp; &nbsp; &nbsp;|</a></li>
-                  <li><a href="https://medflit.com/pharmacists">Pharmacists  &nbsp;&nbsp;&nbsp; |</a></li>
-                  <li><a href="https://medflit.com/partners">Partners</a></li>
+                  <li><router-link :to="{ name: 'Home' }">Patients &nbsp;&nbsp;&nbsp;  |</router-link></li>
+                  <li><router-link :to="{ name: 'Provider' }">Providers &nbsp; &nbsp; &nbsp;|</router-link></li>
+                  <li><router-link :to="{ name: 'Pharmacy' }">Pharmacists  &nbsp;&nbsp;&nbsp; |</router-link></li>
+                  <li><router-link :to="{ name: 'Partner' }">Partners</router-link></li>
               </ul>
           </div>
           <!-- /.navbar-collapse -->
@@ -54,19 +54,22 @@
           <div class="collapse navbar-collapse main-menu" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <router-link class="page-scroll" :to="{ name: 'Home' }">Pricing</router-link>
+                <router-link class="page-scroll" to="/#pricing">Pricing</router-link>
               </li>
               <li>
-                <a class="page-scroll" :to="{ name: 'Home' }">Amazing Benefts</a>
+                <router-link class="page-scroll" to="/#benefits">Amazing Benefts</router-link>
               </li>
               <li>
-                <a class="page-scroll" :to="{ name: 'Home' }">How To Use</a>
+                <router-link class="page-scroll" to="/#howtouse">How To Use</router-link>
               </li>
               <li>
-                <a class="page-scroll" :to="{ name: 'Home#' }">Why Medflit</a>
+                <router-link class="page-scroll" to="/#whymedflit">Why Medflit</router-link>
               </li>
               <li>
-                <a class="page-scroll" :to="{ name: 'Home' }">Conditions</a>
+                <router-link :to="{ name: 'Condition' }">Condition</router-link>
+              </li>
+              <li>
+                <router-link :to="{ name: 'Faq' }">Faq</router-link>
               </li>
             </ul>
           </div>

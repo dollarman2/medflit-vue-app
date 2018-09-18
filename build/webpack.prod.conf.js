@@ -104,10 +104,10 @@ const webpackConfig = merge(baseWebpackConfig, {
             cacheId: 'medflit-app',
             filename: 'service-worker.js',
             staticFileGlobs: ['dist/**/*.{js,html,css}'],
-            // runtimeCaching: [{
-            //     urlPattern: /^https:\/\/res\.cloudinary\.com\//,
-            //     handler: 'cacheFirst'
-            // }],
+            runtimeCaching: [{
+                urlPattern: /^https:\/\/res\.medflit-vue-app\.herokuapp\.com\//,
+                handler: 'cacheFirst'
+            }],
             minify: true,
             stripPrefix: 'dist/'
         })

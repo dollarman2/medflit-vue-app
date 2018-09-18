@@ -166,11 +166,6 @@ a:active, a:hover {
   margin-right: 15px;
   background: #fff;
   border: 1px solid #fff !important;
-  text-transform: capitalize;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-  outline: none;
 }
 
 .login-btn.l-btn a {
@@ -483,7 +478,7 @@ div#preloader {
   .soci li {
     display: inline;
   }
-  .navbar .navbar-collapse .navbar-default .navbar-header .slider-area .slides {
+  .navbar .navbar-collapse .navbar-default .navbar-header .Farea .slides {
     margin-top: 0px;
   }
 }
@@ -2128,7 +2123,7 @@ div#preloader {
 /*----------------------------------------*/
 
 .header-bg {
-  background: url(../img/slider/slider1.jpg);
+  background: url(../img/slider/doc.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
@@ -2136,6 +2131,34 @@ div#preloader {
 }
 
 .header-bg.home-2 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.header-bg2 {
+  background: url(../img/slider/med-doc.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  background-attachment: fixed;
+}
+
+.header-bg2.home-2 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.header-bg3 {
+  background: url(../img/slider/pharmacy.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  background-attachment: fixed;
+}
+
+.header-bg3.home-2 {
   width: 100%;
   height: 100%;
   position: relative;
@@ -2189,9 +2212,23 @@ div#preloader {
   18. Blog page
 ----------------------------------------*/
 
-.page-area {
+.provider-page-area {
   position: relative;
+  padding-top: 12vw;
+  padding-bottom: 19vw;
 }
+
+.pharmacy-page-area {
+  position: relative;
+  padding-top: 150px;
+  padding-bottom: 100px;
+}
+
+/* .partner-page-area {
+  position: relative;
+  padding-top: 150px;
+  padding-bottom: 100px;
+} */
 
 .blog-page .banner-box {
   margin-bottom: 40px;
