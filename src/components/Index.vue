@@ -148,7 +148,7 @@
               <div class="services-details">
                 <div class="text-center">
                   <h6 class="text-center"><strong>ONLINE CONSULTATION</strong></h6>
-                  <h2>2000 Above</h2>
+                  <h2>₦2000 Above</h2>
                   <h6>Consult a doctor, either through
                   voice, chat or video app</h6>
                 </div>
