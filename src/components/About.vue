@@ -6,7 +6,6 @@
 			<div class="col-md-8" style="padding-bottom: 3%">
 				<h2 style="padding-top: 18%; color: white;" class="text-center">Feeling ill?</h2>
 				<h1 class="text-center" style="color: white;"><strong>Talk to a Doctor Now</strong></h1>
-        <form >
 				<div class="form-group col-md-4 col-sm-4">
 					<select class="form-control input-lg" v-model="option">
             <option value="">--Select Type--</option>
@@ -23,9 +22,8 @@
 				</div>
 
 				<div style="display: flex; justify-content: center;">
-					<button @click="addMessage()" type="submit" class="search-button input-lg" id="search_ref">Search</button>
+					<button @click="addMessage()" type="button" class="search-button input-lg" id="search_ref">Search</button>
 				</div>
-        </form>
 			</div>
 			<div class="col-md-2" style="float: left"></div>
 		</div>
