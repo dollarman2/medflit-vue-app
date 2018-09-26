@@ -123,6 +123,76 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="" v-if="option == 2" >
+                        <div class="card-body doctor-details-box">
+                            <div class="row">
+                                <div class="col-md-2 pharmacy-avatar-div">                                 
+                                    <img src="" class="profile-user-img img-fluid img-circle" alt="User Image" style="width: 100px; height: 100px"/>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div style="padding-top: 10px">
+                                        <a href="">
+                                            <h3 class="provider_name" style="font-family: 'Segoe UI">John Pharmacy</h3>
+                                        </a>
+                                        <div style="margin-top: 0px">
+                                            <span class="fa fa-star "></span>
+                                            <span class="fa fa-star "></span>
+                                            <span class="fa fa-star "></span>
+                                            <span class="fa fa-star "></span>
+                                            <span class="fa fa-star "></span>
+                                        </div>
+                                        <p>John street oregun lagos</p>
+
+                                        <div class="row">
+                                                <a style="margin:2px;" class="btn btn-flat btn-primary btn-sm" href=""><i class="fa fa-phone"></i> Contact Pharmacy</a>   
+                                                <a style="margin:2px;" class="btn btn-flat btn-primary btn-sm" id="select_pharmacy" data-href=""><i class="fa fa-calendar"></i> Select Pharmacy</a>
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="" v-if="option == 3" >
+                   <div class="card-body doctor-details-box" style="padding:10px;">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12 pharmacy-avatar-div">
+                                <img src="" class="profile-user-img img-fluid img-circle" alt="User Image" style="width: 100px; height: 100px"/>
+                           
+                        </div>
+
+                        <div class="col-lg-8 col-md-8">
+                            <div style="padding-top: 10px">
+                                <a href="">
+                                    <h3 class="provider_name" style="font-family: 'Segoe UI">james hospital</h3>
+                                </a>
+
+                                <div style="margin-top: 0px">
+                                        <span class="fa fa-star "></span>
+                                        <span class="fa fa-star "></span>
+                                        <span class="fa fa-star "></span>
+                                        <span class="fa fa-star "></span>
+                                        <span class="fa fa-star "></span>
+                                        <span></span><br>
+                                </div>
+                                <p>24 ibrahim eletu street lekki lagos</p>
+                            </div>
+                        </div>
+
+                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 5px" >
+                            <div class="">
+                                <a href="" class="btn btn-sm btn-primary pull-right"><i class="fa fa-phone"></i> Contact Hospital</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -134,7 +204,6 @@
                     <div class="card-header doctor-details-header">
                         <h5>{{ type }} closeby</h5>
                     </div>
-
                     <div class="card-body providers-close-by" v-if="option == 1" v-for="(result,index) in near_results">
                         <div class="providers-info">
                             <div class="row">
@@ -150,6 +219,74 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="" v-if="option == 2" pharmacy>
+                      <div class="card-body doctor-details-box">
+                            <div class="row">
+                                <div class="col-md-2 pharmacy-avatar-div">                                 
+                                    <img src="" class="profile-user-img img-fluid img-circle" alt="User Image" style="width: 100px; height: 100px"/>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div style="padding-top: 10px">
+                                        <a href="">
+                                            <h3 class="provider_name" style="font-family: 'Segoe UI">John Pharmacy</h3>
+                                        </a>
+                                        <div style="margin-top: 0px">
+                                            <span class="fa fa-star "></span>
+                                            <span class="fa fa-star "></span>
+                                            <span class="fa fa-star "></span>
+                                            <span class="fa fa-star "></span>
+                                            <span class="fa fa-star "></span>
+                                        </div>
+                                        <p>John street oregun lagos</p>
+
+                                        <div class="row">
+                                                <a style="margin:2px;" class="btn btn-flat btn-primary btn-sm" href=""><i class="fa fa-phone"></i> Contact Pharmacy</a>   
+                                                <a style="margin:2px;" class="btn btn-flat btn-primary btn-sm" id="select_pharmacy" data-href=""><i class="fa fa-calendar"></i> Select Pharmacy</a>
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="" v-if="option == 3" hospital>
+                        <div class="card-body doctor-details-box" style="padding:10px;">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12 pharmacy-avatar-div">
+                                <img src="" class="profile-user-img img-fluid img-circle" alt="User Image" style="width: 100px; height: 100px"/>
+                           
+                        </div>
+
+                        <div class="col-lg-8 col-md-8">
+                            <div style="padding-top: 10px">
+                                <a href="">
+                                    <h3 class="provider_name" style="font-family: 'Segoe UI">james hospital</h3>
+                                </a>
+
+                                <div style="margin-top: 0px">
+                                        <span class="fa fa-star "></span>
+                                        <span class="fa fa-star "></span>
+                                        <span class="fa fa-star "></span>
+                                        <span class="fa fa-star "></span>
+                                        <span class="fa fa-star "></span>
+                                        <span></span><br>
+                                </div>
+                                <p>24 ibrahim eletu street lekki lagos</p>
+                            </div>
+                        </div>
+
+                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 5px" >
+                            <div class="">
+                                <a href="" class="btn btn-sm btn-primary pull-right"><i class="fa fa-phone"></i> Contact Hospital</a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
                     </div>
                 </div>
 
