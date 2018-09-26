@@ -8,6 +8,9 @@ import Provider from '@/components/Provider'
 import Pharmacy from '@/components/Pharmacy'
 import Condition from '@/components/Condition'
 import Faq from '@/components/Faq'
+import ProviderProfile from '@/components/Provider_profile'
+import PharmacyProfile from '@/components/Pharmacy_profile'
+import HospitalProfile from '@/components/Hospital_profile'
 
 Vue.use(Router)
 
@@ -58,6 +61,18 @@ export default new Router({
         path: '/faq',
         name: 'Faq',
         component: Faq
+    }, {
+        path: '/doctor_profile/:id',
+        name: 'ProviderProfile',
+        component: ProviderProfile
+    }, {
+        path: '/pharmacy_profile/:id',
+        name: 'PharmacyProfile',
+        component: PharmacyProfile
+    }, {
+        path: '/hospital_profile/:id',
+        name: 'HospitalProfile',
+        component: HospitalProfile
     }, {
         path: '*',
         component: Hello

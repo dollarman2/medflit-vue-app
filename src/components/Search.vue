@@ -11,22 +11,19 @@
                             <div class="form-group col-md-6 search" v-if="option == 1">
                                 <span class="fa fa-search" @click="searchUser()"></span>
                                 <input class="form-control" type="text" v-model="search" placeholder="Find Doctor Search by City, Name, etc..." name="" id="search">
-                                <div class="col-md-12 result" style="z-index: 6;background-color: #fefefe;color: #b2b3f2;">
+                                <!-- <div class="col-md-12 result" style="z-index: 6;background-color: #fefefe;color: #b2b3f2;">
                                   <li v-for="result in results"><span v-if="result.profile">{{ result.profile.first_name + ' ' + result.profile.last_name }}</span><span v-else>{{ result.first_name + ' ' + result.last_name }}</span></li>
-                                </div>
+                                </div> -->
                             </div>
 
                             <div class="form-group col-md-10 search" v-if="option == 2">
                                 <span class="fa fa-search" @click="searchUser()"></span>
                                 <input class="form-control" type="text" v-model="search" placeholder="Find Pharmacy Search by City, Name, etc..." name="" id="search">
-                                <div class="col-md-12 result" style="z-index: 6;background-color: #fefefe;color: #b2b3f2;">
-                                </div>
                             </div>
 
                             <div class="form-group col-md-10 search" v-if="option == 3">
                                 <span class="fa fa-search" @click="searchUser()"></span>
                                 <input class="form-control" type="text" v-model="search" placeholder="Find Hospital Search by City, Name, etc..." name="" id="search">
-                                <div class="col-md-12 result" style="z-index: 6;background-color: #fefefe;color: #b2b3f2;"></div>
                             </div>
 
                             <div class="form-group col-md-3" v-if="option == 1">
@@ -81,16 +78,16 @@
                             </div>
                         </div>
                         <h3 class="provider_name">
-                            <a href="" v-if="result.profile">
+                            <router-link v-if="result.profile" :to="{ name: 'ProviderProfile',params:{ id: result.profile.user_id } }">
                             <span class="text-capitalize" style="text-decoration: none">
                                 {{ result.profile.first_name+' ' + result.profile.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.profile.title) ? special : '' }}</span>
                                 </span>
-                            </a>
-                            <a href="" v-else>
+                            </router-link>
+                            <router-link :to="{ name: 'ProviderProfile',params:{ id: result.user_id } }" v-else>
                             <span class="text-capitalize" style="text-decoration: none">
                                 {{ result.first_name+' ' + result.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.title) ? special : '' }}</span>
                                 </span>
-                            </a>
+                            </router-link>
                         </h3>
                         <p style="font-weight: bold; color: gray" v-for="(special,index) in specialization" >{{ (index == result.specialty_id) ? special : '' }}</p>
                         <h6 style="font-weight: bold; color: gray;">{{ result.years_of_experience }} Years Of Experience</h6>
@@ -135,9 +132,9 @@
 
                             <div class="col-md-8">
                                 <div style="padding-top: 10px">
-                                    <a href="">
+                                    <router-link :to="{ name: 'PharmacyProfile',params:{ id: result.profile.user_id } }">
                                         <h3 class="provider_name" style="font-family: 'Segoe UI">{{ result.business_name }}</h3>
-                                    </a>
+                                    </router-link>
                                     <div style="margin-top: 0px" v-if="result.rating">
                                         <span v-bind:class="(result.rating.rating_count >= 1) ? 'fa fa-star checked' : 'fa fa-star'"></span>
                                         <span v-bind:class="(result.rating.rating_count >= 2) ? 'fa fa-star checked' : 'fa fa-star'"></span>
@@ -165,9 +162,9 @@
 
                             <div class="col-lg-8 col-md-8">
                                 <div style="padding-top: 10px">
-                                    <a href="">
+                                    <router-link :to="{ name: 'HospitalProfile',params:{ id: result.profile.user_id } }">
                                         <h3 class="provider_name" style="font-family: 'Segoe UI">{{ result.hospital_name }}</h3>
-                                    </a>
+                                    </router-link>
 
                                     <div style="margin-top: 0px" v-if="result.rating">
                                         <span v-bind:class="(result.rating.rating_count >= 1) ? 'fa fa-star checked' : 'fa fa-star'"></span>
