@@ -17,15 +17,15 @@
                             </div>
 
                             <div class="form-group col-md-10 search" v-if="option == 2">
-                                <span class="fa fa-search"></span>
-                                <input class="form-control" type="text" v-model="search" placeholder="Find Pharmacy Search by City, Name, etc..." name="" id="search" v-on:keyup="searchUser()">
+                                <span class="fa fa-search" @click="searchUser()"></span>
+                                <input class="form-control" type="text" v-model="search" placeholder="Find Pharmacy Search by City, Name, etc..." name="" id="search">
                                 <div class="col-md-12 result" style="z-index: 6;background-color: #fefefe;color: #b2b3f2;">
                                 </div>
                             </div>
 
                             <div class="form-group col-md-10 search" v-if="option == 3">
-                                <span class="fa fa-search"></span>
-                                <input class="form-control" type="text" v-model="search" placeholder="Find Hospital Search by City, Name, etc..." name="" id="search" v-on:keyup="searchUser()">
+                                <span class="fa fa-search" @click="searchUser()"></span>
+                                <input class="form-control" type="text" v-model="search" placeholder="Find Hospital Search by City, Name, etc..." name="" id="search">
                                 <div class="col-md-12 result" style="z-index: 6;background-color: #fefefe;color: #b2b3f2;"></div>
                             </div>
 
@@ -93,8 +93,11 @@
                             </a>
                         </h3>
                         <p style="font-weight: bold; color: gray" v-for="(special,index) in specialization" >{{ (index == result.specialty_id) ? special : '' }}</p>
-
-                        <h5 style="font-weight: bold; color: gray;">{{ result.medical_organization }}<br><b v-if="result.profile">{{ result.profile.address }}</b><b v-else>{{ result.address }}</b> </h5>
+                        <h6 style="font-weight: bold; color: gray;">{{ result.years_of_experience }} Years Of Experience</h6>
+                        <h6 style="font-weight: bold; color: gray;" v-if="result.medium_of_service == 1">Online</h6>
+                        <h6 style="font-weight: bold; color: gray;" v-if="result.medium_of_service == 2">Home Service</h6>
+                        <h6 style="font-weight: bold; color: gray;" v-if="result.medium_of_service == 3">Online & Home Service</h6>
+                        <h6 style="font-weight: bold; color: gray;">{{ result.medical_organization }}<br><b v-if="result.profile">{{ result.profile.address }}</b><b v-else>{{ result.address }}</b> </h6>
 
                         <span></span>
                         <div style="margin-top: 0px" v-if="result.rating">
@@ -103,7 +106,7 @@
                             <span v-bind:class="(result.rating.rating_count >= 3) ? 'fa fa-star checked' : 'fa fa-star'"></span>
                             <span v-bind:class="(result.rating.rating_count >= 4) ? 'fa fa-star checked' : 'fa fa-star'"></span>
                             <span v-bind:class="(result.rating.rating_count >= 5) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                            <span>(1 review)</span><br>
+                            <span>({{ result.total_rating }} review)</span><br>
                         </div>
                          <div style="margin-top: 0px" v-else>
                             <span v-bind:class="(result.rating_count >= 1) ? 'fa fa-star checked' : 'fa fa-star'"></span>
@@ -111,7 +114,7 @@
                             <span v-bind:class="(result.rating_count >= 3) ? 'fa fa-star checked' : 'fa fa-star'"></span>
                             <span v-bind:class="(result.rating_count >= 4) ? 'fa fa-star checked' : 'fa fa-star'"></span>
                             <span v-bind:class="(result.rating_count >= 5) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                            <span>({{ result.total_rating }} review)</span><br>
+                            <span>({{ result.total_rating }} reviews)</span><br>
                         </div>
                         <div class="row" style="margin-top: 20px;">
                             <div class="provider-action-button col-xs-6">
@@ -120,6 +123,67 @@
 
                             <div class="provider-appointment-button col-xs-6">
                                 <p class="text-center"><a class="view-availability-btn" href="https://app.medflit.com/login" target="_blank"><i class="fa fa-calendar-times-o"></i>&nbsp; Book appointment</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body doctor-details-box" v-if="option == 2" v-for="(result,index) in results">
+                        <div class="row">
+                            <div class="col-md-2 pharmacy-avatar-div">
+                                <img v-if="result.profile" v-bind:src="'http://localhost:8000/'+result.profile.profile_picture" class="img-responsive doctor-avatar" alt="">
+                                <img v-else v-bind:src="'http://localhost:8000/'+result.profile_picture" class="img-responsive doctor-avatar" alt="">
+                            </div>
+
+                            <div class="col-md-8">
+                                <div style="padding-top: 10px">
+                                    <a href="">
+                                        <h3 class="provider_name" style="font-family: 'Segoe UI">{{ result.business_name }}</h3>
+                                    </a>
+                                    <div style="margin-top: 0px" v-if="result.rating">
+                                        <span v-bind:class="(result.rating.rating_count >= 1) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 2) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 3) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 4) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 5) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                        <span>({{ result.rating.total_rating }}review)</span><br>
+                                    </div>
+                                    <p>{{ result.address }}</p>
+
+                                    <div class="">
+                                        <a style="margin:2px;" class="btn btn-flat btn-primary btn-sm" v-bind:href="'tel:'+result.telephone"><i class="fa fa-phone"></i> Contact Pharmacy</a>
+                                        <a style="margin:2px;" class="btn btn-flat btn-primary btn-sm" id="select_pharmacy"><i class="fa fa-calendar"></i> Select Pharmacy</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-body doctor-details-box" style="padding:10px;" v-if="option == 3" v-for="(result,index) in results">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12 pharmacy-avatar-div">
+                                <img v-bind:src="'http://localhost:8000/'+result.hospital_image" class="img-responsive doctor-avatar" alt="">
+                            </div>
+
+                            <div class="col-lg-8 col-md-8">
+                                <div style="padding-top: 10px">
+                                    <a href="">
+                                        <h3 class="provider_name" style="font-family: 'Segoe UI">{{ result.hospital_name }}</h3>
+                                    </a>
+
+                                    <div style="margin-top: 0px" v-if="result.rating">
+                                        <span v-bind:class="(result.rating.rating_count >= 1) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 2) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 3) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 4) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 5) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                        <span>({{ result.total_rating }} review)</span><br>
+                                    </div>
+                                    <p>{{ result.hospital_address }}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 5px" >
+                                <div class="">
+                                    <a :href="'tel:'+result.hospital_phone" class="btn btn-sm btn-primary pull-right"><i class="fa fa-phone"></i> Contact Hospital</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -151,9 +215,37 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card-body providers-close-by" v-if="option == 2" v-for="(result,index) in near_results">
+                        <div class="providers-info">
+                            <div class="row">
+                                <div class="col-md-3">
+                                   <img v-bind:src="'http://localhost:8000/'+result.profile.profile_picture" class="img-responsive doctor-avatar" alt="">
+                                </div>
+                                <div class="col-md-9 providers-inner-info">
+                                    <p><b>{{ result.business_name }}</b></p>
+                                    <p><b>{{ result.address }}</b></p>
+                                    <p><b><a href="#"><i class="fa fa-map-marker" style="color: #3c8dbc;"> Get directions</i></a> (1.6 km Away)</b></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body providers-close-by" v-if="option == 3" v-for="(result,index) in near_results">
+                        <div class="providers-info">
+                            <div class="row">
+                                <div class="col-md-3">
+                                   <img v-bind:src="'http://localhost:8000/'+result.hospital_image" class="img-responsive doctor-avatar" alt="">
+                                </div>
+                                <div class="col-md-9 providers-inner-info">
+                                    <p><b>{{ result.hospital_name }}</b></p>
+                                    <p><b>{{ result.address }}</b></p>
+                                    <p><b><a href="#"><i class="fa fa-map-marker" style="color: #3c8dbc;"> Get directions</i></a> (1.6 km Away)</b></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div style="margin-top: 20px">
+                <div style="margin-top: 20px" v-if="option == 1">
                     <div class="card providers-background">
                         <div class="card-header doctor-details-header">
                             <div>
@@ -169,7 +261,7 @@
                     </div>
                 </div>
 
-                <div style="margin-top: 20px">
+                <div style="margin-top: 20px" v-if="option == 1">
                     <div class="card providers-background">
                         <div class="card-header doctor-details-header">
                             <div>
@@ -192,88 +284,32 @@
 
                 <div style="margin-top: 20px">
                     <div class="card providers-background">
-                        <div class="card-header doctor-details-header">
-                            <div>
-                                <h5>Country</h5>
-                            </div>
-                        </div><!--end of card header-->
-
                         <div class="card-body"><br>
-                            <div class="form-group search">
-                                <span class="fa fa-search"></span>
-                                <input class="form-control" type="" placeholder="Find Doctor by Country ..." name="" value="">
-                            </div>
-                            <hr>
-                            <div class="providers-close-by">
+                            <div class="providers-close-by" id="state">
                             <h6 class="text-center">Select State</h6>
                                 <div class="row">
 
-                                    <div class="col-md-4 col-sm-3 col-xs-3">
-                                        <div class="state-info">
-                                            <p>Lagos</p>
+                                    <div class="col-md-4 col-sm-4 col-xs-6" v-for="(state,index) in states">
+                                        <div class="state-info" @click="getCities(state.id)">
+                                            <p>
+                                              {{ state.name }}
+                                              <span style="height:20px;width:20px;border-radius:50%;">{{ state.profile.length }}</span>
+                                            </p>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-3 col-xs-3">
-                                        <div class="state-info">
-                                            <p>Ogun</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-3 col-xs-3">
-                                        <div class="state-info">
-                                            <p>Abuja</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-3 col-xs-3">
-                                        <div class="state-info">
-                                            <p>Abuja</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-3 col-xs-3">
-                                        <div class="state-info">
-                                            <p>Abuja</p>
-                                        </div>
-                                    </div>
-                                    <!-- <div class="col-md-3">
-                                        <div class="provider-price-info">
-                                            <p>Nigeria</p>
-                                        </div>
-                                    </div> -->
                                 </div>
                             </div>
-                            <div class="providers-close-by">
+                            <div class="providers-close-by" id="city">
                             <h6 class="text-center">Select City</h6>
                                 <div class="row">
-
-                                    <div class="col-md-4 col-sm-3 col-xs-3">
-                                        <div class="lga-info">
-                                            <p>Ikorodu</p>
+                                    <div class="col-md-4 col-sm-4 col-xs-6" v-for="(city,index) in cities">
+                                        <div class="state-info">
+                                            <p>
+                                              {{ city.name }}
+                                              <span style="height:20px;width:20px;border-radius:50%;">{{ city.profile.length }}</span>
+                                            </p>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-3 col-xs-3">
-                                        <div class="lga-info">
-                                            <p>Ikeja</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-3 col-xs-3">
-                                        <div class="lga-info">
-                                            <p>Yaba</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-3 col-xs-3">
-                                        <div class="lga-info">
-                                            <p>Ajegunle</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-3 col-xs-3">
-                                        <div class="lga-info">
-                                            <p>Oshodi</p>
-                                        </div>
-                                    </div>
-                                    <!-- <div class="col-md-3">
-                                        <div class="provider-price-info">
-                                            <p>Nigeria</p>
-                                        </div>
-                                    </div> -->
                                 </div>
                             </div>
 
@@ -298,6 +334,8 @@
                 specialty:'',
                 specialization:[],
                 results:[],
+                states:[],
+                cities:[],
                 services:[],
                 service: 0,
                 gender: 0,
@@ -313,6 +351,7 @@
             }
         },
         mounted() {
+            $('#city').hide();
             this.option = this.$route.params.id;
             this.getSpecialties();
             this.searchUser();
@@ -331,7 +370,12 @@
               let component = this;
                 axios.get('http://localhost:8000/api/search_?search='+component.search+'&option='+component.option)
                     .then(function (response) {
-                      component.results = response.data.doctors;
+                      if(response.data.doctors)
+                        component.results = response.data.doctors;
+                      else if (response.data.pharmacies)
+                        component.results = response.data.pharmacies;
+                      else
+                        component.results = response.data.hospitals;
                       console.log(component.results);
                     }, function (error) {
                     });
@@ -405,7 +449,7 @@
                 axios.get('http://localhost:8000/api/near_by_pharmacy?lat='+lat+'&lng='+lng)
                     .then(function (response) {
                       component.near_results = response.data.pharmacies;
-                      console.log(component.results);
+                      console.log(component.near_results);
                     }, function (error) {
                     });
             },
@@ -415,7 +459,7 @@
                 axios.get('http://localhost:8000/api/near_by_hospital?lat='+lat+'&lng='+lng)
                     .then(function (response) {
                       component.near_results = response.data.hospitals;
-                      console.log(component.results);
+                      console.log(component.near_results);
                     }, function (error) {
                     });
             },
@@ -426,8 +470,17 @@
                     this.plans = response.data.plan;
                     this.services = response.data.services;
                     this.classes = response.data.classAbb;
+                    this.states = response.data.states;
                 });
             },
+            getCities(value){
+              axios.get('http://127.0.0.1:8000/api/city/'+value).then(response => {
+                    $('#state').hide();
+                    $('#city').show();
+                    this.cities = response.data.cities;
+                    console.log(this.cities);
+                });
+            }
         }
     }
 </script>
