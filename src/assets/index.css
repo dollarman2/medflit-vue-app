@@ -34,6 +34,10 @@ h6 {
     font-family: Segoe UI;
 }
 
+p {
+    font-family: 'Segoe UI Light';
+}
+
 .navbar-top-bg {
     background-color: #1d4bb7;
     border-radius: 0px;
@@ -213,7 +217,8 @@ h6 {
 .provider_login {
     margin: 10px;
     padding: 25px 40px;
-    border-radius: 4px;background-image: radial-gradient(circle, rgb(59, 104, 196), #01097B);
+    border-radius: 4px;
+    background-image: radial-gradient(circle, rgb(59, 104, 196), #01097b);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -245,16 +250,13 @@ h6 {
 }
 
 .doctor-search {
-    background-color: #fefefe;
-    height: auto;
     margin-top: 50px;
     margin-bottom: 20px;
-    width: 100%;
 }
 
 .doctor-searching {
     position: relative;
-    padding: 20px!important;
+    padding: 10px!important;
 }
 
 .details {
@@ -264,23 +266,34 @@ h6 {
     margin-bottom: 50px;
 }
 
-.doctor-details-header {
-    border-bottom: 1px solid #cccccc;
-    padding: 5px;
+.title-head {
+    border-bottom: 1px solid rgb(240, 240, 240);
 }
 
+
+/* .doctor-details-header {
+    border-bottom: 1px solid #cccccc;
+    padding: 5px;
+} */
+
 .doctor-details-box {
-    border: 1px solid #ccc;
+    border: 1px solid rgb(240, 240, 240);
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
 }
 
+.provider-avatar {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
 .doctor-avatar {
     border-radius: 50%;
-    width: 67px;
-    height: 70px;
+    width: 35px;
+    height: 35px;
 }
 
 .doctor-action-button {
@@ -390,12 +403,12 @@ h6 {
 }
 
 .providers-close-by {
-    margin-top: 12px;
-    border-bottom: 1px solid #ccc
+    border-bottom: 1px solid rgb(240, 240, 240);
 }
 
 .providers-close-by,
 input {
+    font-family: 'Segoe UI Light';
     font-size: 12px;
     padding-bottom: 10px;
     /* line-height: 10px; */
@@ -406,15 +419,17 @@ input {
 }
 
 .providers-info p {
-    font-size: 11px
+    font-size: 12px;
+    line-height: 10px;
 }
 
-.providers-background {
+
+/* .providers-background {
     background-color: white;
     height: auto;
     padding: 10px;
     border-radius: 2px;
-}
+} */
 
 
 /*Patient Appointment Page*/
@@ -631,7 +646,7 @@ input {
 }
 
 .provider-details-box {
-    border: 1px solid #ccc;
+    border: 1px solid rgb(240, 240, 240);
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 10px;
@@ -692,18 +707,30 @@ input {
     margin-bottom: 3px;
 }
 
+
+/*
 .state-info {
     padding: 5px;
     background-color: #dff0d8;
     margin-bottom: 20px;
-}
+} */
 
 .state-info p {
-    font-family: inherit;
+    font-family: 'Segoe UI Light';
     font-size: 11px;
     font-weight: bold;
-    text-align: center;
+    text-align: left;
     color: green;
+    text-decoration: underline;
+}
+
+.city-info p {
+    font-family: 'Segoe UI Light';
+    font-size: 11px;
+    font-weight: bold;
+    text-align: left;
+    color: #01097b;
+    text-decoration: underline;
 }
 
 .lga-info {
@@ -738,4 +765,65 @@ input {
 
 .header-icons {
     color: white;
+}
+
+.scheduler {
+    margin-top: 1em;
+}
+
+.scheduler.container {
+    margin-top: 2em;
+}
+
+.scheduler .col-md-3 {
+    /* width: 10% !important; */
+    float: left;
+}
+
+.schedule_list {
+    height: 250px;
+    overflow: hidden;
+    overflow-y: scroll;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+}
+
+.scheduler .sm-width {
+    width: 100px;
+    float: left;
+    margin: 5px;
+}
+
+.scheduler ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.scheduler li a {
+    display: block;
+    background: #efefef;
+    padding: 10px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.scheduler .time-slot-item-span {
+    margin-left: 10px;
+}
+
+.timeslot-item {
+    background: none;
+    padding: 5px;
+    width: 100%;
+    margin: 1px;
+    border: 1px solid #777;
+}
+
+.panels-heading {
+    padding: 10px 15px 5px 15px;
+}
+
+.panels-body {
+    padding: 15px 15px 15px 15px;
 }
