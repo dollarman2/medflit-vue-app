@@ -1,15 +1,13 @@
 <template>
-    <div class="row auth"  style="margin: 50px;">
-        <div>
-            <div class="col-md-12">
-                
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-2">
-                                    <img src="" class="img-responsive profile-user-img img-fluid img-circle" alt="User Image" />
-                            </div>
-
+    <div class="row auth">
+    <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="card">
+            <div class="card-body">
+                <div class="row proivder_hearder">
+                             <div class="col-md-2">
+                                <img src="../assets/logo.png" class="img-responsive profile-user-img img-fluid img-circle" alt="User Image" style="width: 120px; height: 120px"/>
+                             </div>
                             <div class="col-md-8">
                                 <h2 class="" style="font-family: 'Segoe UI">Jame pharmacy</h2>
                                 <h5>John street lekki lagos</h5>
@@ -41,17 +39,13 @@
                                         <button class="btn btn-sm btn-primary">
                                             <span class="fa fa-map-marker"></span> &nbsp; Get Directions
                                        </button>
-                                    <div class="select-pharmacy">
-                                        <button class="btn btn-sm btn-primary">&nbsp; Select Pharmacy</button>
-                                    </div>
+                                        <button class="btn btn-sm btn-primary">&nbsp; Select Pharmacy</button>                                   
                                 </div>
 
                             </div>
-                        </div>
                    </div>
                 </div>
             </div>
-        </div>
 
         <div class="row provider_tab">
             <div class="col-12">
@@ -168,24 +162,29 @@
                         <!-- /.tab-pane -->
                         <div class="tab-pane fade" id="gallery"  style="min-height: 400px; background-color:white;">
                             
-                            <div class="row gallery_images" style="padding: 30px;">
-
-                                    <ul>
-                                        <li> 
-                                                <a  class="fancybox" rel="gallery"  href="">
-                                                    <img class="img-responsive"  src="" >
-                                                </a>                      
-                                        </li>
-                                    </ul>
-                                
-
+                            <div class="col-md-12 pull-right " style="padding:20px;">
+                            <ul class="">                    
+                                    <div class='list-group'>
+                                            <div  class="fancybox col-sm-4 col-xs-6 col-md-3 col-lg-3"  data-fancybox-group="gallery" href="../assets/logo.png">                                                                                   
+                                                    <img src="../assets/logo.png" class="img-responsive">
+                                            </div> <!-- col-6 / end -->
+                                    </div> 
+                                      <div class='list-group'>
+                                            <div class="fancybox col-sm-4 col-xs-6 col-md-3 col-lg-3"  data-fancybox-group="gallery" href="../assets/logo.png">                                                                                    
+                                                    <img src="../assets/logo.png" class="img-responsive">
+                                            </div> <!-- col-6 / end -->
+                                    </div> 
+                                </ul>
                             </div>
+
                             </div>
 
                         </div>
                     </div>
                 </div>
             </div>
+    </div>
+    </div>
     </div>
 </template>
 <script>
@@ -196,3 +195,6 @@ export default {
     
 }
 </script>
+<style>
+  @import url('../assets/index.css');
+</style>

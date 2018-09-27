@@ -1,16 +1,31 @@
 body {
     font-family: 'Segoe UI Light';
 }
+.provider_tab {
+    background-color: white;
+    padding: 0px;
+    font-size: 18px;    
+    font-family: 'Segoe UI Light';
+    margin: 20px;
+    
+}
+.rating-star ul li {
+    display: inline-block;
+
+}
+
+.proivder_hearder {
+    background-color: white;
+    margin: 15px;
+    padding: 25px;
+}
 
 h1 {
     font-size: 65px;
     /* font-weight: ;  */
     font-family: Segoe UI;
 }
-.rating-star ul li{
-    background-color: red;
-    display: inline-block;
-}
+
 h2,
 h3,
 h4,

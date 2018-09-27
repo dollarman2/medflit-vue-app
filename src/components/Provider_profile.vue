@@ -1,21 +1,20 @@
 <template>
- <div>
-     <div class="row">
-    <div class="col-md-12">
+     <div class="row auth">
+    <div class="col-md-10 col-md-offset-1">
         <div class="card">
             <div class="card-body">
-                <div class="row">
+                <div class="row proivder_hearder">
                     <div class="col-md-2">
-                            <img src="" class="img-responsive profile-user-img img-fluid img-circle" alt="User Image" style="width: 120px; height: 120px"/>
+                            <img src="../assets/logo.png" class="img-responsive profile-user-img img-fluid img-circle" alt="User Image" style="width: 120px; height: 120px"/>
                       
                     </div>
 
-                    <div class="col-md-8">
+                    <div class="col-md-8" >
                         <h2 class="" style="font-family: 'Segoe UI">
-                            <span class="text-capitalize">Okoro,<small style="font-size: 15px"> Md</small></span> <br>
+                            <span class="text-capitalize">Dr Emmanuel Okoro,<small style="font-size: 15px"> Md</small></span> <br>
                         </h2>
-                             general practice
-                        <h5><small>5 Years Experience</small></h5>
+                        <h3>general practice</h3> 
+                        <h5>5 Years Experience</h5>
 
                         <h6><label for="">John hospital</label> </h6>
                         <div style="margin-top: 0px">
@@ -46,9 +45,9 @@
                         <div class="row">
                             <div class="review-button" data-target="#provider_review" data-toggle="modal">
                                 <button class="btn btn-sm btn-primary"><span class="fa fa-star"></span><strong> Give Review</strong></button>
-                            </div>
-                            <div class="direction-button">
-                                <button class="btn btn-sm btn-primary"><a target="_blank" href=""><span class="fa fa-map-marker"></span><strong> Get Directions</strong></a></button>
+                                <button class="btn btn-sm btn-primary"><a target="_blank" href=""><span class="fa fa-map-marker"></span>
+                                <strong style="color:white;">Get Directions</strong></a>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -57,9 +56,7 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="row provider_tab">
+   <div class="row provider_tab">
     <div class="col-12">
             <ul class="nav nav-tabs">
                 <li class="nav-item"><a class="nav-link active" href="#overview" data-toggle="tab">Overview</a></li>
@@ -70,7 +67,7 @@
 
         <div class="">
             <div class="tab-content">
-                <div class="active tab-pane" id="overview"  style="min-height: 100px; background-color:white;">
+                <div class="active tab-pane" id="overview"  style="min-height: 300px; background-color:white;">
                     <div class="row">
                         <div class="col-md-6" style="padding:25px; border-right: 1px solid #ccc">
                             <br>
@@ -143,26 +140,26 @@
                     </div>
                 </div>
                 <!-- /.tab-pane -->
-                <div class="tab-pane" id="services" style="min-height: 100px; background-color:white;">
+                <div class="tab-pane" id="services" style="min-height: 300px; background-color:white;">
                     <div class="row">
                         <div class="col-md-8" style="padding:25px;">                        
                             <div class="table-responsive">                             
                                 <ul style="">
-                                        <li>service here!</li>
+                                        <li>pharmacy</li>
+                                        <li>Lab testing</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- /.tab-pane -->
-                <div class="tab-pane" id="patient_review"  style="min-height: 100px; background-color:white; padding:25px;">
+                <div class="tab-pane" id="patient_review"  style="min-height: 300px; background-color:white; padding:25px;">
                   
                        <table class="table responsive">
                            <tr>
                                <th width="50%">Review Messages</th>
                                <th width="50%">rating</th>
                            </tr>
-                           @foreach ($provider->reviews as $key => $review)
                            <tr>
                                <td> <p>
                                       <br>
@@ -170,7 +167,7 @@
                                      </p></td>
                                <td> 
                               <div style="margin-top: 0px">
-                                <div class='rating-star'>
+                                <div class="">
                                     <ul id='star'>
                                         <li class='stars' title='Poor' data-value='1'>
                                         <i class='fa fa-star fa-fw'></i>
@@ -190,12 +187,11 @@
                                     </ul>
                                 </div>
                             </div></td>
-                           </tr>                           
-                         @endforeach
+                           </tr>      
                        </table>
 
                 </div>
-                <div class="tab-pane" id="book_appointment"  style="min-height: 100px; background-color:white;">
+                <div class="tab-pane" id="book_appointment"  style="min-height: 300px; background-color:white;">
                     <div class="row">
                         <div class="" style="margin: 20px">
                             <p class="text-center"><button class="view-availability-btn btn btn-primary" data-provider_id=""><i class="fa fa-calendar-times-o"></i>&nbsp; Book appointment</button></p>
@@ -245,16 +241,36 @@
                             </div>
                         </div>
                     </div>
-                </div>
                 <!-- /.tab-pane -->
-                <div class="tab-pane " id="gallery"  style="min-height: 100px; background-color:white;">
-
-                </div>
+                <div class="tab-pane " id="gallery"  style="min-height: 300px; background-color:white;">
+                          
+                           <div class="col-md-12 pull-right " style="padding:20px;">
+                            <ul class="">                    
+                                    <div class='list-group'>
+                                            <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+                                                <a class="fancybox" rel="gallery"  href="">                                       
+                                                    <img src="../assets/logo.png" class="img-responsive">
+                                                </a>
+                                            </div> <!-- col-6 / end -->
+                                    </div> 
+                                      <div class='list-group'>
+                                            <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+                                                <a class="fancybox" rel="gallery"  href="">                                       
+                                                    <img src="../assets/logo.png" class="img-responsive">
+                                                </a>
+                                            </div> <!-- col-6 / end -->
+                                    </div> 
+                                </ul>
+                            </div> 
+                  </div>
             </div>
         </div>
     </div>
+    
+    </div>
+    
 </div>
- </div>
+</div>
 
 </template>
 <script>
@@ -265,3 +281,7 @@ export default {
     
 }
 </script>
+
+<style>
+  @import url('../assets/index.css');
+</style>

@@ -1,18 +1,17 @@
 <template>
-<div>
-<div class="row" style="margin: 50px;">
-    <div class="col-md-12">
+ <div class="row auth">
+    <div class="row">
+    <div class="col-md-10 col-md-offset-1">
         <div class="card">
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-2">
-                            <img src="" class="img-responsive profile-user-img img-fluid img-circle" alt="User Image" style="width: 80%; height: auto"/>
-                       
+                <div class="row proivder_hearder">
+                   <div class="col-md-2">
+                            <img src="../assets/logo.png" class="img-responsive profile-user-img img-fluid img-circle" alt="User Image" style="width: 120px; height: 120px"/>
                     </div>
 
                     <div class="col-md-8">
                         <h2><strong>Lilly hospital</strong></h2>
-                        <p></p>
+                        <p>39 ibrahim eletu street lekki Lagos Nigeria</p>
                         <div style="margin-top: 0px">
                             <div class='rating-star'>
                                 <ul id='star'>
@@ -38,22 +37,22 @@
 
                         <div class="row">
                             <div class="direction-button">
-                                <button class="btn btn-sm btn-primary"><a target="_blank" href="">
+                                <button class="btn btn-sm btn-primary" ><a target="_blank" href="" style="color:white;">
                                     <span class="fa fa-map-marker"></span> &nbsp; Get Directions
                                 </a></button>
-                            </div>
-                            <div class="select-pharmacy">
+
+                                <span class="select-pharmacy">
                                 <button class="btn btn-sm btn-primary"><span class="fa fa-phone"></span>&nbsp; Call Hospital</button>
+                                </span>
                             </div>
+                            
                         </div>
 
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 </div>
-
+    
 <div class="row provider_tab">
     
     <div class="col-md-12">
@@ -70,7 +69,7 @@
                 <div class="active tab-pane" id="overview"  style="min-height: 400px; background-color:white;">
                     <div class="row">
                         <div class="col-md-12" style="padding: 30px">
-                            <h3>About this is lilly hostpital</h3><br>
+                            <h3>About lilly hostpital</h3><br>
                             <div>
                             <p> best hospital<span><a href="#"> more...</a></span>.</p>
                             </div><br>
@@ -93,7 +92,7 @@
                                     <div class="row">                                       
                                             <div class="col-lg-3 col-md-6 col-sm-3 col-xs-3">
                                               <a class="fancybox" href="" data-fancybox-group="gallery">
-                                                    <img class="img-responsive" style="height:50px;width:50px;" src="" >
+                                                    <img src="../assets/logo.png" class="img-responsive" style="height:50px;width:50px;">
                                               </a>
                                             </div><br>
                                       
@@ -181,6 +180,9 @@
     </div>
 </div>
 </div>
+</div>
+</div>
+
 
 </template>
 <script>
@@ -191,3 +193,6 @@ export default {
     
 }
 </script>
+<style>
+  @import url('../assets/index.css');
+</style>
