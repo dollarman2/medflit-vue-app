@@ -193,7 +193,7 @@
 
                             <div class="col-md-8">
                                 <div style="padding-top: 10px">
-                                    <router-link :to="{ name: 'PharmacyProfile',params:{ id: result.id } }">
+                                    <router-link :to="{ name: 'PharmacyProfile',params:{ id: result.slug } }">
                                         <h3 class="provider_name" style="font-family: 'Segoe UI">{{ result.business_name }}</h3>
                                     </router-link>
                                     <div style="margin-top: 0px" v-if="result.rating">
@@ -223,7 +223,7 @@
 
                             <div class="col-lg-8 col-md-8">
                                 <div style="padding-top: 10px">
-                                    <router-link :to="{ name: 'HospitalProfile',params:{ id: result.profile.user_id } }">
+                                    <router-link :to="{ name: 'HospitalProfile',params:{ id: result.slug } }">
                                         <h3 class="provider_name" style="font-family: 'Segoe UI">{{ result.hospital_name }}</h3>
                                     </router-link>
 
