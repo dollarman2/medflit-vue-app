@@ -160,7 +160,7 @@
                     <li><i class="fa fa-check"></i> Personal Health Record</li>
                   </ul>
                 </div>
-                <div class="text-center"><a class="ready-btn right-btn" href="#">Select</a></div>
+                <div class="text-center"><router-link class="ready-btn right-btn" :to="{name:'Abouts',params:{ id: 1 }}">Select</router-link></div>
               </div>
               <!-- end about-details -->
             </div>
@@ -183,7 +183,7 @@
                         of <br>Hospitals</li>
                     </ul>
                   </div>
-                  <div class="text-center"><a class="ready-btn right-btn" href="#">Select</a></div>
+                  <div class="text-center"><router-link class="ready-btn right-btn" :to="{name:'Abouts',params:{ id: 1 }}">Select</router-link></div>
               </div>
               <!-- end about-details -->
             </div>
@@ -207,7 +207,7 @@
                         Health Care Professionals</li>
                     </ul>
                   </div>
-                  <div class="text-center"><a class="ready-btn right-btn" href="#">Select</a></div>
+                  <div class="text-center"><router-link class="ready-btn right-btn" :to="{name:'Abouts',params:{ id: 1 }}">Select</router-link></div>
 
               </div>
               <!-- end about-details -->
