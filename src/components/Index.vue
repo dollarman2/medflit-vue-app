@@ -5,7 +5,7 @@
         <slider-item>
           <div class="mycon">
               <div class="row" >
-              <div class="col-md-7 col-sm-7 col-xs-7">
+              <div class="col-md-7 col-sm-7 col-xs-6">
                   <div class="slider-content">
                   <!-- layer 1 -->
                   <div class="layer-1-2 wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
@@ -15,7 +15,7 @@
                   </div>
                   </div>
               </div>
-              <div class="col-md-5 col-sm-5 col-xs-5">
+              <div class="col-md-5 col-sm-5 col-xs-6">
                   <div class="slider-content2">
                   <!-- layer 3 -->
                   <div class="layer-1-3 wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
@@ -37,7 +37,7 @@
         <slider-item>
           <div class="mycon2">
               <div class="row">
-              <div class="col-md-7 col-sm-7 col-xs-7">
+              <div class="col-md-7 col-sm-7 col-xs-6">
                   <div class="slider-content">
                   <!-- layer 1 -->
                   <div class="layer-1-2 wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
@@ -47,7 +47,7 @@
                   </div>
                   </div>
               </div>
-              <div class="col-md-5 col-sm-5 col-xs-5">
+              <div class="col-md-5 col-sm-5 col-xs-6">
                   <div class="slider-content2">
                   <!-- layer 3 -->
                   <div class="layer-1-3 wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
@@ -70,7 +70,7 @@
         <slider-item>
           <div class="mycon3">
               <div class="row">
-              <div class="col-md-7 col-sm-7 col-xs-7">
+              <div class="col-md-7 col-sm-7 col-xs-6">
                   <div class="slider-content">
                   <!-- layer 1 -->
                   <div class="layer-1-2 wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
@@ -80,7 +80,7 @@
                   </div>
                   </div>
               </div>
-              <div class="col-md-5 col-sm-5 col-xs-5">
+              <div class="col-md-5 col-sm-5 col-xs-6">
                   <div class="slider-content2">
                   <!-- layer 3 -->
                   <div class="layer-1-3 wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
@@ -103,17 +103,17 @@
         <slider-item>
           <div class="mycon4">
               <div class="row">
-              <div class="col-md-7 col-sm-7 col-xs-7">
+              <div class="col-md-7 col-sm-7 col-xs-6">
                   <div class="slider-content">
-                  <!-- layer 1 -->
-                  <div class="layer-1-2 wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
-                      <h1 class="" style="color: #1D4BB7; font-family: 'Aileron'">Africa's First
-                      Integrated Telemedicine
-                      Service</h1>
-                  </div>
+                    <!-- layer 1 -->
+                    <div class="layer-1-2 wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
+                        <h1 class="" style="color: #1D4BB7; font-family: 'Aileron'">Africa's First
+                        Integrated Telemedicine
+                        Service</h1>
+                    </div>
                   </div>
               </div>
-              <div class="col-md-5 col-sm-5 col-xs-5">
+              <div class="col-md-5 col-sm-5 col-xs-6">
                   <div class="slider-content2">
                   <!-- layer 3 -->
                   <div class="layer-1-3 wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
