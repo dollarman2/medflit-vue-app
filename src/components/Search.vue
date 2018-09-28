@@ -94,10 +94,10 @@
 
                         <div class="providers-details">
                             <p style="font-weight: bold; color: gray" v-for="(special,index) in specialization" >{{ (index == result.specialty_id) ? special : '' }}</p>
-                            <h6 style="font-weight: bold; color: gray;">{{ result.years_of_experience }} Years Of Experience</h6>
-                            <h6 style="color: gray;" v-if="result.medium_of_service == 1">Online</h6>
-                            <h6 style="color: gray;" v-if="result.medium_of_service == 2">Home Service</h6>
-                            <h6 style="color: gray;" v-if="result.medium_of_service == 3">Online & Home Service</h6>
+                            <h6 style="font-weight: bold; color: gray;" v-if="result.years_of_experience">{{ result.years_of_experience }} Years Of Experience</h6>
+                            <h6 style="color: gray;" v-if="result.medium_of_service == 1">Medium: Online</h6>
+                            <h6 style="color: gray;" v-if="result.medium_of_service == 2">Medium: Home Service</h6>
+                            <h6 style="color: gray;" v-if="result.medium_of_service == 3">Medium: Online & Home Service</h6>
                             <h6 style="font-weight: bold; color: gray;">{{ result.medical_organization }}<br><b v-if="result.profile">{{ result.profile.address }}</b><b v-else>{{ result.address }}</b> </h6>
                         </div>
 
