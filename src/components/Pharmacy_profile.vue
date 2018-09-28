@@ -6,40 +6,28 @@
             <div class="card-body">
                 <div class="row proivder_hearder">
                              <div class="col-md-2">
-                                <img src="../assets/logo.png" class="img-responsive profile-user-img img-fluid img-circle" alt="User Image" style="width: 120px; height: 120px"/>
+                                <img v-if="result.profile" v-bind:src="'https://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
+                                <img v-else src="../assets/logo.png" class="img-responsive provider-avatar" alt="">
                              </div>
                             <div class="col-md-8">
-                                <h2 class="" style="font-family: 'Segoe UI">Jame pharmacy</h2>
-                                <h5>John street lekki lagos</h5>
-                               
-                                <div style="margin-top: 0px ">
-                                    <div class='rating-star'>
-                                        <ul id='star'>
-                                            <li class='stars' title='Poor' data-value='1'>
-                                            <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                            <li class='stars' title='Fair' data-value='2'>
-                                            <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                            <li class='stars' title='Good' data-value='3'>
-                                            <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                            <li class='stars' title='Excellent' data-value='4'>
-                                            <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                            <li class='stars' title='WOW!!!' data-value='5'>
-                                            <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <span></span><br>
+                                <h2 class="" style="font-family: 'Segoe UI">{{ result.business_name }}</h2>
+                                <h5>{{ result.business_name }}</h5>
+
+                                <div style="margin-top: 0px" v-if="result.rating">
+                                    <span v-bind:class="(result.rating.rating_count >= 1) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 2) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 3) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 4) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 5) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                    <span>({{ result.rating.total_rating }}review)</span><br>
                                 </div>
-                                    <p style="color: red"><span class="fa fa-times"> Medical Registration Not Verified</span></p>
+                                <p v-if="result.status == 0" style="color: red"><span class="fa fa-times"> Pharmacy Registration Not Verified</span></p>
+                                <p v-else style="color: green"><span class="fa fa-times"> Medical Registration Not Verified</span></p>
                                 <div class="row">
                                         <button class="btn btn-sm btn-primary">
                                             <span class="fa fa-map-marker"></span> &nbsp; Get Directions
                                        </button>
-                                        <button class="btn btn-sm btn-primary">&nbsp; Select Pharmacy</button>                                   
+                                        <button class="btn btn-sm btn-primary">&nbsp; Select Pharmacy</button>
                                 </div>
 
                             </div>
@@ -66,12 +54,14 @@
                                     <div class="table-responsive">
                                         <table class="table">
                                             <tr>
-                                                <td class="name"><span class="fa fa-edit"></span> &nbsp;CAC Reg. Number:</td>
-                                                <td>confirmed <span class="fa fa-check"></span></td>
+                                                <td class="name"><span class="fa fa-edit"></span> &nbsp;CAC Reg. Number:</td><span v-if="result.licence !== 'undefined'">{{ result.licence}}</span>
+                                                <td  v-if="result.status == 0" style="color: red"> Not Confirmed <span class="fa fa-check"></span></td>
+                                                <td  v-else style="color: green"> Not Confirmed <span class="fa fa-check"></span></td>
                                             </tr>
                                             <tr>
                                                 <td class="name"><span class="fa fa-edit"></span> &nbsp;Licence Number:</td>
-                                                <td>confirmed <span class="fa fa-check"></span></td>
+                                                <td  v-if="result.status == 0" style="color: red"> Not Confirmed <span class="fa fa-check"></span></td>
+                                                <td  v-else style="color: green"> Not Confirmed <span class="fa fa-check"></span></td>
                                             </tr>
                                             <tr>
                                                 <td class="name"><span class="fa fa-group"></span> &nbsp;Pharmaceutical Registration Bodies:</td>
@@ -83,11 +73,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="name"><span class="fa fa-phone"></span> &nbsp;Phone </td>
-                                                <td><span class=""></span></td>
+                                                <td><span class="">{{ result.telephone }}</span></td>
                                             </tr>
                                             <tr>
                                                 <td class="name"><span class="fa fa-envelope"></span> &nbsp;Email</td>
-                                                <td><span class=""><a href="mailto:">Send Email to Pharmacy</a></span></td>
+                                                <td><span class=""><a v-if="result.user" :href="'mailto:'+result.user.email">Send Email to Pharmacy</a></span></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -104,14 +94,15 @@
                                         <table class="table">
                                             <tr>
                                                 <td class="name">Deliveries</td>
-                                                <td><span id="val">&nbsp;</span></td>
-                                                
+                                                <td><span v-if="result.delivery_type" v-for="(delivery,index) in result.delivery_type">
+                                                  {{ delivery[index] }}&nbsp;</span></td>
+
                                             </tr>
                                             <tr>
                                                 <td class="name">Payment Modes</td>
-                                            
-                                                <td><span id="val">&nbsp;</span></td>
-                                            
+                                                <td><span v-if="result.payment_method" v-for="(delivery,index) in result.payment_method">
+                                                  {{ delivery[index] }}&nbsp;</span></td>
+
                                             </tr>
                                         </table>
                                     </div>
@@ -121,59 +112,37 @@
                         <!-- /.tab-pane -->
                         <div class="tab-pane fade" id="pharmacy_review"  style="padding:25px;  min-height: 400px; background-color:white;">
                             <div class="row">
-                                <table class="table responsive">
+                                <table class="table table-hover">
                                         <tr>
                                             <th width="50%">Review Messages</th>
                                             <th width="50%">rating</th>
                                         </tr>
-                                        <tr>
-                                            <td> <p>
-                                                <br>
-                                                <strong><i>                                           
-                                                </i></strong>
-                                                </p></td>
-                                            <td> 
-                                        <div style="margin-top: 0px">                                        
-                                            <div class='rating-star'>
-                                                <ul id='star'>
-                                                    <li class='stars' title='Poor' data-value='1'>
-                                                    <i class='fa fa-star fa-fw'></i>
-                                                    </li>
-                                                    <li class='stars' title='Fair' data-value='2'>
-                                                    <i class='fa fa-star fa-fw'></i>
-                                                    </li>
-                                                    <li class='stars' title='Good' data-value='3'>
-                                                    <i class='fa fa-star fa-fw'></i>
-                                                    </li>
-                                                    <li class='stars' title='Excellent' data-value='4'>
-                                                    <i class='fa fa-star fa-fw'></i>
-                                                    </li>
-                                                    <li class='stars' title='WOW!!!' data-value='5'>
-                                                    <i class='fa fa-star fa-fw'></i>
-                                                    </li>
-                                                </ul>
+                                        <tr v-if="result.reviews" v-for="(review,index) in result.reviews">
+                                            <td> {{ review.message}}</td>
+                                            <td>
+                                            <div style="margin-top: 0px">
+                                                <span v-bind:class="(review.rating >= 1) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                                <span v-bind:class="(review.rating >= 2) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                                <span v-bind:class="(review.rating >= 3) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                                <span v-bind:class="(review.rating >= 4) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                                <span v-bind:class="(review.rating >= 5) ? 'fa fa-star checked' : 'fa fa-star'"></span><br>
                                             </div>
-                                        </div></td>
-                                        </tr>      
+                                        </td>
+                                        </tr>
                                     </table>
 
                             </div>
                         </div>
                         <!-- /.tab-pane -->
                         <div class="tab-pane fade" id="gallery"  style="min-height: 400px; background-color:white;">
-                            
+
                             <div class="col-md-12 pull-right " style="padding:20px;">
-                            <ul class="">                    
-                                    <div class='list-group'>
-                                            <div  class="fancybox col-sm-4 col-xs-6 col-md-3 col-lg-3"  data-fancybox-group="gallery" href="../assets/logo.png">                                                                                   
-                                                    <img src="../assets/logo.png" class="img-responsive">
-                                            </div> <!-- col-6 / end -->
-                                    </div> 
-                                      <div class='list-group'>
-                                            <div class="fancybox col-sm-4 col-xs-6 col-md-3 col-lg-3"  data-fancybox-group="gallery" href="../assets/logo.png">                                                                                    
-                                                    <img src="../assets/logo.png" class="img-responsive">
-                                            </div> <!-- col-6 / end -->
-                                    </div> 
+                            <ul class="">
+                                    <div class='' v-if="result.gallery" v-for="(gallery,index) in result.gallery">
+                                                        <a  class="fancybox col-sm-4 col-xs-6 col-md-3 col-lg-3"  data-fancybox-group="gallery" v-bind:href="'https://version2.medflithealthsolution.com/images/gallery/'+gallery.filename">
+                                                                <img v-bind:src="'https://version2.medflithealthsolution.com/images/gallery/'+gallery.resized_name" class="img-responsive">
+                                                        </a> <!-- col-6 / end -->
+                                                </div>
                                 </ul>
                             </div>
 
@@ -191,9 +160,30 @@
 // eslint-disable-next-line
 /* eslint-disable */
 /* eslint-disable no-new */
-export default {
-    
-}
+    import axios from 'axios';
+    export default {
+        data(){
+            return {
+                result:{},
+                deliveries:[],
+                payment_method:[],
+            }
+        },
+        mounted() {
+          this.getPharmacy();
+        },
+        methods: {
+          getPharmacy(){
+            let component = this;
+              axios.get('https://version2.medflithealthsolution.com/api/pharmacy/'+this.$route.params.id)
+                  .then(function (response) {
+                    component.result = response.data.pharmacy;
+                    console.log(component.result);
+                  }, function (error) {
+                  });
+          },
+        }
+    }
 </script>
 <style>
   @import url('../assets/index.css');
