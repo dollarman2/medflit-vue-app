@@ -352,10 +352,10 @@
                     <div class="row">
                         <div class="" v-for="(state,index) in states">
                             <div class="state-info" @click="getCities(state.id)">
-                                <a href="#">
+                                <p>
                                   {{ state.name }}
                                   <span class="state-count">{{ state.profile.length }}</span>
-                                </a>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -374,10 +374,10 @@
                 <div class="row">
                     <div class="" v-for="(city,index) in cities">
                         <div class="city-info">
-                            <a href="#">
+                            <p>
                               {{ city.name }}
                               <span class="city-count">{{ city.profile.length }}</span>
-                            </a>
+                            </p>
                         </div>
                     </div>
                 </div>

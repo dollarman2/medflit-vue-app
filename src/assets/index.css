@@ -727,7 +727,7 @@ input {
     margin-bottom: 20px;
 } */
 
-.state-info a {
+.state-info p {
     font-family: 'Segoe UI Light';
     font-size: 11px;
     font-weight: bold;
@@ -740,6 +740,10 @@ input {
     border-radius: 5px;
 }
 
+.state-info p:hover {
+    cursor: pointer;
+}
+
 .state-count {
     background: #4e8e34;
     color: #fff;
@@ -747,7 +751,7 @@ input {
     border-radius: 5px;
 }
 
-.city-info a {
+.city-info p {
     font-family: 'Segoe UI Light';
     font-size: 11px;
     font-weight: bold;
@@ -758,6 +762,10 @@ input {
     float: left;
     margin: 7px;
     border-radius: 5px;
+}
+
+.city-info p:hover {
+    cursor: pointer;
 }
 
 .city-count {
