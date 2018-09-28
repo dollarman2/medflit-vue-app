@@ -6,7 +6,7 @@
             <div class="card-body">
                 <div class="row proivder_hearder">
                              <div class="col-md-2">
-                                <img v-if="result.profile" v-bind:src="'http://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
+                                <img v-if="result.profile" v-bind:src="'https://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
                                 <img v-else src="../assets/logo.png" class="img-responsive provider-avatar" alt="">
                              </div>
                             <div class="col-md-8">
@@ -175,7 +175,7 @@
         methods: {
           getPharmacy(){
             let component = this;
-              axios.get('http://version2.medflithealthsolution.com/api/pharmacy/'+this.$route.params.id)
+              axios.get('https://version2.medflithealthsolution.com/api/pharmacy/'+this.$route.params.id)
                   .then(function (response) {
                     component.result = response.data.pharmacy;
                     console.log(component.result);

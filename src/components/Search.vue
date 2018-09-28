@@ -52,8 +52,8 @@
                         <div class="row provider-item" id="load">
                             <div class="col-md-6">
                                 <div style="margin: 0">
-                                    <img v-if="result.profile" v-bind:src="'http://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
-                                    <img v-else v-bind:src="'http://version2.medflithealthsolution.com/'+result.profile_picture" class="img-responsive provider-avatar" alt="">
+                                    <img v-if="result.profile" v-bind:src="'https://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
+                                    <img v-else v-bind:src="'https://version2.medflithealthsolution.com/'+result.profile_picture" class="img-responsive provider-avatar" alt="">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12">
@@ -190,8 +190,8 @@
                     <div class="panels-body doctor-details-box" v-if="option == 2" v-for="(result,index) in results">
                         <div class="row">
                             <div class="col-md-2 pharmacy-avatar-div">
-                                <img v-if="result.profile" v-bind:src="'http://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
-                                <img v-else v-bind:src="'http://version2.medflithealthsolution.com/'+result.profile_picture" class="img-responsive provider-avatar" alt="">
+                                <img v-if="result.profile" v-bind:src="'https://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
+                                <img v-else v-bind:src="'https://version2.medflithealthsolution.com/'+result.profile_picture" class="img-responsive provider-avatar" alt="">
                             </div>
 
                             <div class="col-md-8">
@@ -221,7 +221,7 @@
                     <div class="panels-body doctor-details-box" style="padding:10px;" v-if="option == 3" v-for="(result,index) in results">
                         <div class="row">
                             <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12 pharmacy-avatar-div">
-                                <img v-bind:src="'http://version2.medflithealthsolution.com/'+result.hospital_image" class="img-responsive provider-avatar" alt="">
+                                <img v-bind:src="'https://version2.medflithealthsolution.com/'+result.hospital_image" class="img-responsive provider-avatar" alt="">
                             </div>
 
                             <div class="col-lg-8 col-md-8">
@@ -263,7 +263,7 @@
               <div class="panels-body" v-if="option == 1" v-for="(result,index) in near_results">
                 <div class="row">
                     <div class="col-md-3">
-                        <img v-bind:src="'http://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive doctor-avatar" alt="">
+                        <img v-bind:src="'https://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive doctor-avatar" alt="">
                     </div>
                     <div class="col-md-9 providers-info">
                         <p style=""><span style="color: #3c8dbc;">{{ result.profile.first_name+' ' + result.profile.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.title) ? special : '' }}</span></span></p>
@@ -278,7 +278,7 @@
                   <div class="">
                       <div class="row">
                           <div class="col-md-3">
-                              <img v-bind:src="'http://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive doctor-avatar" alt="">
+                              <img v-bind:src="'https://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive doctor-avatar" alt="">
                           </div>
                           <div class="col-md-9">
                               <p><b>{{ result.business_name }}</b></p>
@@ -292,7 +292,7 @@
                   <div class="">
                       <div class="row">
                           <div class="col-md-3">
-                              <img v-bind:src="'http://version2.medflithealthsolution.com/'+result.hospital_image" class="img-responsive doctor-avatar" alt="">
+                              <img v-bind:src="'https://version2.medflithealthsolution.com/'+result.hospital_image" class="img-responsive doctor-avatar" alt="">
                           </div>
                           <div class="col-md-9">
                               <p><b>{{ result.hospital_name }}</b></p>
@@ -514,7 +514,7 @@
                 component.time2 = component.getTime(2);
                 component.time3 = component.getTime(2);
                 component.time4 = component.getTime(4);
-                axios.get('http://version2.medflithealthsolution.com/api/provider/get-provider-schedules?provider_id='+provider_id+'&date='+date)
+                axios.get('https://version2.medflithealthsolution.com/api/provider/get-provider-schedules?provider_id='+provider_id+'&date='+date)
                     .then(function (response) {
                       component.timeslots = response.data.schedules[date];
                       component.timeslots2 = response.data.schedules[component.time2];
@@ -526,7 +526,7 @@
             },
             searchUser(){
               let component = this;
-                axios.get('http://version2.medflithealthsolution.com/api/search_?search='+component.search+'&option='+component.option)
+                axios.get('https://version2.medflithealthsolution.com/api/search_?search='+component.search+'&option='+component.option)
                     .then(function (response) {
                       if(response.data.doctors){
                           component.results = response.data.doctors;
@@ -547,7 +547,7 @@
             },
             searchPlanSpecialty(){
               let component = this;
-                axios.get('http://version2.medflithealthsolution.com/api/search_filter?search='+component.search+'&option='+component.option+'&specialty='+component.specialty+'&plan='+component.plan)
+                axios.get('https://version2.medflithealthsolution.com/api/search_filter?search='+component.search+'&option='+component.option+'&specialty='+component.specialty+'&plan='+component.plan)
                     .then(function (response) {
                       component.results = response.data.doctors;
                       console.log(component.results);
@@ -560,7 +560,7 @@
             },
             searchGender(value){
               let component = this;
-                axios.get('http://version2.medflithealthsolution.com/api/search_filter?gender='+value+'&option='+component.option)
+                axios.get('https://version2.medflithealthsolution.com/api/search_filter?gender='+value+'&option='+component.option)
                     .then(function (response) {
                       component.results = response.data.doctors;
                       console.log(component.results);
@@ -573,7 +573,7 @@
             },
             searchMeduim(value){
               let component = this;
-                axios.get('http://version2.medflithealthsolution.com/api/search_filter?service='+value+'&option='+component.option)
+                axios.get('https://version2.medflithealthsolution.com/api/search_filter?service='+value+'&option='+component.option)
                     .then(function (response) {
                       component.results = response.data.doctors;
                       console.log(component.results);
@@ -613,7 +613,7 @@
               },
             nearbyDoctors: function(lat,lng){
               let component = this;
-                axios.get('http://version2.medflithealthsolution.com/api/near_by_providers?lat='+lat+'&lng='+lng)
+                axios.get('https://version2.medflithealthsolution.com/api/near_by_providers?lat='+lat+'&lng='+lng)
                     .then(function (response) {
                       component.near_results = response.data.providers;
                       console.log(component.near_results);
@@ -623,7 +623,7 @@
 
             nearbyPharmacies(lat,lng){
               let component = this;
-                axios.get('http://version2.medflithealthsolution.com/api/near_by_pharmacy?lat='+lat+'&lng='+lng)
+                axios.get('https://version2.medflithealthsolution.com/api/near_by_pharmacy?lat='+lat+'&lng='+lng)
                     .then(function (response) {
                       component.near_results = response.data.pharmacies;
                       console.log(component.near_results);
@@ -633,7 +633,7 @@
 
             nearbyHospitals(lat,lng){
               let component = this;
-                axios.get('http://version2.medflithealthsolution.com/api/near_by_hospital?lat='+lat+'&lng='+lng)
+                axios.get('https://version2.medflithealthsolution.com/api/near_by_hospital?lat='+lat+'&lng='+lng)
                     .then(function (response) {
                       component.near_results = response.data.hospitals;
                       console.log(component.near_results);
@@ -642,7 +642,7 @@
             },
 
             getSpecialties() {
-                axios.get('http://version2.medflithealthsolution.com/api/list').then(response => {
+                axios.get('https://version2.medflithealthsolution.com/api/list').then(response => {
                     this.specialization = response.data.specialty;
                     this.plans = response.data.plan;
                     this.services = response.data.services;
@@ -651,7 +651,7 @@
                 });
             },
             getCities(value){
-              axios.get('http://version2.medflithealthsolution.com/api/city/'+value).then(response => {
+              axios.get('https://version2.medflithealthsolution.com/api/city/'+value).then(response => {
                     $('#state').hide();
                     $('#city').show();
                     this.cities = response.data.cities;

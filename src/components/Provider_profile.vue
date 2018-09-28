@@ -5,8 +5,8 @@
             <div class="card-body">
                 <div class="row proivder_hearder">
                     <div class="col-md-2">
-                            <img v-if="result.profile" v-bind:src="'http://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive profile-user-img img-fluid img-circle" alt="User Image" style="width: 120px; height: 120px"/>
-                      
+                            <img v-if="result.profile" v-bind:src="'https://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive profile-user-img img-fluid img-circle" alt="User Image" style="width: 120px; height: 120px"/>
+
                     </div>
 
                     <div class="col-md-8" >
@@ -32,7 +32,7 @@
 
                             <p v-if="result.status == 0" style="color: red"><span class="fa fa-times"> Medical Registration Not Verified</span></p>
                                 <p v-else style="color: green"><span class="fa fa-times"> Medical Registration Not Verified</span></p>
-                      
+
                         <div class="row">
                             <div class="review-button" data-target="#provider_review" data-toggle="modal">
                                 <button class="btn btn-sm btn-primary"><span class="fa fa-star"></span><strong> Give Review</strong></button>
@@ -133,8 +133,8 @@
                 <!-- /.tab-pane -->
                 <div class="tab-pane" id="services" style="min-height: 300px; background-color:white;">
                     <div class="row">
-                        <div class="col-md-8" style="padding:25px;">                        
-                            <div class="table-responsive">                             
+                        <div class="col-md-8" style="padding:25px;">
+                            <div class="table-responsive">
                                 <ul style="">
                                     <li v-if="result.services_and_procedures" v-for="(delivery,index) in procedure">{{ delivery }}</li>
                                 </ul>
@@ -166,32 +166,32 @@
 
                             </div>
                 </div>
-                
+
                 <div class="tab-pane " id="gallery"  style="min-height: 300px; background-color:white;">
-                          
+
                            <div class="col-md-12 pull-right " style="padding:20px;">
-                            <ul class="">                    
+                            <ul class="">
                                     <div class='list-group'>
                                             <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                                <a class="fancybox" rel="gallery"  href="">                                       
+                                                <a class="fancybox" rel="gallery"  href="">
                                                     <img src="../assets/logo.png" class="img-responsive">
                                                 </a>
                                             </div> <!-- col-6 / end -->
-                                    </div> 
+                                    </div>
                                       <div class='list-group'>
                                             <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                                <a class="fancybox" rel="gallery"  href="">                                       
+                                                <a class="fancybox" rel="gallery"  href="">
                                                     <img src="../assets/logo.png" class="img-responsive">
                                                 </a>
                                             </div> <!-- col-6 / end -->
-                                    </div> 
+                                    </div>
                                 </ul>
-                            </div> 
+                            </div>
                   </div>
             </div>
         </div>
     </div>
-    
+
     </div>
     <input type="hidden" name="searchKeywords" id="searchKeywords" class="Textbox autobox default" v-bind:value="result.services_and_procedures" autocomplete="off">
 </div>
@@ -233,7 +233,7 @@
             },
           getProvider(){
             let component = this;
-              axios.get('http://version2.medflithealthsolution.com/api/provider/'+this.$route.params.id)
+              axios.get('https://version2.medflithealthsolution.com/api/provider/'+this.$route.params.id)
                   .then(function (response) {
                     component.result = response.data.provider;
                     component.qualifications = response.data.qualifications;

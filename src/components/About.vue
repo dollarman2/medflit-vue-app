@@ -60,7 +60,7 @@
         },
         methods: {
           getList() {
-              axios.get('http://version2.medflithealthsolution.com/api/list').then(response => {
+              axios.get('https://version2.medflithealthsolution.com/api/list').then(response => {
                   this.lists = response.data.list;
               });
           },
