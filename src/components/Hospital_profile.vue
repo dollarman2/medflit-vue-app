@@ -6,12 +6,12 @@
             <div class="card-body">
                 <div class="row proivder_hearder">
                    <div class="col-md-2">
-                            <img v-if="result.hospital_image" v-bind:src="'http://localhost:8000/'+result.hospital_image" class="img-responsive provider-avatar" alt="">
+                            <img v-if="result.hospital_image" v-bind:src="'http://version2.medflithealthsolution.com/'+result.hospital_image" class="img-responsive provider-avatar" alt="">
                                 <img v-else src="../assets/logo.png" class="img-responsive provider-avatar" alt="">
                     </div>
 
                     <div class="col-md-8">
-                        <h2><strong>{{ result.hospital_name }}</strong></h2>
+                        <h2><strong>{{result.hospital_name}}</strong></h2>
                         <p>{{ result.hospital_address }}</p>
                         <div style="margin-top: 0px" v-if="result.rating">
                             <span v-bind:class="(result.rating.rating_count >= 1) ? 'fa fa-star checked' : 'fa fa-star'"></span>
@@ -32,22 +32,22 @@
                                 <button class="btn btn-sm btn-primary"><span class="fa fa-phone"></span>&nbsp; Call Hospital</button>
                                 </span>
                             </div>
-                            
+
                         </div>
 
             </div>
         </div>
     </div>
 </div>
-    
+
 <div class="row provider_tab">
-    
+
     <div class="col-md-12">
             <ul class="nav nav-tabs">
                 <li class="nav-item"><a class="nav-link active" href="#overview" data-toggle="tab">Overview</a></li>
-                <li class="nav-item"><a class="nav-link" href="#doctors" data-toggle="tab">Doctors <span v-if="result.hospital_provider"> {{ result.hospital_provider.length }}</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="#doctors" data-toggle="tab">Doctors <span v-if="result.hospital_provider"{{ > }} }}{{ result.hospital_provider.length }}</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="#feedback" data-toggle="tab">Feedback</a></li>
-                <li class="nav-item"><a class="nav-link" href="#services" data-toggle="tab">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services" data-toggle="tab" @click="Procedure()">Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="#centers" data-toggle="tab">Hospital Branch <span v-if="result.hospital_branch"> {{ result.hospital_branch.length }}</span></a></li>
             </ul>
 
@@ -56,36 +56,23 @@
                 <div class="active tab-pane" id="overview"  style="min-height: 400px; background-color:white;">
                     <div class="row">
                         <div class="col-md-12" style="padding: 30px">
-                            <h3>About {{ result.hospital_name}}</h3><br>
+                            <h3>About {{ r }}esult.hospital_ }}name}}</h3><br>
                             <div>
-                            <p>{{ result.description}} <span><a href="#"> more...</a></span>.</p>
+                            <p>{{ r }}esult.description}} <span><a href="#"> more...</a></span>.</p>
                             </div><br>
 
                             <div class="row">
-                                <!-- <div class="col-md-3">
-                                    <h5><u>Timings</u></h5>
-                                    <h5>Mon - Sun</h5>
-                                    <h6>12:00 AM - 11:59 PM</h6>
-                                </div> -->
-                                <div class="col-md-4">
-                                    <h5><u>Services</u></h5>
-                                    <ul style="list-style-type: none">
-                                       
-                                        <li v-if="result.services_and_procedures" v-for="(delivery,index) in result.services_and_procedures">
-                                                  {{ delivery[index] }}</li>
-                                    </ul>
-                                </div>
                                 <div class="col-md-3">
                                     <h5><u>Photos</u></h5>
-                                    <div class="row">                                       
+                                    <div class="row">
                                             <div class="col-lg-3 col-md-6 col-sm-3 col-xs-3">
                                               <div class='' v-if="result.gallery" v-for="(gallery,index) in result.gallery">
-                                                        <a  class="fancybox col-sm-4 col-xs-6 col-md-3 col-lg-3"  data-fancybox-group="gallery" v-bind:href="'http://localhost:8000/images/gallery/'+gallery.filename">
-                                                                <img v-bind:src="'http://localhost:8000/images/gallery/'+gallery.resized_name" class="img-responsive">
+                                                        <a  class="fancybox col-sm-4 col-xs-6 col-md-3 col-lg-3"  data-fancybox-group="gallery" v-bind:href="'http://version2.medflithealthsolution.com/images/gallery/'+gallery.filename">
+                                                                <img v-bind:src="'http://version2.medflithealthsolution.com/images/gallery/'+gallery.resized_name" class="img-responsive">
                                                         </a> <!-- col-6 / end -->
                                                 </div>
                                             </div><br>
-                                      
+
 
                                     </div>
                                 </div>
@@ -93,7 +80,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- /.tab-pane -->
+                <!-- /.tab-pane -->{{  }}
                 <div class="tab-pane fade" id="doctors" style="min-height: 400px; background-color:white;">
                     <div class="row">
                         <div class="col-md-8" style="padding: 30px">
@@ -102,7 +89,7 @@
                         <div class="row provider-item" id="load">
                             <div class="col-md-6">
                                 <div style="margin: 0">
-                                    <img v-if="result.profile" v-bind:src="'http://localhost:8000/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">                                    
+                                    <img v-if="result.profile" v-bind:src="'http://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12">
@@ -110,7 +97,7 @@
                                     <div>
                                     <p class="doc-info" v-if="result.profile.medium_of_service == 1">Medium: Online</p>
                                     <p class="doc-info" v-if="result.profile.medium_of_service == 2">Medium: Home Service</p>
-                                    <p class="doc-info" v-if="result.profile.medium_of_service == 3">Medium: Online & Home Service</p>
+                                    <p clas{{ s="doc-info"v-if= }}"result.profile.medium_of_service == 3">Medium: Online & Home Service</p>
                                     </div>
 
                                     <div class="provider-price-info" v-if="result.price">
@@ -213,8 +200,15 @@
 
                                     <div class="col-md-3">
                                      <h6>{{ time4 }}</h6>
-                                      <ul>
-                                        <li v-for="(time,index) in timeslots4">
+
+                              <ul>
+
+
+
+
+
+
+                        <li v-for="(time,index) in timeslots4">
                                         <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
                                         </li>
                                       </ul>
@@ -229,7 +223,8 @@
                     </div>
                 </div>
                 <!-- /.tab-pane -->
-                <div class="tab-pane fade" id="feedback"  style="min-height: 400px; background-color:white;">
+
+        <div class="tab-pane fade" id="feedback"  style="min-height: 400px; background-color:white;">
                     <div class="row">
                         <div class="col-md-8" style="padding: 5px 10px">
 
@@ -241,8 +236,8 @@
                     <div class="row">
                         <div class="col-md-12" style="padding: 30px">
                             <h3>Our Services</h3>
-                            <ul style="">                                
-                                <li v-if="result.services_and_procedures" v-for="(delivery,index) in result.services_and_procedures">{{ delivery[index] }}</li>
+                            <ul style="">
+                                <li v-if="result.services_and_procedures" v-for="(delivery,index) in procedure">{{ delivery }}</li>
                             </ul>
                         </div>
                     </div>
@@ -252,7 +247,7 @@
                     <div class="panels-body doctor-details-box" style="padding:10px;" v-if="hospitals" v-for="(result,index) in hospitals">
                         <div class="row">
                             <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12 pharmacy-avatar-div">
-                                <img v-bind:src="'http://localhost:8000/'+result.hospital_image" class="img-responsive provider-avatar" alt="">
+                                <img v-bind:src="'http://version2.medflithealthsolution.com/'+result.hospital_image" class="img-responsive provider-avatar" alt="">
                             </div>
 
                             <div class="col-lg-8 col-md-8">
@@ -283,6 +278,7 @@
             </div>
         </div>
     </div>
+    <input type="hidden" name="searchKeywords" id="searchKeywords" class="Textbox autobox default" v-bind:value="result.services_and_procedures" autocomplete="off">
 </div>
 </div>
 </div>
@@ -313,7 +309,8 @@
                 time2:'',
                 time3:'',
                 time4:'',
-                counter:0
+                counter:0,
+                procedure:[]
             }
         },
         mounted() {
@@ -328,7 +325,16 @@
             this.time4 = this.getTime(3);
         },
         methods: {
-            
+            Procedure: function(){
+                var proceed = [];
+                var array = $('#searchKeywords').val().split(",");
+
+                $.each(array,function(i){
+                    proceed.push(array[i]);
+                });
+                this.procedure = proceed;
+                console.log(proceed);
+            },
             ShowSchedule(value){
               if($('a').hasClass("view-availability-btn")){
                 $('#scheduler'+value).show();
@@ -389,7 +395,7 @@
             },
             TimeSlot(provider_id,date){
               let component = this;
-                axios.get('http://localhost:8000/api/provider/get-provider-schedules?provider_id='+provider_id+'&date='+date)
+                axios.get('http://version2.medflithealthsolution.com/api/provider/get-provider-schedules?provider_id='+provider_id+'&date='+date)
                     .then(function (response) {
                       component.timeslots = response.data.schedules[date];
                       component.timeslots2 = response.data.schedules[component.time2];
@@ -401,12 +407,12 @@
             },
           getHospital(){
             let component = this;
-              axios.get('http://localhost:8000/api/hospital/'+this.$route.params.id)
+              axios.get('http://version2.medflithealthsolution.com/api/hospital/'+this.$route.params.id)
                   .then(function (response) {
                     component.result = response.data.hospital;
                     component.doctors = response.data.doctors;
                     component.hospitals = response.data.hospitals;
-                    component.specialization = response.data.specialty; 
+                    component.specialization = response.data.specialty;
                     component.plans = response.data.plan;
                     component.services = response.data.services;
                     component.classes = response.data.classAbb;

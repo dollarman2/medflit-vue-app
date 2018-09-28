@@ -6,7 +6,7 @@
             <div class="card-body">
                 <div class="row proivder_hearder">
                              <div class="col-md-2">
-                                <img v-if="result.profile" v-bind:src="'http://localhost:8000/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
+                                <img v-if="result.profile" v-bind:src="'http://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
                                 <img v-else src="../assets/logo.png" class="img-responsive provider-avatar" alt="">
                              </div>
                             <div class="col-md-8">
@@ -139,8 +139,8 @@
                             <div class="col-md-12 pull-right " style="padding:20px;">
                             <ul class="">
                                     <div class='list-group' v-if="result.gallery" v-for="(gallery,index) in result.gallery">
-                                            <div  class="fancybox col-sm-4 col-xs-6 col-md-3 col-lg-3"  data-fancybox-group="gallery" :href="'http:://localhost:8000/images/gallery/'+gallery.filename">
-                                                    <img :src="'http:://localhost:8000/images/gallery/'+gallery.resized_name" class="img-responsive">
+                                            <div  class="fancybox col-sm-4 col-xs-6 col-md-3 col-lg-3"  data-fancybox-group="gallery" :href="'http:://version2.medflithealthsolution.com/images/gallery/'+gallery.filename">
+                                                    <img :src="'http:://version2.medflithealthsolution.com/images/gallery/'+gallery.resized_name" class="img-responsive">
                                             </div> <!-- col-6 / end -->
                                     </div>
                                 </ul>
@@ -165,6 +165,8 @@
         data(){
             return {
                 result:{},
+                deliveries:[],
+                payment_method:[],
             }
         },
         mounted() {
@@ -173,7 +175,7 @@
         methods: {
           getPharmacy(){
             let component = this;
-              axios.get('http://localhost:8000/api/pharmacy/'+this.$route.params.id)
+              axios.get('http://version2.medflithealthsolution.com/api/pharmacy/'+this.$route.params.id)
                   .then(function (response) {
                     component.result = response.data.pharmacy;
                     console.log(component.result);
