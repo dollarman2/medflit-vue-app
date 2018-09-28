@@ -109,7 +109,7 @@ p {
 }
 
 .my-container1 {
-    background-image: radial-gradient(circle, rgb(59, 104, 196), #01097b);
+    background-image: radial-gradient(circle, rgb(59, 104, 196), rgb(10, 58, 171));
     height: 100%;
 }
 
@@ -120,7 +120,7 @@ p {
 }
 
 .auth {
-    background-image: radial-gradient(circle, rgb(59, 104, 196), #01097b);
+    background-image: radial-gradient(circle, rgb(59, 104, 196), rgb(10, 58, 171));
     height: 100%;
 }
 
@@ -218,7 +218,7 @@ p {
     margin: 10px;
     padding: 25px 40px;
     border-radius: 4px;
-    background-image: radial-gradient(circle, rgb(59, 104, 196), #01097b);
+    background-image: radial-gradient(circle, rgb(59, 104, 196), rgb(10, 58, 171));
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -326,15 +326,17 @@ p {
 
 .doctor-price-info {
     background-color: #dff0d8;
-    ;
     margin-bottom: 3px;
     height: 25px;
+    padding: 4px;
 }
 
 .doctor-price-info p {
     font-family: inherit;
     font-size: 11px;
     font-weight: bold;
+    color: green;
+    font-family: 'Segoe UI Light';
 }
 
 .search {
@@ -400,6 +402,10 @@ p {
     border-radius: 50%;
     width: 47px;
     height: 50px;
+}
+
+.providers-details p, h6 {
+    line-height: 20px;
 }
 
 .providers-close-by {
@@ -645,6 +651,10 @@ input {
     color: orange;
 }
 
+.provider-name {
+    color: darkblue;
+}
+
 .provider-details-box {
     border: 1px solid rgb(240, 240, 240);
     margin-top: 10px;
@@ -656,7 +666,7 @@ input {
 
 .provider-action-button {
     width: 160px;
-    height: 40px;
+    height: 35px;
     border: 1px solid darkblue;
     border-radius: 5px;
     margin-right: 5px;
@@ -664,8 +674,8 @@ input {
 }
 
 .provider-action-button:hover {
-    border: 1px solid #1ebef0;
-    color: #1ebef0;
+    border: 1px solid darkblue;;
+    color: darkblue;
 }
 
 .provider-action-button p {
@@ -680,7 +690,7 @@ input {
 
 .provider-appointment-button {
     width: 180px;
-    height: 40px;
+    height: 35px;
     border: 1px solid darkblue;
     border-radius: 5px;
     /*margin-right: 5px;*/
@@ -692,13 +702,15 @@ input {
 }
 
 .provider-appointment-button:hover {
-    color: #1ebef0;
-    border: 1px solid #1ebef0;
+    color: darkblue;
+    border: 1px solid darkblue;
 }
 
 .provider-appointment-button a {
     text-decoration: none;
     color: darkblue;
+    padding-top: 15px;
+    font-family: 'Segoe UI Light';
 }
 
 .provider-price-info {
@@ -708,29 +720,51 @@ input {
 }
 
 
-/*
+/* 
 .state-info {
     padding: 5px;
-    background-color: #dff0d8;
+    background-color: #f4f4f4;
     margin-bottom: 20px;
 } */
 
-.state-info p {
+.state-info a {
     font-family: 'Segoe UI Light';
     font-size: 11px;
     font-weight: bold;
     text-align: left;
     color: green;
-    text-decoration: underline;
+    padding: 5px;
+    background: #f4f4f4;
+    float: left;
+    margin: 7px;
+    border-radius: 5px;
 }
 
-.city-info p {
+.state-count {
+    background: #4e8e34;
+    color: #fff;
+    padding: 2px 4px;
+    border-radius: 5px;
+}
+
+.city-info a {
     font-family: 'Segoe UI Light';
     font-size: 11px;
     font-weight: bold;
     text-align: left;
     color: #01097b;
-    text-decoration: underline;
+    padding: 5px;
+    background: #f4f4f4;
+    float: left;
+    margin: 7px;
+    border-radius: 5px;
+}
+
+.city-count {
+    background: #454b9a;
+    color: #fff;
+    padding: 2px 4px;
+    border-radius: 5px;
 }
 
 .lga-info {

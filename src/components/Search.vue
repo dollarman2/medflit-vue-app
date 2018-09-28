@@ -64,39 +64,42 @@
                                     <p class="doc-info" v-if="result.medium_of_service == 3">Medium: Online & Home Service</p>
                                     </div>
 
-                                    <div class="provider-price-info" v-if="result.price">
+                                    <div class="doctor-price-info" v-if="result.price">
                                         <p>Basic price of N{{ result.price }} per Online Session</p>
                                     </div>
 
-                                    <div class="provider-price-info" v-if="result.hospital_price">
+                                    <div class="doctor-price-info" v-if="result.hospital_price">
                                         <p>Basic price of N{{ result.hospital_price }} per Hospital Consultation</p>
                                     </div>
 
-                                    <div class="provider-price-info" v-if="result.home_service_price">
+                                    <div class="doctor-price-info" v-if="result.home_service_price">
                                         <p>Basic price of N{{ result.home_service_price }} per Home Consultation</p>
                                     </div>
                                     <input type="hidden" id="date_ref" :value="time">
                                 </div>
                             </div>
                         </div>
-                        <h3 class="provider_name">
+                        <h3 class="provider-name">
                             <router-link v-if="result.profile" :to="{ name: 'ProviderProfile',params:{ id: result.profile.user_id } }">
-                            <span class="text-capitalize" style="text-decoration: none">
-                                {{ result.profile.first_name+' ' + result.profile.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.profile.title) ? special : '' }}</span>
+                                <span class="text-capitalize" style="text-decoration: none; color: #1D4BB7;">
+                                     {{ result.profile.first_name+' ' + result.profile.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.profile.title) ? special : '' }}</span>
                                 </span>
                             </router-link>
                             <router-link :to="{ name: 'ProviderProfile',params:{ id: result.slug } }" v-else>
-                            <span class="text-capitalize" style="text-decoration: none">
+                            <span class="text-capitalize" style="text-decoration: none; color: #1D4BB7;">
                                 {{ result.first_name+' ' + result.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.title) ? special : '' }}</span>
                                 </span>
                             </router-link>
                         </h3>
-                        <p style="font-weight: bold; color: gray" v-for="(special,index) in specialization" >{{ (index == result.specialty_id) ? special : '' }}</p>
-                        <h6 style="font-weight: bold; color: gray;" v-if="result.years_of_experience">{{ result.years_of_experience }} Years Of Experience</h6>
-                        <h6 style="font-weight: bold; color: gray;" v-if="result.medium_of_service == 1">Meduim : Online</h6>
-                        <h6 style="font-weight: bold; color: gray;" v-if="result.medium_of_service == 2">Meduim : Home Service</h6>
-                        <h6 style="font-weight: bold; color: gray;" v-if="result.medium_of_service == 3">Meduim : Online & Home Service</h6>
-                        <h6 style="font-weight: bold; color: gray;">{{ result.medical_organization }}<br><b v-if="result.profile">{{ result.profile.address }}</b><b v-else>{{ result.address }}</b> </h6>
+
+                        <div class="providers-details">
+                            <p style="font-weight: bold; color: gray" v-for="(special,index) in specialization" >{{ (index == result.specialty_id) ? special : '' }}</p>
+                            <h6 style="font-weight: bold; color: gray;">{{ result.years_of_experience }} Years Of Experience</h6>
+                            <h6 style="color: gray;" v-if="result.medium_of_service == 1">Online</h6>
+                            <h6 style="color: gray;" v-if="result.medium_of_service == 2">Home Service</h6>
+                            <h6 style="color: gray;" v-if="result.medium_of_service == 3">Online & Home Service</h6>
+                            <h6 style="font-weight: bold; color: gray;">{{ result.medical_organization }}<br><b v-if="result.profile">{{ result.profile.address }}</b><b v-else>{{ result.address }}</b> </h6>
+                        </div>
 
                         <span></span>
                         <div style="margin-top: 0px" v-if="result.rating">
@@ -121,7 +124,7 @@
                             </div>
 
                             <div class="provider-appointment-button col-xs-6">
-                                <a class="view-availability-btn" @click="ShowSchedule(result.user_id)" style="color: #007bff;" id="show_hide"><i class="fa fa-calendar-times-o"></i>&nbsp; Book appointment</a>
+                                <p class="text-center"><a class="view-availability-btn" @click="ShowSchedule(result.user_id)" style="color: " id="show_hide"><i class="fa fa-calendar-times-o"></i>&nbsp; Book appointment</a></p>
                             </div>
                         </div>
 
@@ -347,12 +350,12 @@
             <div class="panels-body"><br>
                 <div class="">
                     <div class="row">
-                        <div class="col-md-6 col-sm-4 col-xs-6" v-for="(state,index) in states">
+                        <div class="" v-for="(state,index) in states">
                             <div class="state-info" @click="getCities(state.id)">
-                                <p>
+                                <a href="#">
                                   {{ state.name }}
-                                  <span>{{ state.profile.length }}</span>
-                                </p>
+                                  <span class="state-count">{{ state.profile.length }}</span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -369,12 +372,12 @@
             <div class="panels-body"><br>
               <div class="">
                 <div class="row">
-                    <div class="col-md-6 col-sm-4 col-xs-6" v-for="(city,index) in cities">
+                    <div class="" v-for="(city,index) in cities">
                         <div class="city-info">
-                            <p>
+                            <a href="#">
                               {{ city.name }}
-                              <span>{{ city.profile.length }}</span>
-                            </p>
+                              <span class="city-count">{{ city.profile.length }}</span>
+                            </a>
                         </div>
                     </div>
                 </div>
