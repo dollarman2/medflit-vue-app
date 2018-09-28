@@ -6,7 +6,7 @@
             <div class="card-body">
                 <div class="row proivder_hearder">
                              <div class="col-md-2">
-                                <img v-if="result.profile" v-bind:src="'http://localhost:8000/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
+                                <img v-if="result.profile" v-bind:src="'https://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
                                 <img v-else src="../assets/logo.png" class="img-responsive provider-avatar" alt="">
                              </div>
                             <div class="col-md-8">
@@ -54,7 +54,7 @@
                                     <div class="table-responsive">
                                         <table class="table">
                                             <tr>
-                                                <td class="name"><span class="fa fa-edit"></span> &nbsp;CAC Reg. Number:</td><span v-if="result.licence !== 'undefined'">{{ result.licence}}</span> 
+                                                <td class="name"><span class="fa fa-edit"></span> &nbsp;CAC Reg. Number:</td><span v-if="result.licence !== 'undefined'">{{ result.licence}}</span>
                                                 <td  v-if="result.status == 0" style="color: red"> Not Confirmed <span class="fa fa-check"></span></td>
                                                 <td  v-else style="color: green"> Not Confirmed <span class="fa fa-check"></span></td>
                                             </tr>
@@ -138,11 +138,11 @@
 
                             <div class="col-md-12 pull-right " style="padding:20px;">
                             <ul class="">
-                                    <div class='list-group' v-if="result.gallery" v-for="(gallery,index) in result.gallery">
-                                            <div  class="fancybox col-sm-4 col-xs-6 col-md-3 col-lg-3"  data-fancybox-group="gallery" :href="'http:://localhost:8000/images/gallery/'+gallery.filename">
-                                                    <img :src="'http:://localhost:8000/images/gallery/'+gallery.resized_name" class="img-responsive">
-                                            </div> <!-- col-6 / end -->
-                                    </div>
+                                    <div class='' v-if="result.gallery" v-for="(gallery,index) in result.gallery">
+                                                        <a  class="fancybox col-sm-4 col-xs-6 col-md-3 col-lg-3"  data-fancybox-group="gallery" v-bind:href="'https://version2.medflithealthsolution.com/images/gallery/'+gallery.filename">
+                                                                <img v-bind:src="'https://version2.medflithealthsolution.com/images/gallery/'+gallery.resized_name" class="img-responsive">
+                                                        </a> <!-- col-6 / end -->
+                                                </div>
                                 </ul>
                             </div>
 
@@ -165,6 +165,8 @@
         data(){
             return {
                 result:{},
+                deliveries:[],
+                payment_method:[],
             }
         },
         mounted() {
@@ -173,7 +175,7 @@
         methods: {
           getPharmacy(){
             let component = this;
-              axios.get('http://localhost:8000/api/pharmacy/'+this.$route.params.id)
+              axios.get('https://version2.medflithealthsolution.com/api/pharmacy/'+this.$route.params.id)
                   .then(function (response) {
                     component.result = response.data.pharmacy;
                     console.log(component.result);
