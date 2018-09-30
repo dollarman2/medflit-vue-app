@@ -52,8 +52,8 @@
                         <div class="row provider-item" id="load">
                             <div class="col-md-6">
                                 <div style="margin: 0">
-                                    <img v-if="result.profile" v-bind:src="'https://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
-                                    <img v-else v-bind:src="'https://version2.medflithealthsolution.com/'+result.profile_picture" class="img-responsive provider-avatar" alt="">
+                                    <img v-if="result.profile" v-bind:src="'http://localhost:8000/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
+                                    <img v-else v-bind:src="'http://localhost:8000/'+result.profile_picture" class="img-responsive provider-avatar" alt="">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12">
@@ -80,14 +80,9 @@
                             </div>
                         </div>
                         <h3 class="provider-name">
-                            <router-link v-if="result.profile" :to="{ name: 'ProviderProfile',params:{ id: result.profile.user_id } }">
+                            <router-link v-if="result.profile" :to="{ name: 'ProviderProfile',params:{ id: result.slug } }">
                                 <span class="text-capitalize" style="text-decoration: none; color: #1D4BB7;">
                                      {{ result.profile.first_name+' ' + result.profile.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.profile.title) ? special : '' }}</span>
-                                </span>
-                            </router-link>
-                            <router-link :to="{ name: 'ProviderProfile',params:{ id: result.slug } }" v-else>
-                            <span class="text-capitalize" style="text-decoration: none; color: #1D4BB7;">
-                                {{ result.first_name+' ' + result.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.title) ? special : '' }}</span>
                                 </span>
                             </router-link>
                         </h3>
@@ -108,19 +103,11 @@
                             <span v-bind:class="(result.rating.rating_count >= 3) ? 'fa fa-star checked' : 'fa fa-star'"></span>
                             <span v-bind:class="(result.rating.rating_count >= 4) ? 'fa fa-star checked' : 'fa fa-star'"></span>
                             <span v-bind:class="(result.rating.rating_count >= 5) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                            <span>({{ result.total_rating }} review)</span><br>
-                        </div>
-                         <div style="margin-top: 0px" v-else>
-                            <span v-bind:class="(result.rating_count >= 1) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                            <span v-bind:class="(result.rating_count >= 2) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                            <span v-bind:class="(result.rating_count >= 3) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                            <span v-bind:class="(result.rating_count >= 4) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                            <span v-bind:class="(result.rating_count >= 5) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                            <span>({{ result.total_rating }} reviews)</span><br>
+                            <span>({{ result.rating.total_rating }} review)</span><br>
                         </div>
                         <div class="row" style="margin-top: 20px;">
                             <div class="provider-action-button col-xs-6">
-                                <p class="text-center"><a v-bind:href="'tel:'+result.telephone"><i class="fa fa-phone"></i> Contact Hospital</a></p>
+                                <p class="text-center"><a v-bind:href="'tel:'+result.profile.telephone"><i class="fa fa-phone"></i> Contact Hospital</a></p>
                             </div>
 
                             <div class="provider-appointment-button col-xs-6">
@@ -149,7 +136,7 @@
                                       <h6>{{ time }}</h6>
                                       <ul>
                                         <li v-for="(time,index) in timeslots">
-                                        <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                        <a :href="'http://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
                                         </li>
                                       </ul>
 
@@ -159,7 +146,7 @@
                                      <h6>{{ time2 }}</h6>
                                       <ul>
                                         <li v-for="(time,index) in timeslots2">
-                                        <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                        <a :href="'http://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
                                         </li>
                                       </ul>
                                     </div>
@@ -168,7 +155,7 @@
                                       <h6>{{ time3 }}</h6>
                                       <ul>
                                         <li v-for="(time,index) in timeslots3">
-                                        <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                        <a :href="'http://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
                                         </li>
                                       </ul>
                                     </div>
@@ -177,7 +164,7 @@
                                      <h6>{{ time4 }}</h6>
                                       <ul>
                                         <li v-for="(time,index) in timeslots4">
-                                        <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                        <a :href="'http://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
                                         </li>
                                       </ul>
                                     </div>
@@ -190,8 +177,8 @@
                     <div class="panels-body doctor-details-box" v-if="option == 2" v-for="(result,index) in results">
                         <div class="row">
                             <div class="col-md-2 pharmacy-avatar-div">
-                                <img v-if="result.profile" v-bind:src="'https://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
-                                <img v-else v-bind:src="'https://version2.medflithealthsolution.com/'+result.profile_picture" class="img-responsive provider-avatar" alt="">
+                                <img v-if="result.profile" v-bind:src="'http://localhost:8000/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
+                                <img v-else v-bind:src="'http://localhost:8000/'+result.profile_picture" class="img-responsive provider-avatar" alt="">
                             </div>
 
                             <div class="col-md-8">
@@ -221,7 +208,7 @@
                     <div class="panels-body doctor-details-box" style="padding:10px;" v-if="option == 3" v-for="(result,index) in results">
                         <div class="row">
                             <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12 pharmacy-avatar-div">
-                                <img v-bind:src="'https://version2.medflithealthsolution.com/'+result.hospital_image" class="img-responsive provider-avatar" alt="">
+                                <img v-bind:src="'http://localhost:8000/'+result.hospital_image" class="img-responsive provider-avatar" alt="">
                             </div>
 
                             <div class="col-lg-8 col-md-8">
@@ -263,7 +250,7 @@
               <div class="panels-body providers-info" v-if="option == 1" v-for="(result,index) in near_results">
                 <div class="row">
                     <div class="col-md-3">
-                        <img v-bind:src="'https://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive doctor-avatar" alt="">
+                        <img v-bind:src="'http://localhost:8000/'+result.profile.profile_picture" class="img-responsive doctor-avatar" alt="">
                     </div>
                     <div class="col-md-9">
                         <p style=""><span style="color: #3c8dbc;">{{ result.profile.first_name+' ' + result.profile.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.title) ? special : '' }}</span></span></p>
@@ -278,7 +265,7 @@
                   <div class="">
                       <div class="row">
                           <div class="col-md-3">
-                              <img v-bind:src="'https://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive doctor-avatar" alt="">
+                              <img v-bind:src="'http://localhost:8000/'+result.profile.profile_picture" class="img-responsive doctor-avatar" alt="">
                           </div>
                           <div class="col-md-9">
                               <p><b>{{ result.business_name }}</b></p>
@@ -292,7 +279,7 @@
                   <div class="">
                       <div class="row">
                           <div class="col-md-3">
-                              <img v-bind:src="'https://version2.medflithealthsolution.com/'+result.hospital_image" class="img-responsive doctor-avatar" alt="">
+                              <img v-bind:src="'http://localhost:8000/'+result.hospital_image" class="img-responsive doctor-avatar" alt="">
                           </div>
                           <div class="col-md-9">
                               <p><b>{{ result.hospital_name }}</b></p>
@@ -373,7 +360,7 @@
               <div class="">
                 <div class="row">
                     <div class="" v-for="(city,index) in cities">
-                        <div class="city-info">
+                        <div class="city-info" @click="getCitiesUsers(city.id)">
                             <p>
                               {{ city.name }}
                               <span class="city-count">{{ city.profile.length }}</span>
@@ -457,7 +444,7 @@
                 $('a#show_hide').removeClass('view-availability-btn');
                 $('a#show_hide').addClass('hide_availability');
                 $('#scheduler'+value).find('.prev').attr("disabled",true);
-                this.TimeSlot(value,this.time);
+                this.TimeSlot(value,this.time,this.time2,this.time3,this.time4);
               }else if($('a').hasClass("hide_availability")){
                   $('#scheduler'+value).hide();
                   $('a#show_hide').removeClass('hide_availability');
@@ -475,24 +462,24 @@
               var m = d.getMonth() + 1;
               var y = d.getFullYear();
               this.time = y +'-'+ m +'-'+ n;
-              this.TimeSlot(value,this.time);
+              this.TimeSlot(value,this.time,this.time2,this.time3,this.time4);
             },
             previous(value){
               this.counter = this.counter - 1;
               if(this.counter < 1){
                 $('#scheduler'+value).find('.prev').attr("disabled",true);
                 this.myFunction();
-                this.TimeSlot(value,this.time);
+                this.TimeSlot(value,this.time,this.time2,this.time3,this.time4);
               }else{
                 var d = new Date(Date.now()+this.counter*24*60*60*1000);
                 var n = d.getDate();
                 var m = d.getMonth() + 1;
                 var y = d.getFullYear();
                 this.time = y +'-'+ m +'-'+ n;
-                this.TimeSlot(value,this.time);
                 this.time2 = this.getTime(1 + this.counter);
                 this.time3 = this.getTime(2 + this.counter);
                 this.time4 = this.getTime(3 + this.counter);
+                this.TimeSlot(value,this.time,this.time2,this.time3,this.time4);
               }
             },
             myFunction:function () {
@@ -509,24 +496,21 @@
                 var y = d.getFullYear();
                 return y +'-'+ m +'-'+ n;
             },
-            TimeSlot(provider_id,date){
+            TimeSlot(provider_id,date,date2,date3,date4){
               let component = this;
-                component.time2 = component.getTime(2);
-                component.time3 = component.getTime(2);
-                component.time4 = component.getTime(4);
-                axios.get('https://version2.medflithealthsolution.com/api/provider/get-provider-schedules?provider_id='+provider_id+'&date='+date)
+                axios.get('http://localhost:8000/api/provider/get-provider-schedules?provider_id='+provider_id+'&date='+date)
                     .then(function (response) {
                       component.timeslots = response.data.schedules[date];
-                      component.timeslots2 = response.data.schedules[component.time2];
-                      component.timeslots3 = response.data.schedules[component.time3];
-                      component.timeslots4 = response.data.schedules[component.time4];
+                      component.timeslots2 = response.data.schedules[date2];
+                      component.timeslots3 = response.data.schedules[date3];
+                      component.timeslots4 = response.data.schedules[date4];
                       console.log(component.timeslots2);
                     }, function (error) {
                     });
             },
             searchUser(){
               let component = this;
-                axios.get('https://version2.medflithealthsolution.com/api/search_?search='+component.search+'&option='+component.option)
+                axios.get('http://localhost:8000/api/search_?search='+component.search+'&option='+component.option)
                     .then(function (response) {
                       if(response.data.doctors){
                           component.results = response.data.doctors;
@@ -547,7 +531,7 @@
             },
             searchPlanSpecialty(){
               let component = this;
-                axios.get('https://version2.medflithealthsolution.com/api/search_filter?search='+component.search+'&option='+component.option+'&specialty='+component.specialty+'&plan='+component.plan)
+                axios.get('http://localhost:8000/api/search_filter?search='+component.search+'&option='+component.option+'&specialty='+component.specialty+'&plan='+component.plan)
                     .then(function (response) {
                       component.results = response.data.doctors;
                       console.log(component.results);
@@ -560,7 +544,7 @@
             },
             searchGender(value){
               let component = this;
-                axios.get('https://version2.medflithealthsolution.com/api/search_filter?gender='+value+'&option='+component.option)
+                axios.get('http://localhost:8000/api/search_filter?gender='+value+'&option='+component.option)
                     .then(function (response) {
                       component.results = response.data.doctors;
                       console.log(component.results);
@@ -573,7 +557,7 @@
             },
             searchMeduim(value){
               let component = this;
-                axios.get('https://version2.medflithealthsolution.com/api/search_filter?service='+value+'&option='+component.option)
+                axios.get('http://localhost:8000/api/search_filter?service='+value+'&option='+component.option)
                     .then(function (response) {
                       component.results = response.data.doctors;
                       console.log(component.results);
@@ -613,7 +597,7 @@
               },
             nearbyDoctors: function(lat,lng){
               let component = this;
-                axios.get('https://version2.medflithealthsolution.com/api/near_by_providers?lat='+lat+'&lng='+lng)
+                axios.get('http://localhost:8000/api/near_by_providers?lat='+lat+'&lng='+lng)
                     .then(function (response) {
                       component.near_results = response.data.providers;
                       console.log(component.near_results);
@@ -623,7 +607,7 @@
 
             nearbyPharmacies(lat,lng){
               let component = this;
-                axios.get('https://version2.medflithealthsolution.com/api/near_by_pharmacy?lat='+lat+'&lng='+lng)
+                axios.get('http://localhost:8000/api/near_by_pharmacy?lat='+lat+'&lng='+lng)
                     .then(function (response) {
                       component.near_results = response.data.pharmacies;
                       console.log(component.near_results);
@@ -633,7 +617,7 @@
 
             nearbyHospitals(lat,lng){
               let component = this;
-                axios.get('https://version2.medflithealthsolution.com/api/near_by_hospital?lat='+lat+'&lng='+lng)
+                axios.get('http://localhost:8000/api/near_by_hospital?lat='+lat+'&lng='+lng)
                     .then(function (response) {
                       component.near_results = response.data.hospitals;
                       console.log(component.near_results);
@@ -642,7 +626,7 @@
             },
 
             getSpecialties() {
-                axios.get('https://version2.medflithealthsolution.com/api/list').then(response => {
+                axios.get('http://localhost:8000/api/list').then(response => {
                     this.specialization = response.data.specialty;
                     this.plans = response.data.plan;
                     this.services = response.data.services;
@@ -651,10 +635,38 @@
                 });
             },
             getCities(value){
-              axios.get('https://version2.medflithealthsolution.com/api/city/'+value).then(response => {
+              axios.get('http://localhost:8000/api/city/'+value+'/'+this.option).then(response => {
                     $('#state').hide();
                     $('#city').show();
                     this.cities = response.data.cities;
+                    if(response.data.doctors){
+                        this.results = response.data.doctors;
+                    }
+                    else if (response.data.pharmacies){
+                      this.results = response.data.pharmacies;
+                    }
+                    else{
+                      this.results = response.data.hospitals;
+                    }
+
+                    console.log(this.cities);
+                });
+            },
+
+            getCitiesUsers(value){
+              axios.get('http://localhost:8000/api/cityuser/'+value+'/'+this.option).then(response => {
+                    $('#state').hide();
+                    $('#city').show();
+                    if(response.data.doctors){
+                        this.results = response.data.doctors;
+                    }
+                    else if (response.data.pharmacies){
+                      this.results = response.data.pharmacies;
+                    }
+                    else{
+                      this.results = response.data.hospitals;
+                    }
+
                     console.log(this.cities);
                 });
             }
