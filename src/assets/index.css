@@ -432,6 +432,10 @@ input {
     padding-top: 5px;
 }
 
+.providers-info {
+    border-bottom: 1px solid #f4f4f4;
+}
+
 .providers-info p {
     font-size: 12px;
     line-height: 10px;
@@ -712,6 +716,7 @@ input {
 .provider-appointment-button:hover {
     color: darkblue;
     border: 1px solid darkblue;
+    cursor: pointer;
 }
 
 .provider-appointment-button a {

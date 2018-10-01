@@ -260,12 +260,12 @@
                   <h6>{{ type }} closeby</h6>
               </div>
 
-              <div class="panels-body" v-if="option == 1" v-for="(result,index) in near_results">
+              <div class="panels-body providers-info" v-if="option == 1" v-for="(result,index) in near_results">
                 <div class="row">
                     <div class="col-md-3">
                         <img v-bind:src="'https://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive doctor-avatar" alt="">
                     </div>
-                    <div class="col-md-9 providers-info">
+                    <div class="col-md-9">
                         <p style=""><span style="color: #3c8dbc;">{{ result.profile.first_name+' ' + result.profile.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.title) ? special : '' }}</span></span></p>
                         <p v-for="(special,index) in specialization" >{{ (index == result.specialty_id) ? special : '' }}</p>
                         <p><b>{{ result.medical_organization }}</b></p>
@@ -274,7 +274,7 @@
                     </div>
                 </div>
               </div>
-              <div class="panels-body" v-if="option == 2" v-for="(result,index) in near_results">
+              <div class="panels-body providers-info" v-if="option == 2" v-for="(result,index) in near_results">
                   <div class="">
                       <div class="row">
                           <div class="col-md-3">
@@ -288,7 +288,7 @@
                       </div>
                   </div>
               </div>
-              <div class="panels-body" v-if="option == 3" v-for="(result,index) in near_results">
+              <div class="panels-body providers-info" v-if="option == 3" v-for="(result,index) in near_results">
                   <div class="">
                       <div class="row">
                           <div class="col-md-3">

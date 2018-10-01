@@ -1,14 +1,14 @@
 <template>
     <div>
   <div class="slider-area" id="slider home">
-    <slider animation="fade" class="slider-slide" style="height: 50vw">
+    <slider animation="fade" class="slider-slide" style="height: 50vw" interval="6000">
         <slider-item>
           <div class="mycon">
               <div class="row" >
               <div class="col-md-7 col-sm-7 col-xs-6">
                   <div class="slider-content">
                   <!-- layer 1 -->
-                  <div class="layer-1-2 wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
+                  <div class="layer-1-2 wow slideInDown" data-wow-duration="2s" data-wow-delay=".7s">
                       <h1 class="" style="color: #1D4BB7; font-family: 'Aileron'">Africa's First
                       Integrated Telemedicine
                       Service</h1>
@@ -18,7 +18,7 @@
               <div class="col-md-5 col-sm-5 col-xs-6">
                   <div class="slider-content2">
                   <!-- layer 3 -->
-                  <div class="layer-1-3 wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                  <div class="layer-1-3 wow slideInUp" data-wow-duration="2s" data-wow-delay=".7s">
                       <div class="sm-btn">
                       <router-link class="ready-btn right-btn" :to="{name:'Abouts',params:{ id: 1 }}">Talk to a Doctor Now</router-link>
                       </div>
@@ -40,7 +40,7 @@
               <div class="col-md-7 col-sm-7 col-xs-6">
                   <div class="slider-content">
                   <!-- layer 1 -->
-                  <div class="layer-1-2 wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
+                  <div class="layer-1-2 wow slideInDown" data-wow-duration="2s" data-wow-delay=".7s">
                       <h1 class="" style="color: #1D4BB7; font-family: 'Aileron'">Africa's First
                       Integrated Telemedicine
                       Service</h1>
@@ -50,7 +50,7 @@
               <div class="col-md-5 col-sm-5 col-xs-6">
                   <div class="slider-content2">
                   <!-- layer 3 -->
-                  <div class="layer-1-3 wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                  <div class="layer-1-3 wow slideInUp" data-wow-duration="2s" data-wow-delay=".7s">
                       <div class="sm-btn">
                       <router-link class="ready-btn right-btn" :to="{name:'Abouts',params:{ id: 1 }}">Talk to a Doctor Now</router-link>
                       </div>
@@ -73,7 +73,7 @@
               <div class="col-md-7 col-sm-7 col-xs-6">
                   <div class="slider-content">
                   <!-- layer 1 -->
-                  <div class="layer-1-2 wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
+                  <div class="layer-1-2 wow slideInDown" data-wow-duration="2s" data-wow-delay=".7s">
                       <h1 class="" style="color: #1D4BB7; font-family: 'Aileron'">Africa's First
                       Integrated Telemedicine
                       Service</h1>
@@ -83,7 +83,7 @@
               <div class="col-md-5 col-sm-5 col-xs-6">
                   <div class="slider-content2">
                   <!-- layer 3 -->
-                  <div class="layer-1-3 wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                  <div class="layer-1-3 wow slideInUp" data-wow-duration="2s" data-wow-delay=".7s">
                      <div class="sm-btn">
                       <router-link class="ready-btn right-btn" :to="{name:'Abouts',params:{ id: 1 }}">Talk to a Doctor Now</router-link>
                       </div>
@@ -106,7 +106,7 @@
               <div class="col-md-7 col-sm-7 col-xs-6">
                   <div class="slider-content">
                     <!-- layer 1 -->
-                    <div class="layer-1-2 wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
+                    <div class="layer-1-2 wow slideInDown" data-wow-duration="2s" data-wow-delay=".7s">
                         <h1 class="" style="color: #1D4BB7; font-family: 'Aileron'">Africa's First
                         Integrated Telemedicine
                         Service</h1>
@@ -116,7 +116,7 @@
               <div class="col-md-5 col-sm-5 col-xs-6">
                   <div class="slider-content2">
                   <!-- layer 3 -->
-                  <div class="layer-1-3 wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                  <div class="layer-1-3 wow slideInUp" data-wow-duration="2s" data-wow-delay=".7s">
                       <div class="sm-btn">
                       <router-link class="ready-btn right-btn" :to="{name:'Abouts',params:{ id: 1 }}">Talk to a Doctor Now</router-link>
                       </div>
