@@ -13,6 +13,14 @@ body {
     display: inline-block;
 
 }
+.doc_table table tr td {    
+     padding: 15px;
+     border-bottom: 1px solid lightgray;
+}
+.qual_table table tr td {
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+}
 
 .proivder_hearder {
     background-color: white;
@@ -109,11 +117,7 @@ p {
 }
 
 .my-container1 {
-<<<<<<< HEAD
-    background-image: radial-gradient(circle, rgb(59, 104, 196), #01097B);
-=======
     background-image: radial-gradient(circle, rgb(59, 104, 196), rgb(10, 58, 171));
->>>>>>> c98d982f4b97c0df9367aab877d0a3546d7e5334
     height: 100%;
 }
 
@@ -124,11 +128,7 @@ p {
 }
 
 .auth {
-<<<<<<< HEAD
-    background-image: radial-gradient(circle, rgb(59, 104, 196), #01097B);
-=======
     background-image: radial-gradient(circle, rgb(59, 104, 196), rgb(10, 58, 171));
->>>>>>> c98d982f4b97c0df9367aab877d0a3546d7e5334
     height: 100%;
 }
 
@@ -226,11 +226,7 @@ p {
     margin: 10px;
     padding: 25px 40px;
     border-radius: 4px;
-<<<<<<< HEAD
-    background-image: radial-gradient(circle, rgb(59, 104, 196), #01097B);
-=======
     background-image: radial-gradient(circle, rgb(59, 104, 196), rgb(10, 58, 171));
->>>>>>> c98d982f4b97c0df9367aab877d0a3546d7e5334
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

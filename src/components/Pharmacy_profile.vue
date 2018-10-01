@@ -51,8 +51,8 @@
                                 <div class="col-md-8" style="padding: 5px 10px">
                                     <br>
                                     <h5>Registration Documents</h5>
-                                    <div class="table-responsive">
-                                        <table class="table">
+                                    <div class="doc_table">
+                                        <table class="table table-responsive">
                                             <tr>
                                                 <td class="name"><span class="fa fa-edit"></span> &nbsp;CAC Reg. Number:</td><span v-if="result.licence !== 'undefined'">{{ result.licence}}</span>
                                                 <td  v-if="result.status == 0" style="color: red"> Not Confirmed <span class="fa fa-check"></span></td>

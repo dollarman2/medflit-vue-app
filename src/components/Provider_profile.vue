@@ -63,32 +63,34 @@
                         <div class="col-md-6" style="padding:25px; border-right: 1px solid #ccc">
                             <br>
                             <h5 class="text-left">Doctors Info</h5>
-                            <div class="table-responsive">
-                                <table class="table">
+                            <div class="doc_table">
+                                <table class="table responsive">
                                     <tr>
-                                        <td class="name"><span class="fa fa-hospital-o"></span> &nbsp; Hospital Name:</td>
+                                        <td class="name"><span class="fa fa-hospital-o"></span>  Hospital Name:</td>
                                         <td><span class="" id="val">{{ result.medical_organization}}</span></td>
                                     </tr>
                                     <tr>
-                                        <td class="name"><span class="fa fa-map-marker"></span> &nbsp; Hospital Address:</td>
+                                        <td class="name"><span class="fa fa-map-marker"></span>  Hospital Address:</td>
                                         <td><span class="" id="val" v-if="result.profile">{{ result.profile.address}}</span></td>
                                     </tr>
                                     <tr>
-                                        <td class="name"><span class="fa fa-phone"></span>&nbsp; Phone Number:</td>
+                                        <td class="name"><span class="fa fa-phone"></span> Phone Number:</td>
                                         <td><span class="" id="val" v-if="result.profile">{{ result.profile.telephone}}</span></td>
                                     </tr>
                                     <tr>
-                                        <td class="name"><span class="fa fa-user"></span>&nbsp; Medium</td>
-                                        <td><span class="" id="val" v-if="result.medium_of_service == 1">Online</span></td>
-                                        <td><span class="" id="val" v-if="result.medium_of_service == 2">Home Service</span></td>
-                                        <td><span class="" id="val" v-if="result.medium_of_service == 3">Online & Home Service</span></td>
+                                        <td class="name"><span class="fa fa-user"></span> Medium</td>
+                                        <td>
+                                            <span class="" id="val" v-if="result.medium_of_service == 1">Online</span>
+                                            <span class="" id="val" v-if="result.medium_of_service == 2">Home Service</span>
+                                            <span class="" id="val" v-if="result.medium_of_service == 3">Online & Home Service</span>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td class="name"><span class="fa fa-envelope"></span>&nbsp; Email</td>
+                                        <td class="name"><span class="fa fa-envelope"></span> Email</td>
                                         <td><span class="" id="val"><a  v-if="result.user" :href="'mailto:'+result.user.email">Send mail to doctor</a></span></td>
                                     </tr>
                                     <tr>
-                                        <td class="name"><span class="fa fa-info-circle"></span>&nbsp; Doctors Bio</td>
+                                        <td class="name"><span class="fa fa-info-circle"></span> Doctors Bio</td>
                                         <td><span class="" id="val">{{ result.biography }}</span></td>
                                     </tr>
                                 </table>
@@ -98,8 +100,8 @@
                             <div style="padding: 5px 10px">
                                 <br>
                                 <h5 class="hd">Qualifications and Experience</h5>
-                                <div class="table-responsive">
-                                    <table class="table">
+                                <div class="qual_table">
+                                    <table class="table table-responsive">
                                         <tr>
                                             <td class="name">Education</td>
                                             <td v-for="q in qualifications">
@@ -110,8 +112,10 @@
                                         </tr>
                                         <tr>
                                             <td class="name">Language Spoken</td>
-                                            <td v-for="l in languages">
+                                            <td >
+                                                <div v-for="l in languages">
                                                 <span style="font-size: 13px">{{l.name}}</span>
+                                                </div>
                                             </td>
                                         </tr>
                                         <tr>
