@@ -76,18 +76,16 @@
                                         <p>Basic price of N{{ result.home_service_price }} per Home Consultation</p>
                                     </div>
                                     <input type="hidden" id="date_ref" :value="time">
+                                    <input type="hidden" id="date_ref" :value="time2">
+                                    <input type="hidden" id="date_ref" :value="time3">
+                                    <input type="hidden" id="date_ref" :value="time4">
                                 </div>
                             </div>
                         </div>
                         <h3 class="provider-name">
-                            <router-link v-if="result.profile" :to="{ name: 'ProviderProfile',params:{ id: result.profile.user_id } }">
+                            <router-link v-if="result.profile" :to="{ name: 'ProviderProfile',params:{ id: result.slug } }">
                                 <span class="text-capitalize" style="text-decoration: none; color: #1D4BB7;">
                                      {{ result.profile.first_name+' ' + result.profile.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.profile.title) ? special : '' }}</span>
-                                </span>
-                            </router-link>
-                            <router-link :to="{ name: 'ProviderProfile',params:{ id: result.slug } }" v-else>
-                            <span class="text-capitalize" style="text-decoration: none; color: #1D4BB7;">
-                                {{ result.first_name+' ' + result.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.title) ? special : '' }}</span>
                                 </span>
                             </router-link>
                         </h3>
@@ -108,19 +106,11 @@
                             <span v-bind:class="(result.rating.rating_count >= 3) ? 'fa fa-star checked' : 'fa fa-star'"></span>
                             <span v-bind:class="(result.rating.rating_count >= 4) ? 'fa fa-star checked' : 'fa fa-star'"></span>
                             <span v-bind:class="(result.rating.rating_count >= 5) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                            <span>({{ result.total_rating }} review)</span><br>
-                        </div>
-                         <div style="margin-top: 0px" v-else>
-                            <span v-bind:class="(result.rating_count >= 1) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                            <span v-bind:class="(result.rating_count >= 2) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                            <span v-bind:class="(result.rating_count >= 3) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                            <span v-bind:class="(result.rating_count >= 4) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                            <span v-bind:class="(result.rating_count >= 5) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                            <span>({{ result.total_rating }} reviews)</span><br>
+                            <span>({{ result.rating.total_rating }} review)</span><br>
                         </div>
                         <div class="row" style="margin-top: 20px;">
                             <div class="provider-action-button col-xs-6">
-                                <p class="text-center"><a v-bind:href="'tel:'+result.telephone"><i class="fa fa-phone"></i> Contact Hospital</a></p>
+                                <p class="text-center"><a v-bind:href="'tel:'+result.profile.telephone"><i class="fa fa-phone"></i> Contact Hospital</a></p>
                             </div>
 
                             <div class="provider-appointment-button col-xs-6">
@@ -373,7 +363,7 @@
               <div class="">
                 <div class="row">
                     <div class="" v-for="(city,index) in cities">
-                        <div class="city-info">
+                        <div class="city-info" @click="getCitiesUsers(city.id)">
                             <p>
                               {{ city.name }}
                               <span class="city-count">{{ city.profile.length }}</span>
@@ -457,7 +447,7 @@
                 $('a#show_hide').removeClass('view-availability-btn');
                 $('a#show_hide').addClass('hide_availability');
                 $('#scheduler'+value).find('.prev').attr("disabled",true);
-                this.TimeSlot(value,this.time);
+                this.TimeSlot(value,this.time,this.time2,this.time3,this.time4);
               }else if($('a').hasClass("hide_availability")){
                   $('#scheduler'+value).hide();
                   $('a#show_hide').removeClass('hide_availability');
@@ -475,24 +465,24 @@
               var m = d.getMonth() + 1;
               var y = d.getFullYear();
               this.time = y +'-'+ m +'-'+ n;
-              this.TimeSlot(value,this.time);
+              this.TimeSlot(value,this.time,this.time2,this.time3,this.time4);
             },
             previous(value){
               this.counter = this.counter - 1;
               if(this.counter < 1){
                 $('#scheduler'+value).find('.prev').attr("disabled",true);
                 this.myFunction();
-                this.TimeSlot(value,this.time);
+                this.TimeSlot(value,this.time,this.time2,this.time3,this.time4);
               }else{
                 var d = new Date(Date.now()+this.counter*24*60*60*1000);
                 var n = d.getDate();
                 var m = d.getMonth() + 1;
                 var y = d.getFullYear();
                 this.time = y +'-'+ m +'-'+ n;
-                this.TimeSlot(value,this.time);
                 this.time2 = this.getTime(1 + this.counter);
                 this.time3 = this.getTime(2 + this.counter);
                 this.time4 = this.getTime(3 + this.counter);
+                this.TimeSlot(value,this.time,this.time2,this.time3,this.time4);
               }
             },
             myFunction:function () {
@@ -507,19 +497,21 @@
                 var n = d.getDate();
                 var m = d.getMonth() + 1;
                 var y = d.getFullYear();
-                return y +'-'+ m +'-'+ n;
+                if (n > 10){
+                  return y +'-'+ m +'-'+ n;
+                }else{
+                  return y +'-'+ m +'-0'+ n;
+                }
             },
-            TimeSlot(provider_id,date){
+            TimeSlot(provider_id,date,date2,date3,date4){
               let component = this;
-                component.time2 = component.getTime(2);
-                component.time3 = component.getTime(2);
-                component.time4 = component.getTime(4);
                 axios.get('https://version2.medflithealthsolution.com/api/provider/get-provider-schedules?provider_id='+provider_id+'&date='+date)
                     .then(function (response) {
+                      // alert(date2);
                       component.timeslots = response.data.schedules[date];
-                      component.timeslots2 = response.data.schedules[component.time2];
-                      component.timeslots3 = response.data.schedules[component.time3];
-                      component.timeslots4 = response.data.schedules[component.time4];
+                      component.timeslots2 = response.data.schedules[date2];
+                      component.timeslots3 = response.data.schedules[date3];
+                      component.timeslots4 = response.data.schedules[date4];
                       console.log(component.timeslots2);
                     }, function (error) {
                     });
@@ -651,10 +643,44 @@
                 });
             },
             getCities(value){
-              axios.get('https://version2.medflithealthsolution.com/api/city/'+value).then(response => {
+              axios.get('https://version2.medflithealthsolution.com/api/city/'+value+'/'+this.option).then(response => {
                     $('#state').hide();
                     $('#city').show();
                     this.cities = response.data.cities;
+                    if(response.data.doctors){
+                        this.results = response.data.doctors;
+                    }
+                    else if (response.data.pharmacies){
+                      this.results = response.data.pharmacies;
+                    }
+                    else{
+                      this.results = response.data.hospitals;
+                    }
+                    setTimeout(function() {
+                        $('.provider-availability-div').hide();
+                        $('.schedule-loader').hide();
+                      },2000);
+                    console.log(this.cities);
+                });
+            },
+
+            getCitiesUsers(value){
+              axios.get('https://version2.medflithealthsolution.com/api/cityuser/'+value+'/'+this.option).then(response => {
+                    $('#state').hide();
+                    $('#city').show();
+                    if(response.data.doctors){
+                        this.results = response.data.doctors;
+                    }
+                    else if (response.data.pharmacies){
+                      this.results = response.data.pharmacies;
+                    }
+                    else{
+                      this.results = response.data.hospitals;
+                    }
+                    setTimeout(function() {
+                        $('.provider-availability-div').hide();
+                        $('.schedule-loader').hide();
+                      },2000);
                     console.log(this.cities);
                 });
             }

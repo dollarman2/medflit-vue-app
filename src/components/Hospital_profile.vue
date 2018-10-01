@@ -85,7 +85,7 @@
                     <div class="row">
                         <div class="col-md-8" style="padding: 30px">
                             <h3>Doctors in {{ result.hospital_name }}</h3><br>
-                                <div class="panels-body provider-details-box" v-if="doctors" v-for="(result,index) in doctors">
+                        <div class="panels-body provider-details-box" v-if="doctors" v-for="(result,index) in doctors">
                         <div class="row provider-item" id="load">
                             <div class="col-md-6">
                                 <div style="margin: 0">

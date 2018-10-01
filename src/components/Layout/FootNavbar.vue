@@ -99,7 +99,7 @@
       </div>
     </div>
   </footer>
-  <a href="#" class="back-to-top"><i class="fa fa-arrow-up"></i></a>
+  <a :href="'#'" class="back-to-top"><i class="fa fa-arrow-up"></i></a>
 
     </div>
 </template>
