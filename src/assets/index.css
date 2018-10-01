@@ -1,17 +1,17 @@
 body {
     font-family: 'Segoe UI Light';
 }
+
 .provider_tab {
     background-color: white;
     padding: 0px;
-    font-size: 18px;    
+    font-size: 18px;
     font-family: 'Segoe UI Light';
     margin: 20px;
-    
 }
+
 .rating-star ul li {
     display: inline-block;
-
 }
 
 .proivder_hearder {
@@ -109,12 +109,7 @@ p {
 }
 
 .my-container1 {
-<<<<<<< HEAD
-    background-image: radial-gradient(circle, rgb(59, 104, 196), #01097B);
-=======
     background-image: radial-gradient(circle, rgb(59, 104, 196), rgb(10, 58, 171));
->>>>>>> c98d982f4b97c0df9367aab877d0a3546d7e5334
-    height: 100%;
 }
 
 .profile-img {
@@ -124,12 +119,7 @@ p {
 }
 
 .auth {
-<<<<<<< HEAD
-    background-image: radial-gradient(circle, rgb(59, 104, 196), #01097B);
-=======
     background-image: radial-gradient(circle, rgb(59, 104, 196), rgb(10, 58, 171));
->>>>>>> c98d982f4b97c0df9367aab877d0a3546d7e5334
-    height: 100%;
 }
 
 .providers-list li {
@@ -160,7 +150,7 @@ p {
 
 
 /*.underline-h2 {
-    border-bottom: 2px red;
+  border-bottom: 2px red;
 }*/
 
 .countries-container li {
@@ -226,12 +216,7 @@ p {
     margin: 10px;
     padding: 25px 40px;
     border-radius: 4px;
-<<<<<<< HEAD
-    background-image: radial-gradient(circle, rgb(59, 104, 196), #01097B);
-=======
     background-image: radial-gradient(circle, rgb(59, 104, 196), rgb(10, 58, 171));
->>>>>>> c98d982f4b97c0df9367aab877d0a3546d7e5334
-    background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     background-color: #4f6c8c;
@@ -284,8 +269,8 @@ p {
 
 
 /* .doctor-details-header {
-    border-bottom: 1px solid #cccccc;
-    padding: 5px;
+  border-bottom: 1px solid #cccccc;
+  padding: 5px;
 } */
 
 .doctor-details-box {
@@ -416,7 +401,8 @@ p {
     height: 50px;
 }
 
-.providers-details p, h6 {
+.providers-details p,
+h6 {
     line-height: 20px;
 }
 
@@ -447,10 +433,10 @@ input {
 
 
 /* .providers-background {
-    background-color: white;
-    height: auto;
-    padding: 10px;
-    border-radius: 2px;
+  background-color: white;
+  height: auto;
+  padding: 10px;
+  border-radius: 2px;
 } */
 
 
@@ -578,14 +564,14 @@ input {
 
 
 /* border: 1px solid lightgray;
-    border-radius: 5px;
-    margin-right: 5px;
-    margin-bottom: 5px;
+  border-radius: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
 
 .doctor-action-button a {
-    color: darkblue;
-    font-size: 15px;
+  color: darkblue;
+  font-size: 15px;
 } */
 
 .pharmacy-action-button {
@@ -690,7 +676,8 @@ input {
 }
 
 .provider-action-button:hover {
-    border: 1px solid darkblue;;
+    border: 1px solid darkblue;
+    ;
     color: darkblue;
 }
 
@@ -737,11 +724,11 @@ input {
 }
 
 
-/* 
+/*
 .state-info {
-    padding: 5px;
-    background-color: #f4f4f4;
-    margin-bottom: 20px;
+  padding: 5px;
+  background-color: #f4f4f4;
+  margin-bottom: 20px;
 } */
 
 .state-info p {
@@ -816,11 +803,11 @@ input {
 
 
 /* .row .row-eq-height {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display:         flex;
-  } */
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+} */
 
 .header-icons {
     color: white;

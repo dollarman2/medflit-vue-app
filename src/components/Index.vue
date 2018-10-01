@@ -1,7 +1,7 @@
 <template>
     <div>
   <div class="slider-area" id="slider home">
-    <slider animation="fade" class="slider-slide" style="height: 50vw" interval="6000">
+    <slider animation="fade" class="slider-slide" style="height: 50vw" :interval="inter">
         <slider-item>
           <div class="mycon">
               <div class="row" >
@@ -523,6 +523,7 @@ export default {
         { backgroundColor: '#eee', width: '100%', height: '100%' },
         { backgroundColor: '#f44336', width: '100%', height: '100%' },
       ],
+      inter : 6000,
     }
   },
   components: {
