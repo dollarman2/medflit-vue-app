@@ -19,7 +19,7 @@
                         <h6 style="font-weight: bold; color: gray;" v-if="result.medium_of_service == 1">Online</h6>
                         <h6 style="font-weight: bold; color: gray;" v-if="result.medium_of_service == 2">Home Service</h6>
                         <h6 style="font-weight: bold; color: gray;" v-if="result.medium_of_service == 3">Online & Home Service</h6>
-                        <h6 style="font-weight: bold; color: gray;">{{ result.medical_organization }}<br><b v-if="result.profile">{{ result.profile.address }}</b><b v-else>{{ result.address }}</b> </h6>
+                        <h6 style="font-weight: bold; color: gray;">{{ result.medical_organization }}<br><b v-if="result.profile">{{ result.profile.address }}</b> </h6>
                         <span></span>
                         <div style="margin-top: 0px" v-if="result.rating">
                             <span v-bind:class="(result.rating.rating_count >= 1) ? 'fa fa-star checked' : 'fa fa-star'"></span>
@@ -36,7 +36,7 @@
                         <div class="row">
                             <div class="review-button" data-target="#provider_review" data-toggle="modal">
                                 <button class="btn btn-sm btn-primary"><span class="fa fa-star"></span><strong> Give Review</strong></button>
-                                <button class="btn btn-sm btn-primary"><a target="_blank" :href="'https://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'"><span class="fa fa-map-marker"></span>
+                                <button class="btn btn-sm btn-primary"><a v-if="result.profile" target="_blank" :href="'https://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'"><span class="fa fa-map-marker"></span>
                                 <strong style="color:white;">Get Directions</strong></a>
                                 </button>
                             </div>
@@ -264,13 +264,11 @@
               this.latval = position.coords.latitude;
               this.lngval = position.coords.longitude;
               this.GetAddress(this.latval,this.lngval);
-              this.nearByProviders(this.latval, this.lngval);
           },
           fail: function () {
               this.latval = 9.0612;
               this.lngval = 7.4224;
               this.GetAddress(this.latval,this.lngval);
-              this.nearByProviders(this.latval, this.lngval);
           },
           GetAddress: function(lat,lng){
             axios.post('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&key=AIzaSyDECOtEW9X3ctXS7lg3Xh_4rCrV2ervJf0')

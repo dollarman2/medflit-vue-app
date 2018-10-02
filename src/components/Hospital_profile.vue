@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="direction-button">
                                 <button class="btn btn-sm btn-primary" ><a target="_blank" href="" style="color:white;">
-                                    <a target="_blank" :href="'https://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'"><span class="fa fa-map-marker"></span> &nbsp; Get Directions</a>
+                                    <a v-if="result.profile" target="_blank" :href="'https://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'"><span class="fa fa-map-marker"></span> &nbsp; Get Directions</a>
                                 </a></button>
 
                                 <span class="select-pharmacy">
@@ -433,13 +433,11 @@
               this.latval = position.coords.latitude;
               this.lngval = position.coords.longitude;
               this.GetAddress(this.latval,this.lngval);
-              this.nearByProviders(this.latval, this.lngval);
           },
           fail: function () {
               this.latval = 9.0612;
               this.lngval = 7.4224;
               this.GetAddress(this.latval,this.lngval);
-              this.nearByProviders(this.latval, this.lngval);
           },
           GetAddress: function(lat,lng){
             axios.post('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&key=AIzaSyDECOtEW9X3ctXS7lg3Xh_4rCrV2ervJf0')
