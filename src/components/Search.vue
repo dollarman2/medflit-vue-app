@@ -85,7 +85,7 @@
                         <h3 class="provider-name">
                             <router-link v-if="result.profile" :to="{ name: 'ProviderProfile',params:{ id: result.slug } }">
                                 <span class="text-capitalize" style="text-decoration: none; color: #1D4BB7;">
-                                     {{ result.profile.first_name+' ' + result.profile.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.profile.title) ? special : '' }}</span>
+                                   DR. {{ result.profile.first_name+' ' + result.profile.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.profile.title) ? special : '' }}</span>
                                 </span>
                             </router-link>
                         </h3>
@@ -217,7 +217,7 @@
                             <div class="col-lg-8 col-md-8">
                                 <div style="padding-top: 10px">
                                     <router-link :to="{ name: 'HospitalProfile',params:{ id: result.slug } }">
-                                        <h3 class="provider_name" style="font-family: 'Segoe UI">{{ result.hospital_name }}</h3>
+                                     <h3 class="provider_name" style="font-family: 'Segoe UI">{{ result.hospital_name }}</h3>
                                     </router-link>
 
                                     <div style="margin-top: 0px" v-if="result.rating">
@@ -563,12 +563,14 @@
                     }, function (error) {
                     });
             },
-            searchMeduim(value){
+            searchMeduim(value, VuejsPaginate){
               let component = this;
                 axios.get('https://version2.medflithealthsolution.com/api/search_filter?service='+value+'&option='+component.option)
                     .then(function (response) {
+                        
                       component.results = response.data.doctors;
                       console.log(component.results);
+                     
                       setTimeout(function() {
                         $('.provider-availability-div').hide();
                         $('.schedule-loader').hide();

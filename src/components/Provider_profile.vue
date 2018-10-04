@@ -12,7 +12,7 @@
                     <div class="col-md-8" >
                         <h2 class="" style="font-family: 'Segoe UI">
                             <span class="text-capitalize" style="text-decoration: none" v-if="result.profile">
-                                {{ result.profile.first_name+' ' + result.profile.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.profile.title) ? special : '' }}</span></span> <br>
+                             DR. {{ result.profile.first_name+' ' + result.profile.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.profile.title) ? special : '' }}</span></span> <br>
                         </h2>
                         <p style="font-weight: bold; color: gray" v-for="(special,index) in specialization" >{{ (index == result.specialty_id) ? special : '' }}</p>
                         <h6 style="font-weight: bold; color: gray;" v-if="result.years_of_experience">{{ result.years_of_experience }} Years Of Experience</h6>
