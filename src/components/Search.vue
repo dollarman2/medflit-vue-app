@@ -124,7 +124,7 @@
                         <div class="row" style="margin-top: 20px;">
                             <div class="provider-action-button col-xs-6">
                                 <p class="text-center"><a v-if="result.profile" v-bind:href="'tel:'+result.profile.telephone"><i class="fa fa-phone"></i> Contact Hospital</a>
-                                <a v-else v-bind:href="'tel:'+result.telephone"><i class="fa fa-phone"></i> Contact Hospital</a></p>
+                                <a v-else-if="result.telephone" v-bind:href="'tel:'+result.telephone"><i class="fa fa-phone"></i> Contact Hospital</a></p>
                             </div>
 
                             <div class="provider-appointment-button col-xs-6">
