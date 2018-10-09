@@ -6,7 +6,7 @@
             <div class="card-body">
                 <div class="row proivder_hearder">
                    <div class="col-md-2">
-                            <img v-if="result.hospital_image" v-bind:src="'http://localhost:8000/'+result.hospital_image" class="img-responsive provider-avatar" alt="">
+                            <img v-if="result.hospital_image" v-bind:src="'https://app.medflit.com/'+result.hospital_image" class="img-responsive provider-avatar" alt="">
                                 <img v-else src="../assets/logo.png" class="img-responsive provider-avatar" alt="">
                     </div>
 
@@ -46,7 +46,7 @@
             <ul class="nav nav-tabs">
                 <li class="nav-item"><a class="nav-link active" href="#overview" data-toggle="tab">Overview</a></li>
                 <li class="nav-item"><a class="nav-link" href="#doctors" data-toggle="tab">Doctors <span v-if="result.hospital_provider">{{ result.hospital_provider.length }}</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="#feedback" data-toggle="tab">Feedback</a></li>
+                <li class="nav-item"><a class="nav-link" href="#feedback" data-toggle="tab">Feedback <span v-if="result.reviews">{{ result.reviews.length }}</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="#services" data-toggle="tab" @click="Procedure()">Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="#centers" data-toggle="tab">Hospital Branch <span v-if="result.hospital_branch"> {{ result.hospital_branch.length }}</span></a></li>
             </ul>
@@ -67,8 +67,8 @@
                                     <div class="row">
                                             <div class="col-lg-3 col-md-6 col-sm-3 col-xs-3">
                                               <div class='' v-if="result.gallery" v-for="(gallery,index) in result.gallery">
-                                                        <a  class="fancybox col-sm-4 col-xs-6 col-md-3 col-lg-3"  data-fancybox-group="gallery" v-bind:href="'http://localhost:8000/images/gallery/'+gallery.filename">
-                                                                <img v-bind:src="'http://localhost:8000/images/gallery/'+gallery.resized_name" class="img-responsive">
+                                                        <a  class="fancybox col-sm-4 col-xs-6 col-md-3 col-lg-3"  data-fancybox-group="gallery" v-bind:href="'https://app.medflit.com/images/gallery/'+gallery.filename">
+                                                                <img v-bind:src="'https://app.medflit.com/images/gallery/'+gallery.resized_name" class="img-responsive">
                                                         </a> <!-- col-6 / end -->
                                                 </div>
                                             </div><br>
@@ -89,7 +89,7 @@
                         <div class="row provider-item" id="load">
                             <div class="col-md-6">
                                 <div style="margin: 0">
-                                    <img v-if="result.profile" v-bind:src="'http://localhost:8000/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
+                                    <img v-if="result.profile" v-bind:src="'https://app.medflit.com/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12">
@@ -175,7 +175,7 @@
                                       <h6>{{ time }}</h6>
                                       <ul>
                                         <li v-for="(time,index) in timeslots">
-                                        <a :href="'http://localhost:8000/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                        <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
                                         </li>
                                       </ul>
 
@@ -185,7 +185,7 @@
                                      <h6>{{ time2 }}</h6>
                                       <ul>
                                         <li v-for="(time,index) in timeslots2">
-                                        <a :href="'http://localhost:8000/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                        <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
                                         </li>
                                       </ul>
                                     </div>
@@ -194,7 +194,7 @@
                                       <h6>{{ time3 }}</h6>
                                       <ul>
                                         <li v-for="(time,index) in timeslots3">
-                                        <a :href="'http://localhost:8000/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                        <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
                                         </li>
                                       </ul>
                                     </div>
@@ -210,7 +210,7 @@
 
 
                         <li v-for="(time,index) in timeslots4">
-                                        <a :href="'http://localhost:8000/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                        <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
                                         </li>
                                       </ul>
                                     </div>
@@ -228,7 +228,30 @@
         <div class="tab-pane fade" id="feedback"  style="min-height: 400px; background-color:white;">
                     <div class="row">
                         <div class="col-md-8" style="padding: 5px 10px">
-
+                          <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                  <th>S/N</th>
+                                  <th>Message</th>
+                                  <th>Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-if="result.reviews" v-for="(review,index) in result.reviews">
+                                  <td>{{ index+1 }}</td>
+                                  <td>{{ review.message }}</td>
+                                  <td>
+                                    <div style="margin-top: 0px">
+                                        <span v-bind:class="(review.rating >= 1) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(review.rating >= 2) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(review.rating >= 3) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(review.rating >= 4) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(review.rating >= 5) ? 'fa fa-star checked' : 'fa fa-star'"></span><br>
+                                    </div>
+                                  </td>
+                                </tr>
+                            </tbody>
+                          </table>
                         </div>
                     </div>
                 </div>
@@ -248,7 +271,7 @@
                     <div class="panels-body doctor-details-box" style="padding:10px;" v-if="hospitals" v-for="(result,index) in hospitals">
                         <div class="row">
                             <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12 pharmacy-avatar-div">
-                                <img v-bind:src="'http://localhost:8000/'+result.hospital_image" class="img-responsive provider-avatar" alt="">
+                                <img v-bind:src="'https://app.medflit.com/'+result.hospital_image" class="img-responsive provider-avatar" alt="">
                             </div>
 
                             <div class="col-lg-8 col-md-8">
@@ -402,7 +425,7 @@
             },
             TimeSlot(provider_id,date){
               let component = this;
-                axios.get('http://localhost:8000/api/provider/get-provider-schedules?provider_id='+provider_id+'&date='+date)
+                axios.get('https://app.medflit.com/api/provider/get-provider-schedules?provider_id='+provider_id+'&date='+date)
                     .then(function (response) {
                       component.timeslots = response.data.schedules[date];
                       component.timeslots2 = response.data.schedules[component.time2];
@@ -414,7 +437,7 @@
             },
           getHospital(){
             let component = this;
-              axios.get('http://localhost:8000/api/hospital/'+this.$route.params.id)
+              axios.get('https://app.medflit.com/api/hospital/'+this.$route.params.id)
                   .then(function (response) {
                     component.result = response.data.hospital;
                     component.doctors = response.data.doctors;

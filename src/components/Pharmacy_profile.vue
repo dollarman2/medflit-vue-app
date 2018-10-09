@@ -112,24 +112,30 @@
                         <!-- /.tab-pane -->
                         <div class="tab-pane fade" id="pharmacy_review"  style="padding:25px;  min-height: 400px; background-color:white;">
                             <div class="row">
-                                <table class="table table-hover">
-                                        <tr>
-                                            <th width="50%">Review Messages</th>
-                                            <th width="50%">rating</th>
-                                        </tr>
-                                        <tr v-if="result.reviews" v-for="(review,index) in result.reviews">
-                                            <td> {{ review.message}}</td>
-                                            <td>
-                                            <div style="margin-top: 0px">
-                                                <span v-bind:class="(review.rating >= 1) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                                                <span v-bind:class="(review.rating >= 2) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                                                <span v-bind:class="(review.rating >= 3) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                                                <span v-bind:class="(review.rating >= 4) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                                                <span v-bind:class="(review.rating >= 5) ? 'fa fa-star checked' : 'fa fa-star'"></span><br>
-                                            </div>
+                                <table class="table table-hover table-bordered">
+                                  <thead>
+                                      <tr>
+                                        <th>S/N</th>
+                                        <th>Message</th>
+                                        <th>Rating</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr v-if="result.reviews" v-for="(review,index) in result.reviews">
+                                        <td>{{ index+1 }}</td>
+                                        <td>{{ review.message }}</td>
+                                        <td>
+                                          <div style="margin-top: 0px">
+                                              <span v-bind:class="(review.rating >= 1) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                              <span v-bind:class="(review.rating >= 2) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                              <span v-bind:class="(review.rating >= 3) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                              <span v-bind:class="(review.rating >= 4) ? 'fa fa-star checked' : 'fa fa-star'"></span>
+                                              <span v-bind:class="(review.rating >= 5) ? 'fa fa-star checked' : 'fa fa-star'"></span><br>
+                                          </div>
                                         </td>
-                                        </tr>
-                                    </table>
+                                      </tr>
+                                  </tbody>
+                                </table>
 
                             </div>
                         </div>

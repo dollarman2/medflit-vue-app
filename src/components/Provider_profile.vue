@@ -5,7 +5,7 @@
             <div class="card-body">
                 <div class="row proivder_hearder">
                     <div class="col-md-2">
-                            <img v-if="result.profile" v-bind:src="'http://localhost:8000/'+result.profile.profile_picture" class="img-responsive profile-user-img img-fluid img-circle" alt="User Image" style="width: 120px; height: 120px"/>
+                            <img v-if="result.profile" v-bind:src="'https://app.medflit.com/'+result.profile.profile_picture" class="img-responsive profile-user-img img-fluid img-circle" alt="User Image" style="width: 120px; height: 120px"/>
 
                     </div>
 
@@ -165,7 +165,7 @@
                                       <h6>{{ time }}</h6>
                                       <ul>
                                         <li v-for="(time,index) in timeslots">
-                                        <a :href="'http://localhost:8000/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                        <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
                                         </li>
                                       </ul>
 
@@ -175,7 +175,7 @@
                                      <h6>{{ time2 }}</h6>
                                       <ul>
                                         <li v-for="(time,index) in timeslots2">
-                                        <a :href="'http://localhost:8000/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                        <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
                                         </li>
                                       </ul>
                                     </div>
@@ -184,7 +184,7 @@
                                       <h6>{{ time3 }}</h6>
                                       <ul>
                                         <li v-for="(time,index) in timeslots3">
-                                        <a :href="'http://localhost:8000/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                        <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
                                         </li>
                                       </ul>
                                     </div>
@@ -193,7 +193,7 @@
                                      <h6>{{ time4 }}</h6>
                                       <ul>
                                         <li v-for="(time,index) in timeslots4">
-                                        <a :href="'http://localhost:8000/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                        <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
                                         </li>
                                       </ul>
                                     </div>
@@ -221,10 +221,12 @@
                     <div class="row">
                                 <table class="table table-hover">
                                         <tr>
+                                          <th>S/N</th>
                                             <th width="50%">Review Messages</th>
                                             <th width="50%">rating</th>
                                         </tr>
                                         <tr v-if="result.reviews" v-for="(review,index) in result.reviews">
+                                            <td>{{ index+1 }}</td>
                                             <td> {{ review.message}}</td>
                                             <td>
                                             <div style="margin-top: 0px">
@@ -388,7 +390,7 @@
             },
             TimeSlot(provider_id,date){
               let component = this;
-                axios.get('http://localhost:8000/api/provider/get-provider-schedules?provider_id='+provider_id+'&date='+date)
+                axios.get('https://app.medflit.com/api/provider/get-provider-schedules?provider_id='+provider_id+'&date='+date)
                     .then(function (response) {
                       component.timeslots = response.data.schedules[date];
                       component.timeslots2 = response.data.schedules[component.time2];
@@ -400,7 +402,7 @@
             },
           getProvider(){
             let component = this;
-              axios.get('http://localhost:8000/api/provider/'+this.$route.params.id)
+              axios.get('https://app.medflit.com/api/provider/'+this.$route.params.id)
                   .then(function (response) {
                     component.result = response.data.provider;
                     component.qualifications = response.data.qualifications;
