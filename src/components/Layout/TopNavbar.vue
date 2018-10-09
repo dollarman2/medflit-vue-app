@@ -23,8 +23,8 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
-                  <li><a href="https://version2.medflithealthsolution.com/login" class="nav-link"><i class="nc-icon nc-bank"></i> <strong>Login </strong></a></li>
-                  <li><a href="https://version2.medflithealthsolution.com/register" class="nav-link"><i class="nc-icon nc-paper"></i> <strong>Register</strong></a></li>
+                  <li><a href="https://app.medflit.com/login" class="nav-link"><i class="nc-icon nc-bank"></i> <strong>Login </strong></a></li>
+                  <li><a href="https://app.medflit.com/register" class="nav-link"><i class="nc-icon nc-paper"></i> <strong>Register</strong></a></li>
                   <li><router-link :to="{ name: 'Home' }">Patients &nbsp;&nbsp;&nbsp;  |</router-link></li>
                   <li><router-link :to="{ name: 'Provider' }">Providers &nbsp; &nbsp; &nbsp;|</router-link></li>
                   <li><router-link :to="{ name: 'Pharmacy' }">Pharmacists  &nbsp;&nbsp;&nbsp; |</router-link></li>

@@ -6,7 +6,7 @@
             <div class="card-body">
                 <div class="row proivder_hearder">
                              <div class="col-md-2">
-                                <img v-if="result.profile" v-bind:src="'https://version2.medflithealthsolution.com/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
+                                <img v-if="result.profile" v-bind:src="'https://app.medflit.com/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
                                 <img v-else src="../assets/logo.png" class="img-responsive provider-avatar" alt="">
                              </div>
                             <div class="col-md-8">
@@ -25,7 +25,7 @@
                                 <p v-else style="color: green"><span class="fa fa-times"> Medical Registration Not Verified</span></p>
                                 <div class="row">
                                         <button class="btn btn-sm btn-primary">
-                                            <span class="fa fa-map-marker"></span> &nbsp; Get Directions
+                                            <a v-if="result.profile" target="_blank" :href="'https://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'"><span class="fa fa-map-marker"></span> &nbsp; Get Directions</a>
                                        </button>
                                         <button class="btn btn-sm btn-primary">&nbsp; Select Pharmacy</button>
                                 </div>
@@ -139,8 +139,8 @@
                             <div class="col-md-12 pull-right " style="padding:20px;">
                             <ul class="">
                                     <div class='' v-if="result.gallery" v-for="(gallery,index) in result.gallery">
-                                                        <a  class="fancybox col-sm-4 col-xs-6 col-md-3 col-lg-3"  data-fancybox-group="gallery" v-bind:href="'https://version2.medflithealthsolution.com/images/gallery/'+gallery.filename">
-                                                                <img v-bind:src="'https://version2.medflithealthsolution.com/images/gallery/'+gallery.resized_name" class="img-responsive">
+                                                        <a  class="fancybox col-sm-4 col-xs-6 col-md-3 col-lg-3"  data-fancybox-group="gallery" v-bind:href="'https://app.medflit.com/images/gallery/'+gallery.filename">
+                                                                <img v-bind:src="'https://app.medflit.com/images/gallery/'+gallery.resized_name" class="img-responsive">
                                                         </a> <!-- col-6 / end -->
                                                 </div>
                                 </ul>
@@ -167,20 +167,50 @@
                 result:{},
                 deliveries:[],
                 payment_method:[],
+                direction:'',
             }
         },
         mounted() {
           this.getPharmacy();
+          this.geoLocationInit();
         },
         methods: {
           getPharmacy(){
             let component = this;
-              axios.get('https://version2.medflithealthsolution.com/api/pharmacy/'+this.$route.params.id)
+              axios.get('https://app.medflit.com/api/pharmacy/'+this.$route.params.id)
                   .then(function (response) {
                     component.result = response.data.pharmacy;
                     console.log(component.result);
                   }, function (error) {
                   });
+          },
+          geoLocationInit : function() {
+              if (navigator.geolocation) {
+                  navigator.geolocation.getCurrentPosition(this.success, this.fail);
+              } else {
+                  alert("Browser not supported");
+              }
+          },
+          success: function (position) {
+              this.latval = position.coords.latitude;
+              this.lngval = position.coords.longitude;
+              this.GetAddress(this.latval,this.lngval);
+          },
+          fail: function () {
+              this.latval = 9.0612;
+              this.lngval = 7.4224;
+              this.GetAddress(this.latval,this.lngval);
+          },
+          GetAddress: function(lat,lng){
+            axios.post('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&key=AIzaSyDECOtEW9X3ctXS7lg3Xh_4rCrV2ervJf0')
+              .then(response => {
+              console.log(response.data.results[0].formatted_address);
+                this.direction = response.data.results[0].formatted_address;
+
+              })
+              .catch(e => {
+              this.errors.push(e)
+            })
           },
         }
     }
