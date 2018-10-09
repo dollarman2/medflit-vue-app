@@ -12,11 +12,12 @@
               <div class="footer-head">
                 <h5>PATIENTS</h5>
                 <div class="footer-contacts">
-                  <p>Medical Conditions</p>
-                  <p>Sign Up Now</p>
-                  <p>Search for a Doctor</p>
-                  <p>Search for a Pharmacy</p>
-                  <p>Contact Us</p>
+                  <p> <router-link :to="{ name: 'Condition' }">Condition</router-link></p>
+                  <p><a href="https://version2.medflithealthsolution.com/register" class="nav-link"><i class="nc-icon nc-paper"></i> Sign Up Now</a></p>
+                  <p> <router-link  :to="{name:'Abouts',params:{ id: 1 }}">Search for a Doctor</router-link></p>
+                  <p> <router-link  :to="{name:'Abouts',params:{ id: 2 }}">Search for a Pharmacy</router-link></p>
+                  <p><a href=" https://sammieneutron.github.io/MedflitHealthResources/" class="nav-link"><i class="nc-icon nc-paper"></i>Contact Us</a></p>
+                 
                 </div>
 
                 <!-- <div class="footer-icons">
@@ -44,11 +45,11 @@
               <div class="footer-head">
                 <h5>PARTNERS</h5>
                 <div class="footer-contacts">
-                    <p>Join Us</p>
-                    <p>Health Screening & Checkup</p>
-                    <p>Our Clients</p>
-                    <p>Partners Faqs</p>
-                    <p>Refer a Company</p>
+                    <p><router-link :to="{ name: 'Partner' }">Join Us</router-link></p>
+                    <p><router-link class="page-scroll" :to="{path:'/#benefits'}">Health Screening & Checkup</router-link></p>
+                    <p><router-link class="page-scroll" :to="{path:'/#ourclients'}">Our Clients</router-link></p>
+                    <p><router-link :to="{ name: 'Partner' }">Partners</router-link> </p>
+                    <p><a href="https://version2.medflithealthsolution.com/login" class="nav-link"><i class="nc-icon nc-bank"></i>Refer a Company</a></p>
                 </div>
               </div>
             </div>
@@ -59,11 +60,11 @@
               <div class="footer-head">
                 <h5>PROVIDERS</h5>
                 <div class="footer-contacts">
-                  <p>How you Earn</p>
-                  <p>Provider FAQs</p>
-                  <p>Partnering Hospitals</p>
-                  <p>Become a Provider</p>
-                  <p>Refer a Doctor</p>
+                  <p><router-link class="page-scroll" :to="{path:'/#benefits'}">How you Earn</router-link></p>
+                  <p><router-link :to="{ name: 'Provider' }">Provider FAQs</router-link> </p>
+                  <p><router-link :to="{ name: 'Provider' }">Partnering Hospitals</router-link></p>
+                  <p><router-link :to="{ name: 'Provider' }">Become a Provider</router-link></p>
+                  <p><router-link :to="{ name: 'Provider' }">Refer a Doctor</router-link></p>
                 </div>
               </div>
             </div>
@@ -74,10 +75,10 @@
               <div class="footer-head">
                 <h5>PHARMACY</h5>
                 <div class="footer-contacts">
-                  <p>Register your Pharmacy</p>
-                  <p>Pharmacy Faqs</p>
-                  <p>Partnering Programs</p>
-                  <p>Refer a Pharmacy</p>
+                  <p><a href="https://version2.medflithealthsolution.com/register" class="nav-link"><i class="nc-icon nc-paper"></i> <strong>Register your Pharmacy</strong></a></p>
+                  <p><router-link :to="{ name: 'Pharmacy' }">Pharmacy Faqs</router-link></p>
+                  <p><router-link :to="{ name: 'Partner' }">Partnering Programs</router-link></p>
+                  <p><router-link :to="{ name: 'Pharmacy' }">Refer a Pharmacy</router-link></p>
                 </div>
               </div>
             </div>

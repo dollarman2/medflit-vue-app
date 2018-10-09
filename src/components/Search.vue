@@ -231,7 +231,7 @@
                             <div class="col-lg-8 col-md-8">
                                 <div style="padding-top: 10px">
                                     <router-link :to="{ name: 'HospitalProfile',params:{ id: result.slug } }">
-                                        <h3 class="provider_name" style="font-family: 'Segoe UI">{{ result.hospital_name }}</h3>
+                                     <h3 class="provider_name" style="font-family: 'Segoe UI">{{ result.hospital_name }}</h3>
                                     </router-link>
 
                                     <div style="margin-top: 0px" v-if="result.rating">
@@ -608,13 +608,11 @@
                     }, function (error) {
                     });
             },
-            searchMeduim(value){
+            searchMeduim(value, VuejsPaginate){
               let component = this;
                 axios.get('http://localhost:8000/api/search_filter?service='+value+'&option='+component.option+'&page='+this.results.current_page)
                     .then(function (response) {
                       component.results = response.data.doctors;
-                     component.items = response.data.count;
-                          component.city_count = response.data.city;
                       setTimeout(function() {
                         $('.provider-availability-div').hide();
                         $('.schedule-loader').hide();

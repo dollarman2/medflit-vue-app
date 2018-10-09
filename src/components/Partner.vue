@@ -286,7 +286,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="wellcome-text2">
                         <div class="text-center section-headline2">
-                            <h4 style="color: #383838">PARTNERS FAQ</h4>
+                            <h4 style="color: #383838" id="#partnerfq">PARTNERS FAQ</h4>
                         </div>
                     </div>
                 </div>
