@@ -5,7 +5,7 @@
             <div class="card-body">
                 <div class="row proivder_hearder">
                     <div class="col-md-2">
-                            <img v-if="result.profile" v-bind:src="'https://app.medflit.com/'+result.profile.profile_picture" class="img-responsive profile-user-img img-fluid img-circle" alt="User Image" style="width: 120px; height: 120px"/>
+                            <img v-if="result.profile" v-bind:src="'http://localhost:8000/'+result.profile.profile_picture" class="img-responsive profile-user-img img-fluid img-circle" alt="User Image" style="width: 120px; height: 120px"/>
 
                     </div>
 
@@ -133,6 +133,75 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row" style="margin-top: 20px;">
+                            <div class="provider-action-button col-xs-6">
+                                <p class="text-center"><a v-if="result.profile" v-bind:href="'tel:'+result.profile.telephone"><i class="fa fa-phone"></i> Contact Hospital</a>
+                                <a v-else-if="result.telephone" v-bind:href="'tel:'+result.telephone"><i class="fa fa-phone"></i> Contact Hospital</a></p>
+                            </div>
+
+                            <div class="provider-appointment-button col-xs-6">
+                                <p class="text-center"><a class="view-availability-btn" @click="ShowSchedule(result.user_id)" style="color: " id="show_hide"><i class="fa fa-calendar-times-o"></i>&nbsp; Book appointment</a></p>
+                            </div>
+                        </div>
+
+
+                    <div class="Providerschedule1 col-md-12" style="display:none;"></div>
+                    <div class="schedule-loader text-center">Loading availability...</div>
+                    <div class="provider-availability-div scheduler" :id="'scheduler'+result.user_id">
+                        <div class="schedule_list">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn next btn-flat btn-sm btn-success pull-right" style="margin-right: 20px;" v-on:click="next(result.user_id)">Next</button>
+                                    <button class="btn prev btn-flat btn-sm btn-success pull-right" style="margin-right: 5px;" v-on:click="previous(result.user_id)">Prev</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="Providerschedule1 col-md-12" style="display:none;"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 display-schedule">
+
+                                    <div class="col-md-3">
+                                      <h6>{{ time }}</h6>
+                                      <ul>
+                                        <li v-for="(time,index) in timeslots">
+                                        <a :href="'http://localhost:8000/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                        </li>
+                                      </ul>
+
+                                    </div>
+
+                                    <div class="col-md-3">
+                                     <h6>{{ time2 }}</h6>
+                                      <ul>
+                                        <li v-for="(time,index) in timeslots2">
+                                        <a :href="'http://localhost:8000/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                        </li>
+                                      </ul>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                      <h6>{{ time3 }}</h6>
+                                      <ul>
+                                        <li v-for="(time,index) in timeslots3">
+                                        <a :href="'http://localhost:8000/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                        </li>
+                                      </ul>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                     <h6>{{ time4 }}</h6>
+                                      <ul>
+                                        <li v-for="(time,index) in timeslots4">
+                                        <a :href="'http://localhost:8000/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                        </li>
+                                      </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.tab-pane -->
                 <div class="tab-pane" id="services" style="min-height: 300px; background-color:white;">
@@ -146,6 +215,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- /.tab-pane -->
                 <div class="tab-pane" id="patient_review"  style="min-height: 300px; background-color:white; padding:25px;">
                     <div class="row">
@@ -220,11 +290,28 @@
                 plans:[],
                 procedure:[],
                 direction:'',
+                timeslots:[],
+                timeslots2:[],
+                timeslots3:[],
+                timeslots4:[],
+                time:'',
+                time2:'',
+                time3:'',
+                time4:'',
+                counter:0,
             }
         },
         mounted() {
           this.getProvider();
+          this.myFunction();
           this.geoLocationInit();
+          setTimeout(function() {
+            $('.provider-availability-div').hide();
+            $('.schedule-loader').hide();
+          },2000);
+          this.time2 = this.getTime(1);
+          this.time3 = this.getTime(2);
+          this.time4 = this.getTime(3);
         },
         methods: {
             Procedure: function(){
@@ -237,9 +324,83 @@
                 this.procedure = proceed;
                 console.log(proceed);
             },
+             ShowSchedule(value){
+              if($('a').hasClass("view-availability-btn")){
+                $('#scheduler'+value).show();
+                $('a#show_hide').removeClass('view-availability-btn');
+                $('a#show_hide').addClass('hide_availability');
+                $('#scheduler'+value).find('.prev').attr("disabled",true);
+                this.TimeSlot(value,this.time);
+              }else if($('a').hasClass("hide_availability")){
+                  $('#scheduler'+value).hide();
+                  $('a#show_hide').removeClass('hide_availability');
+                  $('a#show_hide').addClass('view-availability-btn');
+              }
+            },
+            next(value){
+              this.counter += 1;
+              if(this.counter == 1) $('#scheduler'+value).find('.prev').attr("disabled",false);
+              this.time2 = this.getTime(1 + this.counter);
+              this.time3 = this.getTime(2 + this.counter);
+              this.time4 = this.getTime(3 + this.counter);
+              var d = new Date(Date.now()+this.counter*24*60*60*1000);
+              var n = d.getDate();
+              var m = d.getMonth() + 1;
+              var y = d.getFullYear();
+              this.time = y +'-'+ m +'-'+ n;
+              this.TimeSlot(value,this.time);
+            },
+            previous(value){
+              this.counter = this.counter - 1;
+              if(this.counter < 1){
+                $('#scheduler'+value).find('.prev').attr("disabled",true);
+                this.myFunction();
+                this.TimeSlot(value,this.time);
+              }else{
+                var d = new Date(Date.now()+this.counter*24*60*60*1000);
+                var n = d.getDate();
+                var m = d.getMonth() + 1;
+                var y = d.getFullYear();
+                this.time = y +'-'+ m +'-'+ n;
+                this.TimeSlot(value,this.time);
+                this.time2 = this.getTime(1 + this.counter);
+                this.time3 = this.getTime(2 + this.counter);
+                this.time4 = this.getTime(3 + this.counter);
+              }
+            },
+            myFunction:function () {
+                var d = new Date();
+                var n = d.getDate();
+                var m = d.getMonth() + 1;
+                var y = d.getFullYear();
+                this.time = y +'-'+ m +'-'+ n;
+            },
+            getTime:function (value) {
+                var d = new Date(Date.now()+value*24*60*60*1000);
+                var n = d.getDate();
+                var m = d.getMonth() + 1;
+                var y = d.getFullYear();
+                if (n > 9){
+                  return y +'-'+ m +'-'+ n;
+                }else{
+                  return y +'-'+ m +'-0'+ n;
+                }
+            },
+            TimeSlot(provider_id,date){
+              let component = this;
+                axios.get('http://localhost:8000/api/provider/get-provider-schedules?provider_id='+provider_id+'&date='+date)
+                    .then(function (response) {
+                      component.timeslots = response.data.schedules[date];
+                      component.timeslots2 = response.data.schedules[component.time2];
+                      component.timeslots3 = response.data.schedules[component.time3];
+                      component.timeslots4 = response.data.schedules[component.time4];
+                      console.log(component.timeslots);
+                    }, function (error) {
+                    });
+            },
           getProvider(){
             let component = this;
-              axios.get('https://app.medflit.com/api/provider/'+this.$route.params.id)
+              axios.get('http://localhost:8000/api/provider/'+this.$route.params.id)
                   .then(function (response) {
                     component.result = response.data.provider;
                     component.qualifications = response.data.qualifications;
