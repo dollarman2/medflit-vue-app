@@ -1,165 +1,161 @@
 <template>
-    <div class="row auth">
-    <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-        <div class="card">
-            <div class="card-body">
-                <div class="row proivder_hearder">
-                             <div class="col-md-2">
-                                <img v-if="result.profile" v-bind:src="'https://app.medflit.com/'+result.profile.profile_picture" class="img-responsive provider-avatar" alt="">
-                                <img v-else src="../assets/logo.png" class="img-responsive provider-avatar" alt="">
-                             </div>
-                            <div class="col-md-8">
-                                <h2 class="" style="font-family: 'Segoe UI">{{ result.business_name }}</h2>
-                                <h5>{{ result.business_name }}</h5>
-
-                                <div style="margin-top: 0px" v-if="result.rating">
-                                    <span v-bind:class="(result.rating.rating_count >= 1) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                                    <span v-bind:class="(result.rating.rating_count >= 2) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                                    <span v-bind:class="(result.rating.rating_count >= 3) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                                    <span v-bind:class="(result.rating.rating_count >= 4) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                                    <span v-bind:class="(result.rating.rating_count >= 5) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                                    <span>({{ result.rating.total_rating }}review)</span><br>
-                                </div>
-                                <p v-if="result.status == 0" style="color: red"><span class="fa fa-times"> Pharmacy Registration Not Verified</span></p>
-                                <p v-else style="color: green"><span class="fa fa-times"> Medical Registration Not Verified</span></p>
-                                <div class="row">
-                                        <button class="btn btn-sm btn-primary">
-                                            <a v-if="result.profile" target="_blank" :href="'https://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'"><span class="fa fa-map-marker"></span> &nbsp; Get Directions</a>
-                                       </button>
-                                        <button class="btn btn-sm btn-primary">&nbsp; Select Pharmacy</button>
-                                </div>
-
+    <div class="search__">
+        <div class="container">
+            <div class="search-inner">
+                <div class="card provider_details_card">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="provider_avatar">
+                                <img v-if="result.profile" v-bind:src="'https://app.medflit.com/'+result.profile.profile_picture" class="img-responsive profile_img" alt="">
+                                <img v-else src="images/img/evie_default_bg.jpeg" class="img-responsive profile_img" alt="">
                             </div>
-                   </div>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="pro-details">
+                                <h3>{{ result.business_name }}</h3>
+                                <h6 class=""><i class="fas fa-map-pin ic"></i>{{ result.address }}</h6>
+                                <h6 v-if="result.status == 0" class="unverified"><i class="fas fa-thumbs-down"></i>&nbsp; Pharmacy registration not verified</h6>
+                                <h6 v-else class="verified"><i class="fas fa-thumbs-down"></i>&nbsp; Pharmacy registration not verified</h6>
+
+                                <div class="ratings" v-if="result.rating">
+                                    <span v-bind:class="(result.rating.rating_count >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 2) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 3) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 4) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 5) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span>({{ (result.rating.total_rating != '') ? result.rating.total_rating : 0  }} review)</span>
+                                </div>
+                                <div class="buttons">
+                                    <span><a v-if="result.profile" target="_blank" :href="'https://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'" class="btn____ btn-login btn-sm"><i class="fas fa-map-marker"></i>&nbsp; Get Direction</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-        <div class="row provider_tab">
-            <div class="col-12">
-                    <ul class="nav nav-tabs">
-                    <li class="nav-item"><a class="nav-link active" href="#overview" data-toggle="tab">Overview</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services" data-toggle="tab">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#pharmacy_review" data-toggle="tab">Pharmacy Review</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#gallery" data-toggle="tab">Photo Gallery</a></li>
-                    </ul>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#overview">Overview</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#patient_review">Pharmacy review</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#gallery">Gallery</a>
+                    </li>
+                </ul>
+                    
+                <!-- Tab panes -->
+                <div class="tab-content card provider_profile_card">
+                    <div id="overview" class="container tab-pane active">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h3>Registration Documents</h3>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                            <!-- <tr>
+                                                <th><i class="fas fa-edit ic"></i>&nbsp; CAC Reg. No:</th>
+                                                <td>AF1234</td>
+                                            </tr> -->
+                                        
+                                            <tr>
+                                                <th><i class="fas fa-edit ic"></i>&nbsp; Licence No:</th>
+                                                <label v-if="result.licence !== 'undefined'">{{ result.licence}}</label>
+                                                <td  v-if="result.status == 0" class="unverified"> Not Confirmed <span class="fa fa-check"></span></td>
+                                                <td  v-else class="verified"> Not Confirmed <span class="fa fa-check"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <th><i class="fas fa-user ic"></i>&nbsp; Pharmaceutical Reg. Bodies:</th>
+                                                <td>Nigeria Pharmaceutical Groups</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
 
-                <div class="">
-                    <div class="tab-content">
-                        <div class="active tab-pane" id="overview"  style="min-height: 400px; background-color:white; padding: 25px;">
-                            <div class="row">
-                                <div class="col-md-8" style="padding: 5px 10px">
-                                    <br>
-                                    <h5>Registration Documents</h5>
-                                    <div class="doc_table">
-                                        <table class="table table-responsive">
+                                <h3>Contacts</h3>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
                                             <tr>
-                                                <td class="name"><span class="fa fa-edit"></span> &nbsp;CAC Reg. Number:</td><span v-if="result.licence !== 'undefined'">{{ result.licence}}</span>
-                                                <td  v-if="result.status == 0" style="color: red"> Not Confirmed <span class="fa fa-check"></span></td>
-                                                <td  v-else style="color: green"> Not Confirmed <span class="fa fa-check"></span></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="name"><span class="fa fa-edit"></span> &nbsp;Licence Number:</td>
-                                                <td  v-if="result.status == 0" style="color: red"> Not Confirmed <span class="fa fa-check"></span></td>
-                                                <td  v-else style="color: green"> Not Confirmed <span class="fa fa-check"></span></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="name"><span class="fa fa-group"></span> &nbsp;Pharmaceutical Registration Bodies:</td>
-                                                <td><span class="">Nigerian Pharmaceutical Groups <br>Nigerian Health Ministry</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td><h5>Contacts</h5></td>
-
-                                            </tr>
-                                            <tr>
-                                                <td class="name"><span class="fa fa-phone"></span> &nbsp;Phone </td>
+                                                <th><i class="fas fa-phone ic"></i>&nbsp; Telephone:</th>
                                                 <td><span class="">{{ result.telephone }}</span></td>
                                             </tr>
+                                        
                                             <tr>
-                                                <td class="name"><span class="fa fa-envelope"></span> &nbsp;Email</td>
+                                                <th><i class="fas fa-envelope ic"></i>&nbsp; Email:</th>
                                                 <td><span class=""><a v-if="result.user" :href="'mailto:'+result.user.email">Send Email to Pharmacy</a></span></td>
                                             </tr>
-                                        </table>
-                                    </div>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
-                        <!-- /.tab-pane -->
-                        <div class="tab-pane fade" id="services" style="min-height: 400px; background-color:white; padding: 25px;">
-                            <div class="row">
-                                <div class="col-md-8" style="padding: 5px 10px">
-                                    <br>
-                                    <h5>Services</h5>
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <tr>
-                                                <td class="name">Deliveries</td>
-                                                <td><span v-if="result.delivery_type" v-for="(delivery,index) in result.delivery_type">
-                                                  {{ delivery[index] }}&nbsp;</span></td>
-
-                                            </tr>
-                                            <tr>
-                                                <td class="name">Payment Modes</td>
-                                                <td><span v-if="result.payment_method" v-for="(delivery,index) in result.payment_method">
-                                                  {{ delivery[index] }}&nbsp;</span></td>
-
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.tab-pane -->
-                        <div class="tab-pane fade" id="pharmacy_review"  style="padding:25px;  min-height: 400px; background-color:white;">
-                            <div class="row">
-                                <table class="table table-hover table-bordered">
-                                  <thead>
-                                      <tr>
-                                        <th>S/N</th>
-                                        <th>Message</th>
-                                        <th>Rating</th>
-                                      </tr>
-                                  </thead>
-                                  <tbody>
-                                      <tr v-if="result.reviews" v-for="(review,index) in result.reviews">
-                                        <td>{{ index+1 }}</td>
-                                        <td>{{ review.message }}</td>
-                                        <td>
-                                          <div style="margin-top: 0px">
-                                              <span v-bind:class="(review.rating >= 1) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                                              <span v-bind:class="(review.rating >= 2) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                                              <span v-bind:class="(review.rating >= 3) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                                              <span v-bind:class="(review.rating >= 4) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                                              <span v-bind:class="(review.rating >= 5) ? 'fa fa-star checked' : 'fa fa-star'"></span><br>
-                                          </div>
-                                        </td>
-                                      </tr>
-                                  </tbody>
-                                </table>
-
-                            </div>
-                        </div>
-                        <!-- /.tab-pane -->
-                        <div class="tab-pane fade" id="gallery"  style="min-height: 400px; background-color:white;">
-
-                            <div class="col-md-12 pull-right " style="padding:20px;">
-                            <ul class="">
-                                    <div class='' v-if="result.gallery" v-for="(gallery,index) in result.gallery">
-                                                        <a  class="fancybox col-sm-4 col-xs-6 col-md-3 col-lg-3"  data-fancybox-group="gallery" v-bind:href="'https://app.medflit.com/images/gallery/'+gallery.filename">
-                                                                <img v-bind:src="'https://app.medflit.com/images/gallery/'+gallery.resized_name" class="img-responsive">
-                                                        </a> <!-- col-6 / end -->
-                                                </div>
+                    </div>
+                    <div id="services" class="container tab-pane fade" style="padding-bottom: 20px;">
+                        <h3>Services</h3>
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12 pro-details">
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Deliveries
+                                        <span class="badge badge-success badge-pill" v-if="result.delivery_type" v-for="(delivery,index) in result.delivery_type"><i class="fas fa-check"></i>{{ delivery[index] }}&nbsp;</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Payment Modes
+                                        <span class="badge badge-success badge-pill" v-if="result.payment_method" v-for="(delivery,index) in result.payment_method"><i class="fas fa-check"></i>{{ delivery[index] }}&nbsp;</span>
+                                    </li>
                                 </ul>
                             </div>
+                        </div>
+                    </div>
+                    <div id="patient_review" class="container tab-pane fade" style="padding-bottom: 20px;">
+                        <h3>Pharmacy Review</h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Review messages</th>
+                                    <th>Rating</th>                                      
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-if="result.reviews" v-for="(review,index) in result.reviews">
+                                  <td>{{ index+1 }}</td>
+                                  <td> {{ review.message}}</td>
+                                  <td>
+                                    <div style="margin-top: 0px">
+                                        <span v-bind:class="(review.rating >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                        <span v-bind:class="(review.rating >= 2) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                        <span v-bind:class="(review.rating >= 3) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                        <span v-bind:class="(review.rating >= 4) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                        <span v-bind:class="(review.rating >= 5) ? 'fas fa-star ratings' : 'fas fa-star'"></span><br>
+                                    </div>
+                                  </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
+                    <div id="gallery" class="container tab-pane fade" style="padding-bottom: 20px;">
+                        <h3>Gallery</h3>
+                        <div class="row">
+                            <div class="gall" v-if="result.gallery" v-for="(gallery,index) in result.gallery">
+                                <a v-bind:href="'https://app.medflit.com/images/gallery/'+gallery.filename" data-toggle="lightbox" data-gallery="gallery">
+                                <img v-bind:src="'https://app.medflit.com/images/gallery/'+gallery.resized_name" class="img-responsive pro_img" alt="">
+                                </a>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
-    </div>
-    </div>
+        </div>
     </div>
 </template>
 <script>
@@ -222,5 +218,5 @@
     }
 </script>
 <style>
-  @import url('../assets/index.css');
+  /* @import url('../assets/index.css'); */
 </style>

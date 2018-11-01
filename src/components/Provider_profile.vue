@@ -1,150 +1,187 @@
 <template>
-     <div class="row auth">
-    <div class="col-md-10 col-md-offset-1">
-        <div class="card">
-            <div class="card-body">
-                <div class="row proivder_hearder">
-                    <div class="col-md-2">
-                            <img v-if="result.profile" v-bind:src="'https://app.medflit.com/'+result.profile.profile_picture" class="img-responsive profile-user-img img-fluid img-circle" alt="User Image" style="width: 120px; height: 120px"/>
-
-                    </div>
-
-                    <div class="col-md-8" >
-                        <h2 class="" style="font-family: 'Segoe UI">
-                            <span class="text-capitalize" style="text-decoration: none" v-if="result.profile">
-                             DR. {{ result.profile.first_name+' ' + result.profile.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.profile.title) ? special : '' }}</span></span> <br>
-                        </h2>
-                        <p style="font-weight: bold; color: gray" v-for="(special,index) in specialization" >{{ (index == result.specialty_id) ? special : '' }}</p>
-                        <h6 style="font-weight: bold; color: gray;" v-if="result.years_of_experience">{{ result.years_of_experience }} Years Of Experience</h6>
-                        <h6 style="font-weight: bold; color: gray;" v-if="result.medium_of_service == 1">Online</h6>
-                        <h6 style="font-weight: bold; color: gray;" v-if="result.medium_of_service == 2">Home Service</h6>
-                        <h6 style="font-weight: bold; color: gray;" v-if="result.medium_of_service == 3">Online & Home Service</h6>
-                        <h6 style="font-weight: bold; color: gray;">{{ result.medical_organization }}<br><b v-if="result.profile">{{ result.profile.address }}</b> </h6>
-                        <span></span>
-                        <div style="margin-top: 0px" v-if="result.rating">
-                            <span v-bind:class="(result.rating.rating_count >= 1) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                            <span v-bind:class="(result.rating.rating_count >= 2) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                            <span v-bind:class="(result.rating.rating_count >= 3) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                            <span v-bind:class="(result.rating.rating_count >= 4) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                            <span v-bind:class="(result.rating.rating_count >= 5) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                            <span>({{ result.rating.total_rating }} review)</span><br>
-                        </div>
-
-                            <p v-if="result.status == 0" style="color: red"><span class="fa fa-times"> Medical Registration Not Verified</span></p>
-                                <p v-else style="color: green"><span class="fa fa-times"> Medical Registration Not Verified</span></p>
-
-                        <div class="row">
-                            <div class="review-button" data-target="#provider_review" data-toggle="modal">
-                                <button class="btn btn-sm btn-primary"><span class="fa fa-star"></span><strong> Give Review</strong></button>
-                                <button class="btn btn-sm btn-primary"><a v-if="result.profile" target="_blank" :href="'https://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'"><span class="fa fa-map-marker"></span>
-                                <strong style="color:white;">Get Directions</strong></a>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3"></div>
-                </div>
-            </div>
-        </div>
-   <div class="row provider_tab">
-    <div class="col-12">
-            <ul class="nav nav-tabs">
-                <li class="nav-item"><a class="nav-link active" href="#overview" data-toggle="tab">Overview</a></li>
-                <li class="nav-item"><a class="nav-link" href="#services" data-toggle="tab" @click="Procedure()">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="#patient_review" data-toggle="tab">Patient Review</a></li>
-                <li class="nav-item"><a class="nav-link" href="#gallery" data-toggle="tab" v-if="result.provider_hospital">Hospital Photo Gallery</a></li>
-            </ul>
-
-        <div class="">
-            <div class="tab-content">
-                <div class="active tab-pane" id="overview"  style="min-height: 300px; background-color:white;">
+    <div class="search__">
+        <div class="container">
+            <!-- <div class="search-inner" style="background-color: #f0f0f5"> -->
+                <div class="card pro_details_card">
                     <div class="row">
-                        <div class="col-md-6" style="padding:25px; border-right: 1px solid #ccc">
-                            <br>
-                            <h5 class="text-left">Doctors Info</h5>
-                            <div class="doc_table">
-                                <table class="table responsive">
-                                    <tr>
-                                        <td class="name"><span class="fa fa-hospital-o"></span>  Hospital Name:</td>
-                                        <td><span class="" id="val">{{ result.medical_organization}}</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="name"><span class="fa fa-map-marker"></span>  Hospital Address:</td>
-                                        <td><span class="" id="val" v-if="result.profile">{{ result.profile.address}}</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="name"><span class="fa fa-phone"></span> Phone Number:</td>
-                                        <td><span class="" id="val" v-if="result.profile">{{ result.profile.telephone}}</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="name"><span class="fa fa-user"></span> Medium</td>
-                                        <td>
-                                            <span class="" id="val" v-if="result.medium_of_service == 1">Online</span>
-                                            <span class="" id="val" v-if="result.medium_of_service == 2">Home Service</span>
-                                            <span class="" id="val" v-if="result.medium_of_service == 3">Online & Home Service</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="name"><span class="fa fa-envelope"></span> Email</td>
-                                        <td><span class="" id="val"><a  v-if="result.user" :href="'mailto:'+result.user.email">Send mail to doctor</a></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="name"><span class="fa fa-info-circle"></span> Doctors Bio</td>
-                                        <td><span class="" id="val">{{ result.biography }}</span></td>
-                                    </tr>
-                                </table>
+                        <div class="col-md-2">
+                            <div class="provider_avatar">
+                                <img v-if="result.profile" v-bind:src="'https://app.medflit.com/'+result.profile.profile_picture" class="img-responsive profile_img" alt="User Image"/>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div style="padding: 5px 10px">
-                                <br>
-                                <h5 class="hd">Qualifications and Experience</h5>
-                                <div class="qual_table">
-                                    <table class="table table-responsive">
-                                        <tr>
-                                            <td class="name">Education</td>
-                                            <td v-for="q in qualifications">
-                                                <span class="prov-qual-span"> {{ q.medical_school }} -</span> <span id="val">Standford</span> <br>
-                                                <span class="prov-qual-span"> {{ q.course_of_study}} -</span> <span id="val">Medicine</span> <br>
-                                                <span class="prov-qual-span"> {{ q.year_of_graduation}}</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="name">Language Spoken</td>
-                                            <td >
-                                                <div v-for="l in languages">
-                                                <span style="font-size: 13px">{{l.name}}</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="name">Certifications</td>
-                                            <td v-for="c in certifications">
-                                                <span style="font-size: 13px">{{c.name}}</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="name">Specialities</td>
-                                            <td><span v-for="(special,index) in specialization" >{{ (index == result.specialty_id) ? special : '' }}</span></td>
-                                        </tr>
+                        <div class="col-md-10">
+                            <div class="pro-details">
+                                <h3 v-if="result.profile">DR. {{ result.profile.first_name+' ' + result.profile.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.profile.title) ? special : '' }}</span></h3>
+                                <h6><i class="fas fa-user-md ic"></i>&nbsp; <span v-for="(special,index) in specialization" >{{ (index == result.specialty_id) ? special : '' }}</span> <span class="yoe" v-if="result.years_of_experience">{{ result.years_of_experience }}(4 years experience)</span></h6>
+                                <h6 v-if="result.medium_of_service == 1">Online</h6>
+                                <h6 v-if="result.medium_of_service == 2">Home Service</h6>
+                                <h6 v-if="result.medium_of_service == 3">Online & Home Service</h6>
+                                <div class="sub_details">
+                                    <h6 class="h6">{{ result.medical_organization }}</h6>
+                                    <h6 class=""v-if="result.profile"><i class="fas fa-map-pin ic"></i> {{ result.profile.address }}</h6>
+                                </div>
+                                <div class="ratings" v-if="result.rating">
+                                    <span v-bind:class="(result.rating.rating_count >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 2) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 3) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 4) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 5) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span>({{ (result.rating.total_rating != '') ? result.rating.total_rating : 0  }} review)</span>
+                                </div>
+                                <div>
+                                    <h6 style="color: red" v-if="result.status == 0"><i class="fas fa-thumbs-up"></i>&nbsp; Medical registration verified</h6>
+                                    <h6 class="verified" v-else><i class="fas fa-thumbs-up"></i>&nbsp; Medical registration verified</h6>
+                                </div>
+                                <div class="buttons">
+                                    <span><a href="https://app.medflit.com/patient/" class="btn____ btn-login btn-sm"><i class="fas fa-star"></i>&nbsp; Review</a></span>
+                                    <span><a v-if="result.profile" target="_blank" :href="'https://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'" class="btn____ btn-register btn-sm"><i class="fas fa-map-marker"></i>&nbsp; Get Direction</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#overview">Overview</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#services" @click="Procedure()">Services</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#patient_review">Doctor review</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#book_appointment">Book Appointment</a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content card provider_profile_card">
+                    <div id="overview" class="container tab-pane active">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3>Doctor&apos;s Info</h3>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <th><i class="fas fa-hospital ic"></i>&nbsp; Hospital Name:</th>
+                                                <td><span class="" id="val">{{ result.medical_organization}}</span></td>
+                                            </tr>
+
+                                            <tr>
+                                                <th><i class="fas fa-map-marker ic"></i>&nbsp; Hospital Address:</th>
+                                                <td><span class="" id="val" v-if="result.profile">{{ result.profile.address}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th><i class="fas fa-phone ic"></i>&nbsp; Telephone:</th>
+                                                <td><span class="" id="val" v-if="result.profile">{{ result.profile.telephone}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th><i class="fas fa-binoculars ic"></i>&nbsp; Medium:</th>
+                                                 <td>
+                                                    <span class="" id="val" v-if="result.medium_of_service == 1">Online</span>
+                                                    <span class="" id="val" v-if="result.medium_of_service == 2">Home Service</span>
+                                                    <span class="" id="val" v-if="result.medium_of_service == 3">Online & Home Service</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th><i class="fas fa-envelope ic"></i>&nbsp; Email:</th>
+                                                <td><span class="" id="val"><a  v-if="result.user" :href="'mailto:'+result.user.email">Send mail to doctor</a></span></td>
+                                            </tr>
+                                            <tr>
+                                                <th><i class="fas fa-info ic"></i>&nbsp; Doctor&apos;s Bio:</th>
+                                                <td><span class="" id="val">{{ result.biography }}</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="border-left: 1px solid #f0f0f0; padding-bottom: 30px;">
+                                <h3>Qualifications & Experience</h3>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <th><i class="fas fa-university ic"></i>&nbsp; Education:</th>
+                                                <td v-for="q in qualifications">
+                                                    <span class="prov-qual-span"> {{ q.medical_school }} -</span> <span id="val">Standford</span> <br>
+                                                    <span class="prov-qual-span"> {{ q.course_of_study}} -</span> <span id="val">Medicine</span> <br>
+                                                    <span class="prov-qual-span"> {{ q.year_of_graduation}}</span>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <th><i class="fas fa-language ic"></i>&nbsp; Languages:</th>
+                                                <td>
+                                                  <div v-for="l in languages">
+                                                  <span style="font-size: 13px">{{l.name}}</span>
+                                                  </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th><i class="fas fa-certificate ic"></i>&nbsp; Certifications:</th>
+                                                <td v-for="c in certifications">
+                                                  <span style="font-size: 13px">{{c.name}}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th><i class="fas fa-stethoscope ic"></i>&nbsp; Specialty:</th>
+                                                <td><span v-for="(special,index) in specialization" >{{ (index == result.specialty_id) ? special : '' }}</span></td>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row" style="margin-top: 20px;">
-                            <div class="provider-action-button col-xs-6">
-                                <p class="text-center"><a v-if="result.profile" v-bind:href="'tel:'+result.profile.telephone"><i class="fa fa-phone"></i> Contact Hospital</a>
-                                <a v-else-if="result.telephone" v-bind:href="'tel:'+result.telephone"><i class="fa fa-phone"></i> Contact Hospital</a></p>
-                            </div>
-
-                            <div class="provider-appointment-button col-xs-6">
-                                <p class="text-center"><a class="view-availability-btn" @click="ShowSchedule(result.user_id)" style="color: " id="show_hide"><i class="fa fa-calendar-times-o"></i>&nbsp; Book appointment</a></p>
+                    <div id="services" class="container tab-pane fade" style="padding-bottom: 20px;">
+                        <h3>Services</h3>
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12 pro-details">
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center" v-if="result.services_and_procedures" v-for="(delivery,index) in procedure">{{ delivery }}<span class="badge badge-success badge-pill"><i class="fas fa-check"></i></span></li>
+                                </ul>
                             </div>
                         </div>
+                    </div>
+                    <div id="patient_review" class="container tab-pane fade" style="padding-bottom: 20px;">
+                        <h3>Doctor Review</h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>#</th>
+                                  <th>Review messages</th>
+                                  <th>Rating</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr v-if="result.reviews" v-for="(review,index) in result.reviews">
+                                  <td>{{ index+1 }}</td>
+                                  <td> {{ review.message}}</td>
+                                  <td>
+                                    <div style="margin-top: 0px">
+                                        <span v-bind:class="(review.rating >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                        <span v-bind:class="(review.rating >= 2) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                        <span v-bind:class="(review.rating >= 3) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                        <span v-bind:class="(review.rating >= 4) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                        <span v-bind:class="(review.rating >= 5) ? 'fas fa-star ratings' : 'fas fa-star'"></span><br>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
 
+                    <div id="book_appointment" class="container tab-pane fade" style="padding-bottom: 20px;">
+                        <h3>Book an Appointment Now</h3>
 
+                        <span><a @click="ShowSchedule(result.user_id)"  id="show_hide" class="view-availability-btn btn___ btn-register btn-sm"><i class="fas fa-calendar"></i>&nbsp; Book Appointment</a></span>
+                    </div>
                     <div class="Providerschedule1 col-md-12" style="display:none;"></div>
                     <div class="schedule-loader text-center">Loading availability...</div>
                     <div class="provider-availability-div scheduler" :id="'scheduler'+result.user_id">
@@ -203,76 +240,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- /.tab-pane -->
-                <div class="tab-pane" id="services" style="min-height: 300px; background-color:white;">
-                    <div class="row">
-                        <div class="col-md-8" style="padding:25px;">
-                            <div class="table-responsive">
-                                <ul style="">
-                                    <li v-if="result.services_and_procedures" v-for="(delivery,index) in procedure">{{ delivery }}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- /.tab-pane -->
-                <div class="tab-pane" id="patient_review"  style="min-height: 300px; background-color:white; padding:25px;">
-                    <div class="row">
-                                <table class="table table-hover">
-                                        <tr>
-                                          <th>S/N</th>
-                                            <th width="50%">Review Messages</th>
-                                            <th width="50%">rating</th>
-                                        </tr>
-                                        <tr v-if="result.reviews" v-for="(review,index) in result.reviews">
-                                            <td>{{ index+1 }}</td>
-                                            <td> {{ review.message}}</td>
-                                            <td>
-                                            <div style="margin-top: 0px">
-                                                <span v-bind:class="(review.rating >= 1) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                                                <span v-bind:class="(review.rating >= 2) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                                                <span v-bind:class="(review.rating >= 3) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                                                <span v-bind:class="(review.rating >= 4) ? 'fa fa-star checked' : 'fa fa-star'"></span>
-                                                <span v-bind:class="(review.rating >= 5) ? 'fa fa-star checked' : 'fa fa-star'"></span><br>
-                                            </div>
-                                        </td>
-                                        </tr>
-                                    </table>
-
-                            </div>
-                </div>
-
-                <div class="tab-pane " id="gallery"  style="min-height: 300px; background-color:white;">
-
-                           <div class="col-md-12 pull-right " style="padding:20px;">
-                            <ul class="">
-                                    <div class='list-group'>
-                                            <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                                <a class="fancybox" rel="gallery"  href="">
-                                                    <img src="../assets/logo.png" class="img-responsive">
-                                                </a>
-                                            </div> <!-- col-6 / end -->
-                                    </div>
-                                      <div class='list-group'>
-                                            <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                                <a class="fancybox" rel="gallery"  href="">
-                                                    <img src="../assets/logo.png" class="img-responsive">
-                                                </a>
-                                            </div> <!-- col-6 / end -->
-                                    </div>
-                                </ul>
-                            </div>
-                  </div>
-            </div>
+            <!-- </div> -->
         </div>
+        <input type="hidden" name="searchKeywords" id="searchKeywords" class="Textbox autobox default" v-bind:value="result.services_and_procedures" autocomplete="off">
     </div>
-
-    </div>
-    <input type="hidden" name="searchKeywords" id="searchKeywords" class="Textbox autobox default" v-bind:value="result.services_and_procedures" autocomplete="off">
-</div>
-</div>
-
 </template>
 <script>
 // eslint-disable-next-line
@@ -448,5 +419,5 @@
     }
 </script>
 <style>
-  @import url('../assets/index.css');
+  /* @import url('../assets/index.css'); */
 </style>

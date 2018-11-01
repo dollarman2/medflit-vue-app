@@ -1,557 +1,457 @@
 <template>
-    <div>
-  <div class="slider-area" id="slider home">
-    <slider animation="fade" class="slider-slide" style="height: 50vw" :interval="inter">
-        <slider-item>
-          <div class="mycon">
-              <div class="row" >
-              <div class="col-md-7 col-sm-7 col-xs-6">
-                  <div class="slider-content">
-                  <!-- layer 1 -->
-                  <div class="layer-1-2 wow slideInDown" data-wow-duration="2s" data-wow-delay=".7s">
-                      <h1 class="" style="color: #1D4BB7; font-family: 'Aileron'">Africa's First
-                      Integrated Telemedicine
-                      Service</h1>
-                  </div>
-                  </div>
-              </div>
-              <div class="col-md-5 col-sm-5 col-xs-6">
-                  <div class="slider-content2">
-                  <!-- layer 3 -->
-                  <div class="layer-1-3 wow slideInUp" data-wow-duration="2s" data-wow-delay=".7s">
-                      <div class="sm-btn">
-                      <router-link class="ready-btn right-btn" :to="{name:'Abouts',params:{ id: 1 }}">Talk to a Doctor Now</router-link>
-                      </div>
-                      <div class="sm-btn">
-                      <router-link class="ready-btn right-btn" :to="{name:'Abouts',params: { id: 2 }}">Find a Pharmacy Now</router-link>
-                      </div>
-                      <div class="sm-btn">
-                          <router-link class="ready-btn right-btn" :to="{name:'Abouts',params: { id: 3 }}">Find a Hospital Now</router-link>
-                      </div>
-                  </div>
-                  </div>
-              </div>
-              </div>
-          </div>
-        </slider-item>
-        <slider-item>
-          <div class="mycon2">
-              <div class="row">
-              <div class="col-md-7 col-sm-7 col-xs-6">
-                  <div class="slider-content">
-                  <!-- layer 1 -->
-                  <div class="layer-1-2 wow slideInDown" data-wow-duration="2s" data-wow-delay=".7s">
-                      <h1 class="" style="color: #1D4BB7; font-family: 'Aileron'">Africa's First
-                      Integrated Telemedicine
-                      Service</h1>
-                  </div>
-                  </div>
-              </div>
-              <div class="col-md-5 col-sm-5 col-xs-6">
-                  <div class="slider-content2">
-                  <!-- layer 3 -->
-                  <div class="layer-1-3 wow slideInUp" data-wow-duration="2s" data-wow-delay=".7s">
-                      <div class="sm-btn">
-                      <router-link class="ready-btn right-btn" :to="{name:'Abouts',params:{ id: 1 }}">Talk to a Doctor Now</router-link>
-                      </div>
-                      <div class="sm-btn">
-                      <router-link class="ready-btn right-btn" :to="{name:'Abouts',params: { id: 2 }}">Find a Pharmacy Now</router-link>
-                      </div>
-                      <div class="sm-btn">
-                          <router-link class="ready-btn right-btn" :to="{name:'Abouts',params: { id: 3 }}">Find a Hospital Now</router-link>
-                      </div>
-                  </div>
-                  </div>
-              </div>
-              </div>
-              <button></button>
-          </div>
-        </slider-item>
-        <slider-item>
-          <div class="mycon3">
-              <div class="row">
-              <div class="col-md-7 col-sm-7 col-xs-6">
-                  <div class="slider-content">
-                  <!-- layer 1 -->
-                  <div class="layer-1-2 wow slideInDown" data-wow-duration="2s" data-wow-delay=".7s">
-                      <h1 class="" style="color: #1D4BB7; font-family: 'Aileron'">Africa's First
-                      Integrated Telemedicine
-                      Service</h1>
-                  </div>
-                  </div>
-              </div>
-              <div class="col-md-5 col-sm-5 col-xs-6">
-                  <div class="slider-content2">
-                  <!-- layer 3 -->
-                  <div class="layer-1-3 wow slideInUp" data-wow-duration="2s" data-wow-delay=".7s">
-                     <div class="sm-btn">
-                      <router-link class="ready-btn right-btn" :to="{name:'Abouts',params:{ id: 1 }}">Talk to a Doctor Now</router-link>
-                      </div>
-                      <div class="sm-btn">
-                      <router-link class="ready-btn right-btn" :to="{name:'Abouts',params: { id: 2 }}">Find a Pharmacy Now</router-link>
-                      </div>
-                      <div class="sm-btn">
-                          <router-link class="ready-btn right-btn" :to="{name:'Abouts',params: { id: 3 }}">Find a Hospital Now</router-link>
-                      </div>
-                  </div>
-                  </div>
-              </div>
-              </div>
-              <button></button>
-          </div>
-        </slider-item>
-        <slider-item>
-          <div class="mycon4">
-              <div class="row">
-              <div class="col-md-7 col-sm-7 col-xs-6">
-                  <div class="slider-content">
-                    <!-- layer 1 -->
-                    <div class="layer-1-2 wow slideInDown" data-wow-duration="2s" data-wow-delay=".7s">
-                        <h1 class="" style="color: #1D4BB7; font-family: 'Aileron'">Africa's First
-                        Integrated Telemedicine
-                        Service</h1>
+  <div>
+    <!-- Hero unit -->
+        <div class="hero">
+            <div class="hero__overlay hero__overlay--gradient"></div>
+            <div class="hero__mask"></div>
+            <div class="hero__inner">
+                <div class="container">
+                    <div class="hero__content">
+                        <div class="hero__content__inner" id='navConverter'>
+                            <div class="ll">
+                                <h1 class="hero__title">Feeling ill?</h1>
+                                <h1 class="hero__title2">Book a Doctor Now</h1>
+                                <div class="row no-gutters text-center">
+                                    <div class="col-3">
+                                        <div class="form-group">
+                                            <select name="" id="" class="select2" v-model="option">
+                                              <option value="">--Select Type--</option>
+                                              <option value="1" :selected="1 == option ? 'true' : 'false'">Find Doctors</option>
+                                              <option value="2" :selected="2 == option ? 'true' : 'false'">Find Pharmacies</option>
+                                              <option value="3" :selected="3 == option  ? 'true' : 'false'">Find Hospitals</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-7">
+                                        <input type="text" placeholder="Search by Location.." class="input2" v-model="location">
+                                    </div>
+                                    <div class="col-1">
+                                        <a @click="Search()" class="btn__ btn-register btn-sm">
+                                            <i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-              </div>
-              <div class="col-md-5 col-sm-5 col-xs-6">
-                  <div class="slider-content2">
-                  <!-- layer 3 -->
-                  <div class="layer-1-3 wow slideInUp" data-wow-duration="2s" data-wow-delay=".7s">
-                      <div class="sm-btn">
-                      <router-link class="ready-btn right-btn" :to="{name:'Abouts',params:{ id: 1 }}">Talk to a Doctor Now</router-link>
-                      </div>
-                      <div class="sm-btn">
-                      <router-link class="ready-btn right-btn" :to="{name:'Abouts',params: { id: 2 }}">Find a Pharmacy Now</router-link>
-                      </div>
-                      <div class="sm-btn">
-                          <router-link class="ready-btn right-btn" :to="{name:'Abouts',params: { id: 3 }}">Find a Hospital Now</router-link>
-                      </div>
-                  </div>
-                  </div>
-              </div>
-              </div>
-              <button></button>
-          </div>
-        </slider-item>
-    </slider>
-  </div>
-  <!-- End Slider Area -->
-
-  <!-- Start Pricing area -->
-  <div id="pricing" class="services-area area-padding" style="background: #f3f7fb">
-    <div class="container">
-      <div class="row">
-        <div class="services-contents">
-          <!-- Start Left services -->
-          <div class="col-md-4 col-sm-4 col-xs-12" style="border-right: 1px solid #1D4BB7">
-            <div class="about-move">
-              <div class="services-details">
-                <div class="text-center">
-                  <h6 class="text-center"><strong>ONLINE CONSULTATION</strong></h6>
-                  <h2>₦2000 Above</h2>
-                  <h6>Consult a doctor, either through
-                  voice, chat or video app</h6>
                 </div>
-                <div class="pricing-area">
-                  <ul>
-                    <li> <i class="fa fa-check"></i> 25 Minutes Call/Session</li>
-                    <li><i class="fa fa-check"></i> Doctor's Consultation</li>
-                    <li><i class="fa fa-check"></i> Doctor's Prescription</li>
-                    <li><i class="fa fa-check"></i> Personal Health Record</li>
-                  </ul>
-                </div>
-                <div class="text-center"><router-link class="ready-btn right-btn" :to="{name:'Abouts',params:{ id: 1 }}">Select</router-link></div>
-              </div>
-              <!-- end about-details -->
             </div>
-          </div>
-          <div class="col-md-4 col-sm-4 col-xs-12" style="border-right: 1px solid #1D4BB7">
-            <div class="about-move">
-              <div class="services-details">
-                <div class="text-center">
-                    <h6 class="text-center"><strong>HOSPITAL BOOKING</strong></h6>
-                    <h2>Price Varies</h2>
-                    <h6>Consult Doctors in a Real
-                        Hospital Settings</h6>
-                  </div>
-                  <div class="pricing-area">
-                    <ul>
-                      <li> <i class="fa fa-check"></i> No Waiting Line</li>
-                      <li><i class="fa fa-check"></i> Flexible Booking</li>
-                      <li><i class="fa fa-check"></i> Flat-Rate Price</li>
-                      <li><i class="fa fa-check"></i> Select From Varieties
-                        of <br>Hospitals</li>
-                    </ul>
-                  </div>
-                  <div class="text-center"><router-link class="ready-btn right-btn" :to="{name:'Abouts',params:{ id: 1 }}">Select</router-link></div>
-              </div>
-              <!-- end about-details -->
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <!-- end col-md-4 -->
-            <div class=" about-move">
-              <div class="services-details">
-                <div class="text-center">
-                    <h6 class="text-center"><strong>HOME SERVICES</strong></h6>
-                    <h2>Price Varies</h2>
-                    <h6>Have Healthcare Professionals
-                        At Your Doorstep</h6>
-                  </div>
-                  <div class="pricing-area">
-                    <ul>
-                      <li> <i class="fa fa-check"></i> Home Visit</li>
-                      <li><i class="fa fa-check"></i> Flexible Schedule</li>
-                      <li><i class="fa fa-check"></i> Quality Home Service</li>
-                      <li><i class="fa fa-check"></i> Select From Varieties of
-                        Health Care Professionals</li>
-                    </ul>
-                  </div>
-                  <div class="text-center"><router-link class="ready-btn right-btn" :to="{name:'Abouts',params:{ id: 1 }}">Select</router-link></div>
-
-              </div>
-              <!-- end about-details -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End pricing area -->
-
-  <!-- Start Benefits Area -->
-  <div id="benefits" class="wellcome-area">
-    <div class="well-sm">
-      <!-- <div class="test-overly"></div> -->
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="wellcome-text">
-              <div class="text-center section-headline2">
-                <h2 style="color: #383838">Our Amazing Benefits</h2>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row" style="padding-bottom: 0px">
-          <!-- Start Left Blog -->
-          <div class="col-md-3 col-sm-3 col-xs-12">
-            <div class="single-blog blog-container wow slideInDown">
-              <div class="single-blog-img">
-                <img src="../../static/img/blog/findit.jpg" alt="" class="blog-image">
-              </div>
-              <div class="blog-text">
-                <h4 class="">Search Hospitals & Pharmacies
-                  </h4>
-                <p>Find hospitals and pharmacies closest to you and get information on their services.</p>
-              </div>
-            </div>
-            <!-- Start single blog -->
-          </div>
-            <!-- End Left Blog-->
-          <!-- Start Left Blog -->
-          <div class="col-md-3 col-sm-3 col-xs-12">
-              <div class="single-blog blog-container wow slideInUp">
-                <div class="single-blog-img">
-                  <img src="../../static/img/blog/healthcareimage.jpg" alt="" class="blog-image">
-                </div>
-                <div class="blog-text">
-                  <h4 class="">Home Health Care
-                    </h4>
-                  <p>Get access to Physiotherapists, Doctors and Nurses who are willing and able to administer health services to you, wherever you want it.</p>
-                </div>
-              </div>
-              <!-- Start single blog -->
-          </div>
-          <!-- End Left Blog-->
-          <!-- Start Right Blog-->
-          <div class="col-md-3 col-sm-3 col-xs-12">
-              <div class="single-blog blog-container wow slideInDown">
-                <div class="single-blog-img">
-                  <img src="../../static/img/blog/stethoscope-iphone.jpg" alt="" class="blog-image">
-                </div>
-                <div class="blog-text">
-                  <h4 class="">Health Insurance
-                    </h4>
-                  <p>Get quality and affordable health insurance covers through any of the reputable health insurance organizations partnered.</p>
-                </div>
-              </div>
-              <!-- Start single blog -->
-          </div>
-           <!-- Start Left Blog -->
-           <div class="col-md-3 col-sm-3 col-xs-12">
-              <div class="single-blog blog-container wow slideInDown">
-                <div class="single-blog-img">
-                  <img src="../../static/img/blog/fitness-2.jpg" alt="" class="blog-image">
-                </div>
-                <div class="blog-text">
-                  <h4 class="">Fitness & Wellness
-                    </h4>
-                  <p>Book your appointments through us with decent and convenient fitness and wellness centers near you to get huge discounts.</p>
-                </div>
-              </div>
-              <!-- Start single blog -->
-          </div>
-          <!-- End Right Blog-->
-
         </div>
 
-      </div>
-    </div>
-  </div>
-
-  <!-- End benefits Area -->
-
-  <!-- Start How to use Area -->
-  <div id="howtouse" class="our-team-area area-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="wellcome-text2">
-            <div class="text-center section-headline2">
-              <h2 style="color: #383838">How To Use Medflit</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="team-top">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="single-team-member wow slideInLeft" style="background: #1D4BB7">
-              <div class="text-center" style="margin-top: 40px">
-                <a href="#">
-										<img src="../../static/img/register.png" class="blog-image" alt="">
-									</a>
-              </div><hr style="border: 2px solid white; width: 80%">
-              <div class="text-center" style="margin-bottom: 80px; margin-top: 20px">
-                <h3 style="color: white; font-weight: 900">Register online or download our app for free</h3>
-              </div>
-            </div>
-          </div>
-          <!-- End column -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="single-team-member" style="background: rgb(19, 51, 125)">
-              <div class="text-center" style="margin-top: 40px">
-                <a href="#">
-                    <img src="../../static/img/search.png" class="blog-image" alt="">
-                  </a>
-              </div><hr style="border: 2px solid white; width: 80%">
-              <div class="text-center" style="margin-bottom: 70px; margin-top: 20px">
-                <h3 style="color: white; font-weight: 900">Search for any doctor by hospital name, specialty and book an appointment with the doctor either online or at the hospital</h3>
-              </div>
-            </div>
-          </div>
-          <!-- End column -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="single-team-member wow slideInRight" style="background: #1D4BB7">
-              <div class="text-center" style="margin-top: 40px">
-                <a href="#">
-                    <img src="../../static/img/call-schedule.png" class="blog-image" alt="">
-                  </a>
-              </div><hr style="border: 2px solid white; width: 80%">
-              <div class="text-center" style="margin-bottom: 55px; margin-top: 20px">
-                <h3 style="color: white; font-weight: 900">Confirm your appointment schedule and start talking to our professionals</h3>
-              </div>
-            </div>
-          </div>
-          <!-- End column -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End Team Area -->
-
-  <!-- Start Why medflit Area -->
-  <div id="whymedflit" class="blog-area">
-    <div class="blog-inner">
-      <div class="blog-overly"></div>
-      <!-- <div class="container "> -->
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="section-headline2 text-center">
-              <h2 style="color: #383838">Why Medflit</h2>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="col-md-3 col-sm-3 col-xs-12 wow slideInDown">
-              <div class="text-center">
-                <img src="../../static/img/icons/instant-access.png" alt="">
-                <br><br><h4>Instant Access</h4>
-                <p>Instant Access to a wide pool of qualified
-                    doctors of various specialties</p>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-12 wow slideInDown">
-              <div class="text-center">
-                <img src="../../static/img/icons/powerful.png" alt="">
-                <br><br><h4>Powerful</h4>
-                <p>Powerful technology that enables Video,
-                    Chat, and Audio Calls</p>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-12 wow slideInRight">
-              <div class="text-center">
-                <img src="../../static/img/icons/electronic-medical-records.png" alt="">
-              <br> <br><h4>Electronical Medical Records</h4>
-                <p>Electronic Retrieval of Medical Records</p>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-12 wow slideInRight">
-              <div class="text-center">
-                <img src="../../static/img/icons/prescription-pickup.png" alt="">
-                <br><br><h4>Prescription Pickup</h4>
-                <p>Pick up prescriptions at your preferred
-                    pharmacy location.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12" style="margin-top: 10px">
-            <div class="col-md-3 col-sm-3 col-xs-12 wow slideInLeft">
-                <div class="text-center">
-                  <img src="../../static/img/icons/affordable.png" alt="">
-                  <br><br><h4>Affordable</h4>
-                  <p>Affordable healthcare services at flat rate</p>
+        <div class="row how-to-use">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="card register-online-card">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="/static/images/svg/mobile.svg" alt="">
+                        </div>
+                        <div class="col-9">
+                            <p class="text-center">Register online or download our app for free</p>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-md-3 col-sm-3 col-xs-12 wow slideInLeft">
-                <div class="text-center">
-                  <img src="../../static/img/icons/drug-prescription.png" alt="">
-                  <br><br><h4>Drug Prescription</h4>
-                  <p>Digital prescriptions and drugs delivery to
-                      your home or office</p>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-3 col-xs-12 wow slideInUp">
-                <div class="text-center">
-                  <img src="../../static/img/icons/easy-payment.png" alt="">
-                <br> <br><h4>Easy Payment</h4>
-                  <p>Provision of Medflit Card for easy payment and other payment options</p>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-3 col-xs-12 wow slideInUp">
-                <div class="text-center">
-                  <img src="../../static/img/icons/health-screening-2.png" alt="">
-                  <br><br><h4>Health Screening</h4>
-                  <p>Digital health screening, diagnosis and
-                      treatment of non-emergency medical
-                      conditions</p>
-                </div>
-              </div>
-            </div>
-        </div>
-      <!-- </div> -->
-    </div>
-  </div>
-  <!-- End why medflit -->
-
-  <div id="blog" class="blog-area" style="background: #fff">
-    <div class="blog-inner">
-      <div class="blog-overly"></div>
-      <div class="container ">
-        <div class="row">
-            <!-- <div class="wellcome-text"> -->
-                <div class="text-center section-headline2">
-                  <h2 style="color: #383838">Testimonials</h2>
-                </div>
-              <!-- </div> -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="">
-              <h6> <strong> At first, I was reluctant to actually try the Medflit app. I am glad I overcame my initial reluctance. This is one of the best things to happen to my healthcare! </strong> </h6>
-              <h5 class="text-center"><strong> Bisi Alimi,<br>Lagos</strong></h5>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
-              <div class="">
-                <h6><strong>I am glad I do not have to queue at general hospitals any longer or pay exorbitant rates for a consultation.</strong></h6>
-                <h5 class="text-center"><strong>Segun Green,<br>Lagos</strong></h5>
-              </div>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12">
-              <div class="">
-                <h6><strong>The feature I love the most in Medflit is how it enables me transfer my prescription effortlessly to pharmacies and have the drugs delivered to me.</strong></h6>
-                <h5 class="text-center"><strong>Hafsat Haruna,<br>Abuja</strong></h5>
-              </div>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="blog" class="blog-area" style="background: #5f5f5f">
-      <div class="blog-inner">
-        <div class="blog-overly"></div>
-        <div class="container ">
-          <div class="row">
-              <div class="section-headline2 text-center">
-                  <h2 style="color: #fff">Our Partners</h2>
+                <div class="card search-doctor-card">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="/static/images/svg/doctor.svg" alt="">
+                        </div>
+                        <div class="col-8">
+                            <p class="text-center">Search for doctor and book an appointment either online or at the hospital</p>
+                        </div>
+                    </div>
                 </div>
-            <div class="col-md-4 col-sm-4 col-xs-12">
-              <div class="text-center">
-
-                <h4 style="color: #fff"><strong><i> NewGate Specialist Hospital</i></strong></h4>
-              </div>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="text-center">
-
-                  <h4 style="color: #fff"><strong><i>Nidus Aquilae Hospital</i></strong></h4>
+                <div class="card confirm-schedule-card">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="/static/images/svg/schedule.svg" alt="">
+                        </div>
+                        <div class="col-9">
+                            <p class="text-center">Confirm your appointment schedule and start talking to our professionals</p>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-md-4 col-sm-4 col-xs-12">
-                  <div class="text-center">
-                    <h4 style="color: #fff"><strong><i>MedBoss Pharmacy</i></strong></h4>
-                  </div>
-                </div>
-          </div>
+            </div>
         </div>
-      </div>
-    </div>
+        <!-- Steps -->
+        <div class="big-steps landing__section">
+            <div class="container">
+                <h2>Who can use Medflit?</h2>
+                <p>Here's who we can think of, but surely everybody in Africa can use it.</p>
+            </div>
+            <div class="container">
+                <div class="steps__inner">
+                    <div class="step">
+                        <div class="step__media">
+                            <img src="/static/images/svg/patient.svg" class="step__image">
+                        </div>
+                        <h4>Patients</h4>
+                        <p class="step__text text-center">Medflit is a convenient and affordable telemedicine platform that allows you to talk to a board-certified doctor by phone or video.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step__media">
+                            <img src="/static/images/svg/provider.svg" class="step__image">
+                        </div>
+                        <h4>Providers</h4>
+                        <p class="step__text text-center">This is for doctors to sign up as family medicine, dermatologists, cardiologists, and other medical specialists.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step__media">
+                            <img src="/static/images/svg/pharmacy.svg" class="step__image">
+                        </div>
+                        <h4>Pharmacies</h4>
+                        <p class="step__text text-center">If you are a pharmacy owner, this page is for you to register your pharmacy business and your pharmacist.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="steps__inner">
+                    <div class="step">
+                        <div class="step__media">
+                            <img src="/static/images/svg/hospital-2.svg" class="step__image">
+                        </div>
+                        <h4>Hospitals</h4>
+                        <p class="step__text text-center">This is for hospital administrators to sign up their hospitals and register their doctors for instant booking.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step__media">
+                            <img src="/static/images/svg/partner.svg" class="step__image">
+                        </div>
+                        <h4>Partners</h4>
+                        <p class="step__text text-center">We welcome schools, companies, organizations to take advantage of telemedicine software and use it for their respective businesses.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="steps landing__section extra-pad">
+            <div class="container">
+                <h2>Pricing</h2>
+                <p>We have considered medflit to be more affordable and acessible.</p>
+            </div>
+            <div class="container">
+                <div class="steps__inner">
+                    <div class="row no-gutters">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="card online-consultation-card">
+                                <div class="pricing_inner_card">
+                                    <h6>ONLINE CONSULTATION</h6>
+                                    <h1>₦1000</h1>
+                                    <p class="text-center">Consult a doctor, either through voice, chat or video app
+                                    </p>
+                                </div>
+                                <hr>
+                                <div class="pricing_details">
+                                    <p><i class="fa fa-check check"></i>&nbsp; 25 Minutes Call/Session</p>
+                                    <p><i class="fa fa-check check"></i>&nbsp; Doctor’s Consultation</p>
+                                    <p><i class="fa fa-check check"></i>&nbsp; Doctor’s Prescription</p>
+                                    <p><i class="fa fa-check check"></i>&nbsp; Personal Health Record</p>
+                                    <span><a href="" class="btn_ btn-register btn-sm">SELECT</a></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="card hospital-booking-card">
+                                <div class="pricing_inner_card">
+                                    <h6>HOSPITAL BOOKING</h6>
+                                    <h1>Price Varies</h1>
+                                    <p class="text-center">Consult Doctors in a Real Hospital Settings
+                                    </p>
+                                </div>
+                                <hr>
+                                <div class="pricing_details2">
+                                    <p><i class="fa fa-check check"></i>&nbsp; No Waiting Line</p>
+                                    <p><i class="fa fa-check check"></i>&nbsp; Flexible Booking</p>
+                                    <p><i class="fa fa-check check"></i>&nbsp; Flat-Rate Price</p>
+                                    <p><i class="fa fa-check check"></i>&nbsp; Select From Varieties <br>of Hospitals</p>
+                                    <span><a href="" class="btn_ btn-register btn-sm">SELECT</a></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="card home-services-card">
+                                <div class="pricing_inner_card">
+                                    <h6>HOME SERVICES</h6>
+                                    <h1>Price Varies</h1>
+                                    <p class="text-center">Have Healthcare Professionals at Your Doorstep
+                                    </p>
+                                </div>
+                                <hr>
+                                <div class="pricing_details">
+                                    <p><i class="fa fa-check check"></i>&nbsp; Home Visit</p>
+                                    <p><i class="fa fa-check check"></i>&nbsp; Flexible Schedule</p>
+                                    <p><i class="fa fa-check check"></i>&nbsp; Quality Home Service</p>
+                                    <p><i class="fa fa-check check"></i>&nbsp; Select From Varieties of <br>Healthcare Professionals</p>
+                                    <span><a href="" class="btn_ btn-register btn-sm">SELECT</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="steps landing__section">
+            <div class="container">
+                <h2>Amazing Benefits</h2>
+                <p>Here are the amazing stuffs you can benefit from using Medflit and many more.</p>
+            </div>
+            <div class="container">
+                <div class="steps__inner">
+                    <div class="step">
+                        <div class="step__media">
+                            <img src="/static/images/svg/medical.svg" class="step__image">
+                        </div>
+                        <h4>Search Hospitals & Pharmacies</h4>
+                        <p class="step__text text-center">Find hospitals and pharmacies closest to you and get information on their services.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step__media">
+                            <img src="/static/images/svg/health-care.svg" class="step__image">
+                        </div>
+                        <h4>Home Health Care</h4>
+                        <p class="step__text text-center">Get acess to physiotherapists, Doctors and Nurses who are willing and able to administer health services to you, wherever you want it.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="background-color: #fafafa" class="extra-padd">
+            <div class="container">
+                <div class="steps__inner">
+                    <div class="step">
+                        <div class="step__media">
+                            <img src="/static/images/svg/medical-insurance (1).svg" class="step__image">
+                        </div>
+                        <h4>Health Insurance</h4>
+                        <p class="step__text text-center">Get quality and affordable health insurance covers through any of the reputable health insurance organizations partnered.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step__media">
+                            <img src="/static/images/svg/school.svg" class="step__image">
+                        </div>
+                        <h4>School Telehealth</h4>
+                        <p class="step__text text-center">Use our platform to provide in-house clinical diagnosis and treatment of your students while they are in school.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="steps landing__section why-medflit">
+            <div class="container">
+                <div class="steps__inner">
+                    <div class="step">
+                    </div>
+                    <div class="ste">
+                        <div class="row">
+                            <div class="col-md-12" style="margin-left: 30px;">
+                                <h1 style="font-size: 40px; font-weight: bold; color: #1D4BB7;">Why Medflit ?</h1>
+                                <div class="carousel slide" data-ride="carousel" id="whymedflit-carousel">
+
+                                    <!-- Bottom Carousel Indicators -->
+                                    <!-- <ol class="carousel-indicators">
+										<li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+										<li data-target="#quote-carousel" data-slide-to="1"></li>
+										<li data-target="#quote-carousel" data-slide-to="2"></li>
+									</ol> -->
+                                    <!-- Carousel Slides / Quotes -->
+                                    <div class="carousel-inner">
+                                        <!-- Quote 1 -->
+                                        <div class="item active">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="step__media">
+                                                        <img src="/static/images/svg/instant-access.svg" class="step_image">
+                                                    </div>
+                                                    <h2>Instant Access</h2>
+                                                    <p style="color: #666; font-weight: 100">Instant Access to a wide pool of qualified doctors of various specialties</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Quote 2 -->
+                                        <div class="item">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="step__media">
+                                                        <img src="/static/images/svg/powerful.svg" class="step_image">
+                                                    </div>
+                                                    <h2>Powerful</h2>
+                                                    <p style="color: #666; font-weight: 100">Powerful technology that enables Video, Chat, and Audio Calls</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="item">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="step__media">
+                                                        <img src="/static/images/svg/electronic-medical-record.svg" class="step_image">
+                                                    </div>
+                                                    <h2>Electronical Medical Records</h2>
+                                                    <p style="color: #666; font-weight: 100">Electronic Retrieval of Medical Records</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="item">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="step__media">
+                                                        <img src="/static/images/svg/prescription-pickup.svg" class="step_image">
+                                                    </div>
+                                                    <h2>Prescription Pickup</h2>
+                                                    <p style="color: #666; font-weight: 100">Pick up prescriptions at your preferred pharmacy location.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="item">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="step__media">
+                                                        <img src="/static/images/svg/affordable.svg" class="step_image">
+                                                    </div>
+                                                    <h2>Affordable</h2>
+                                                    <p style="color: #666; font-weight: 100">Affordable healthcare services at flat rate.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Quote 3 -->
+                                        <div class="item">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="step__media">
+                                                        <img src="/static/images/svg/drug-prescription.svg" class="step_image">
+                                                    </div>
+                                                    <h2>Drug Prescription</h2>
+                                                    <p style="color: #666; font-weight: 100">Digital prescriptions and drugs delivery to your home or office.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="item">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="step__media">
+                                                        <img src="/static/images/svg/easy-payment-method.svg" class="step_image">
+                                                    </div>
+                                                    <h2>Easy Payment</h2>
+                                                    <p style="color: #666; font-weight: 100">Provision of Medflit Card for easy payment and other payment options.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="item">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="step__media">
+                                                        <img src="/static/images/svg/health-screening.svg" class="step_image">
+                                                    </div>
+                                                    <h2>Health Screening</h2>
+                                                    <p style="color: #666; font-weight: 100">Digital health screening, diagnosis and treatment of non-emergency medical conditions.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="text-center"><a href="register.html" id="register" class="btn_ btn-register btn-sm reg">REGISTER</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonial Area -->
+        <div class="cta cta--reverse">
+            <div class="container">
+                <div class="cta__inner">
+                    <span><i class="fa fa-quote-right fa-3x"></i></span>
+                    <div class="row">
+                        <div class="col-md-12" style="margin-left: 30px;">
+                            <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                                <!-- Carousel Slides / Quotes -->
+                                <div class="carousel-inner">
+
+                                    <!-- Quote 1 -->
+                                    <div class="item active">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <p class="text-center" style="color: white">&ldquo; At first, I was reluctant to actually try the Medflit app. I am glad I overcame my initial reluctance. This is one of the best things to happen to my healthcare! &rdquo;</p>
+                                                <h3 style="color: white"><strong>Janet Akinsola, <br>Lagos</strong></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Quote 2 -->
+                                    <div class="item">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <p class="text-center" style="color: white">&ldquo;I am glad I do not have to queue at general hospitals any longer or pay exorbitant rates for a consultation.&rdquo;</p>
+                                                <h3 style="color: white"><strong>Segun Green, <br>Lagos</strong></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Quote 3 -->
+                                    <div class="item">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <p class="text-center" style="color: white">&ldquo;The feature I love the most in Medflit is how it enables me transfer my prescription effortlessly to pharmacies and have the drugs delivered to me.&rdquo;</p>
+                                                <h3 style="color: white"><strong>Hafsat Haruna, <br>Abuja</strong></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
   </div>
 </template>
 <script>
 // eslint-disable-next-line
 /* eslint-disable */
 /* eslint-disable no-new */
-import { Slider, SliderItem } from 'vue-easy-slider'
-export default {
-  name: 'Index',
-  data () {
-    return {
-      list: [
-        { background: '#3f51b5', width: '100%' },
-        { backgroundColor: '#eee', width: '100%', height: '100%' },
-        { backgroundColor: '#f44336', width: '100%', height: '100%' },
-      ],
-      inter : 6000,
-    }
-  },
-  components: {
-    Slider,
-    SliderItem
-  }
-}
-</script>
-<style>
-.mycon {
-    background: url(../../static/img/slider/doctor.jpg) no-repeat center;
-    height: 100%;
-    background-size: cover;
-}
+import axios from 'axios';
+    export default {
+        data(){
+          return{
+            lists:[],
+            location:'',
+            option:'',
+            page_name:1
+          }
+        },
+        mounted() {
+            this.option = this.$route.params.id;
+            // alert(this.option);
+            console.log('Component mounted.');
+            this.getList();
+        },
+        methods: {
+          getList() {
+              axios.get('https://app.medflit.com/api/list').then(response => {
+                  this.lists = response.data.list;
+              });
+          },
 
-.mycon2 {
-    background: url(../../static/img/slider/iPhone-Calling.jpg) no-repeat center;
-    height: 100%;
-    background-size: cover;
-}
-.mycon3 {
-    background: url(../../static/img/slider/iPhone and MacBook.jpg) no-repeat center;
-    height: 100%;
-    background-size: cover;
-}
-.mycon4 {
-    background: url(../../static/img/slider/MHR-1.jpg) no-repeat center;
-    height: 100%;
-    background-size: cover;
-}
-</style>
+          Search() {
+              var id = (this.option) ? this.option : 1;
+              var location = (this.location) ? this.location : 'Lagos';
+              this.$router.push('/search/'+id+'/'+location);
+          }
+        }
+    }
+</script>

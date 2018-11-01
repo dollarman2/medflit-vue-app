@@ -74,5 +74,5 @@
     }
 </script>
 <style>
-  @import url('../assets/index.css');
+  /* @import url('../assets/index.css'); */
 </style>
