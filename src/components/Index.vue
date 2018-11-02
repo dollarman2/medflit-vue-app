@@ -242,181 +242,178 @@
         </div>
 
         <div class="steps landing__section why-medflit">
-            <div class="container">
-                <div class="steps__inner">
-                    <div class="step">
-                    </div>
-                    <div class="ste">
-                        <div class="row">
-                            <div class="col-md-12" style="margin-left: 30px;">
-                                <h1 style="font-size: 40px; font-weight: bold; color: #1D4BB7;">Why Medflit ?</h1>
-                                <div class="carousel slide" data-ride="carousel" id="whymedflit-carousel">
-
-                                    <!-- Bottom Carousel Indicators -->
-                                    <!-- <ol class="carousel-indicators">
-										<li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
-										<li data-target="#quote-carousel" data-slide-to="1"></li>
-										<li data-target="#quote-carousel" data-slide-to="2"></li>
-									</ol> -->
-                                    <!-- Carousel Slides / Quotes -->
-                                    <div class="carousel-inner">
-                                        <!-- Quote 1 -->
-                                        <div class="item active">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <div class="step__media">
-                                                        <img src="/static/images/svg/instant-access.svg" class="step_image">
-                                                    </div>
-                                                    <h2>Instant Access</h2>
-                                                    <p style="color: #666; font-weight: 100">Instant Access to a wide pool of qualified doctors of various specialties</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Quote 2 -->
-                                        <div class="item">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <div class="step__media">
-                                                        <img src="/static/images/svg/powerful.svg" class="step_image">
-                                                    </div>
-                                                    <h2>Powerful</h2>
-                                                    <p style="color: #666; font-weight: 100">Powerful technology that enables Video, Chat, and Audio Calls</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="item">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <div class="step__media">
-                                                        <img src="/static/images/svg/electronic-medical-record.svg" class="step_image">
-                                                    </div>
-                                                    <h2>Electronical Medical Records</h2>
-                                                    <p style="color: #666; font-weight: 100">Electronic Retrieval of Medical Records</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="item">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <div class="step__media">
-                                                        <img src="/static/images/svg/prescription-pickup.svg" class="step_image">
-                                                    </div>
-                                                    <h2>Prescription Pickup</h2>
-                                                    <p style="color: #666; font-weight: 100">Pick up prescriptions at your preferred pharmacy location.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="item">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <div class="step__media">
-                                                        <img src="/static/images/svg/affordable.svg" class="step_image">
-                                                    </div>
-                                                    <h2>Affordable</h2>
-                                                    <p style="color: #666; font-weight: 100">Affordable healthcare services at flat rate.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Quote 3 -->
-                                        <div class="item">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <div class="step__media">
-                                                        <img src="/static/images/svg/drug-prescription.svg" class="step_image">
-                                                    </div>
-                                                    <h2>Drug Prescription</h2>
-                                                    <p style="color: #666; font-weight: 100">Digital prescriptions and drugs delivery to your home or office.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="item">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <div class="step__media">
-                                                        <img src="/static/images/svg/easy-payment-method.svg" class="step_image">
-                                                    </div>
-                                                    <h2>Easy Payment</h2>
-                                                    <p style="color: #666; font-weight: 100">Provision of Medflit Card for easy payment and other payment options.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="item">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <div class="step__media">
-                                                        <img src="/static/images/svg/health-screening.svg" class="step_image">
-                                                    </div>
-                                                    <h2>Health Screening</h2>
-                                                    <p style="color: #666; font-weight: 100">Digital health screening, diagnosis and treatment of non-emergency medical conditions.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
+          <div class="container">
+            <div class="steps__inner">
+              <div class="step">
+              </div>
+              <div class="ste">
+                <div class="row">
+                  <div class="col-md-12" style="margin-left: 30px;">
+                    <h1 style="font-size: 40px; font-weight: bold; color: #1D4BB7;">Why Medflit ?</h1>
+                    <div id="demo" class="carousel slide" data-ride="carousel">
+                      <!-- The slideshow -->
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <div class="step__media">
+                                <img src="/static/images/svg/instant-access.svg" class="step_image">
+                              </div>
+                              <h2>Instant Access</h2>
+                              <p style="color: #666; font-weight: 100">Instant Access to a wide pool of qualified
+                                  doctors of various specialties</p>
                             </div>
+                          </div>
                         </div>
-                        <span class="text-center"><a href="register.html" id="register" class="btn_ btn-register btn-sm reg">REGISTER</a></span>
+                        <div class="carousel-item">
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <div class="step__media">
+                                <img src="/static/images/svg/powerful.svg" class="step_image">
+                              </div>
+                              <h2>Powerful</h2>
+                              <p style="color: #666; font-weight: 100">Powerful technology that enables Video,
+                                  Chat, and Audio Calls</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="carousel-item">
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <div class="step__media">
+                                <img src="/static/images/svg/electronic-medical-record.svg" class="step_image">
+                              </div>
+                              <h2>Electronical Medical Records</h2>
+                              <p style="color: #666; font-weight: 100">Electronic Retrieval of Medical Records</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="carousel-item">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <div class="step__media">
+                              <img src="/static/images/svg/prescription-pickup.svg" class="step_image">
+                            </div>
+                            <h2>Prescription Pickup</h2>
+                            <p style="color: #666; font-weight: 100">Pick up prescriptions at your preferred
+                                pharmacy location.</p>
+                          </div>
+                        </div>
+                        </div>
+
+                        <div class="carousel-item">
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <div class="step__media">
+                                <img src="/static/images/svg/affordable.svg" class="step_image">
+                              </div>
+                              <h2>Affordable</h2>
+                              <p style="color: #666; font-weight: 100">Affordable healthcare services at flat rate.</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="carousel-item">
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <div class="step__media">
+                                <img src="/static/images/svg/drug-prescription.svg" class="step_image">
+                              </div>
+                              <h2>Drug Prescription</h2>
+                              <p style="color: #666; font-weight: 100">Digital prescriptions and drugs delivery
+                              to your home or office.</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="carousel-item">
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <div class="step__media">
+                                <img src="/static/images/svg/easy-payment-method.svg" class="step_image">
+                              </div>
+                              <h2>Easy Payment</h2>
+                              <p style="color: #666; font-weight: 100">Provision of Medflit Card for easy payment and other payment options.</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="carousel-item">
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <div class="step__media">
+                                <img src="/static/images/svg/health-screening.svg" class="step_image">
+                              </div>
+                              <h2>Health Screening</h2>
+                              <p style="color: #666; font-weight: 100">Digital health screening, diagnosis and
+                              treatment of non-emergency medical
+                              conditions.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Left and right controls -->
+                      <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                      </a>
+                      <a class="carousel-control-next" href="#demo" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                      </a>
                     </div>
+                  </div>
                 </div>
+                <span class="text-center"><a href="https://app.medflit.com/register" id="register" class="btn_ btn-register btn-sm reg">REGISTER</a></span>
+              </div>
             </div>
+          </div>
         </div>
 
         <!-- Testimonial Area -->
         <div class="cta cta--reverse">
-            <div class="container">
-                <div class="cta__inner">
-                    <span><i class="fa fa-quote-right fa-3x"></i></span>
-                    <div class="row">
-                        <div class="col-md-12" style="margin-left: 30px;">
-                            <div class="carousel slide" data-ride="carousel" id="quote-carousel">
-                                <!-- Carousel Slides / Quotes -->
-                                <div class="carousel-inner">
+          <div class="container">
+            <div class="cta__inner">
+              <span><i class="fa fa-quote-right fa-3x"></i></span>
+              <div id="demo" class="carousel slide" data-ride="carousel">
 
-                                    <!-- Quote 1 -->
-                                    <div class="item active">
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <p class="text-center" style="color: white">&ldquo; At first, I was reluctant to actually try the Medflit app. I am glad I overcame my initial reluctance. This is one of the best things to happen to my healthcare! &rdquo;</p>
-                                                <h3 style="color: white"><strong>Janet Akinsola, <br>Lagos</strong></h3>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Quote 2 -->
-                                    <div class="item">
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <p class="text-center" style="color: white">&ldquo;I am glad I do not have to queue at general hospitals any longer or pay exorbitant rates for a consultation.&rdquo;</p>
-                                                <h3 style="color: white"><strong>Segun Green, <br>Lagos</strong></h3>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Quote 3 -->
-                                    <div class="item">
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <p class="text-center" style="color: white">&ldquo;The feature I love the most in Medflit is how it enables me transfer my prescription effortlessly to pharmacies and have the drugs delivered to me.&rdquo;</p>
-                                                <h3 style="color: white"><strong>Hafsat Haruna, <br>Abuja</strong></h3>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                  <div class="row">
+                    <div class="col-sm-12">
+                    <p class="text-center" style="color: white">&ldquo; At first, I was reluctant to actually try the Medflit app. I am glad I overcame my initial reluctance. This is one of the best things to happen to my healthcare! &rdquo;</p>
+                    <h3 style="color: white"><strong>Janet Akinsola, <br>Lagos</strong></h3>
                     </div>
+                  </div>
+                  </div>
+                  <div class="carousel-item">
+                  <div class="row">
+                    <div class="col-sm-12">
+                    <p class="text-center" style="color: white">&ldquo;I am glad I do not have to queue at general hospitals any longer or pay exorbitant rates for a consultation.&rdquo;</p>
+                    <h3 style="color: white"><strong>Segun Green, <br>Lagos</strong></h3>
+                    </div>
+                  </div>
+                  </div>
+                  <div class="carousel-item">
+                  <div class="row">
+                    <div class="col-sm-12">
+                    <p class="text-center" style="color: white">&ldquo;The feature I love the most in Medflit is how it enables me transfer my prescription effortlessly to pharmacies and have the drugs delivered to me.&rdquo;</p>
+                    <h3 style="color: white"><strong>Hafsat Haruna, <br>Abuja</strong></h3>
+                    </div>
+                  </div>
+                  </div>
                 </div>
+
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                  <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#demo" data-slide="next">
+                  <span class="carousel-control-next-icon"></span>
+                </a>
+              </div>
             </div>
+          </div>
         </div>
   </div>
 </template>

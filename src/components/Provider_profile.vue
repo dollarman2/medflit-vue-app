@@ -7,18 +7,20 @@
                         <div class="col-md-2">
                             <div class="provider_avatar">
                                 <img v-if="result.profile" v-bind:src="'https://app.medflit.com/'+result.profile.profile_picture" class="img-responsive profile_img" alt="User Image"/>
+                                <router-link :to="{ path: '/search/1/Lagos' }"><i id="bck" class="fas fa-arrow-left pull-right"></i> </router-link>
                             </div>
                         </div>
                         <div class="col-md-10">
                             <div class="pro-details">
+                              <router-link :to="{ path: '/search/1/Lagos' }"><i id="back" class="fas fa-arrow-left pull-right"></i></router-link>
                                 <h3 v-if="result.profile">DR. {{ result.profile.first_name+' ' + result.profile.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.profile.title) ? special : '' }}</span></h3>
-                                <h6><i class="fas fa-user-md ic"></i>&nbsp; <span v-for="(special,index) in specialization" >{{ (index == result.specialty_id) ? special : '' }}</span> <span class="yoe" v-if="result.years_of_experience">{{ result.years_of_experience }}(4 years experience)</span></h6>
-                                <h6 v-if="result.medium_of_service == 1">Online</h6>
-                                <h6 v-if="result.medium_of_service == 2">Home Service</h6>
-                                <h6 v-if="result.medium_of_service == 3">Online & Home Service</h6>
+                                <h6><i class="fas fa-user-md ic"></i>&nbsp; <span v-for="(special,index) in specialization" >{{ (index == result.specialty_id) ? special : '' }}</span> <span class="yoe" v-if="result.years_of_experience">({{ result.years_of_experience }} years experience)</span></h6>
+                                <h6 v-if="result.medium_of_service == 1">Meduim: Online</h6>
+                                <h6 v-if="result.medium_of_service == 2">Meduim: Home Service</h6>
+                                <h6 v-if="result.medium_of_service == 3">Meduim: Online & Home Service</h6>
                                 <div class="sub_details">
                                     <h6 class="h6">{{ result.medical_organization }}</h6>
-                                    <h6 class=""v-if="result.profile"><i class="fas fa-map-pin ic"></i> {{ result.profile.address }}</h6>
+                                    <!-- <h6 class=""v-if="result.profile"><i class="fas fa-map-pin ic"></i> {{ result.profile.address }}</h6> -->
                                 </div>
                                 <div class="ratings" v-if="result.rating">
                                     <span v-bind:class="(result.rating.rating_count >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
@@ -42,9 +44,9 @@
                 </div>
 
                 <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
+                <ul class="nav nav-tabs" role="">
                     <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#overview">Overview</a>
+                    <a class="nav-link active" data-toggle="tab" href="#overview" id="over">Overview</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#services" @click="Procedure()">Services</a>
@@ -59,7 +61,7 @@
 
                 <!-- Tab panes -->
                 <div class="tab-content card provider_profile_card">
-                    <div id="overview" class="container tab-pane active">
+                    <div id="overview" class="container active tab-pane">
                         <div class="row">
                             <div class="col-md-6">
                                 <h3>Doctor&apos;s Info</h3>
@@ -107,8 +109,8 @@
                                             <tr>
                                                 <th><i class="fas fa-university ic"></i>&nbsp; Education:</th>
                                                 <td v-for="q in qualifications">
-                                                    <span class="prov-qual-span"> {{ q.medical_school }} -</span> <span id="val">Standford</span> <br>
-                                                    <span class="prov-qual-span"> {{ q.course_of_study}} -</span> <span id="val">Medicine</span> <br>
+                                                    <span class="prov-qual-span"> {{ q.medical_school }} -</span>
+                                                    <span class="prov-qual-span"> {{ q.course_of_study}} -</span>
                                                     <span class="prov-qual-span"> {{ q.year_of_graduation}}</span>
                                                 </td>
                                             </tr>
@@ -137,7 +139,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="services" class="container tab-pane fade" style="padding-bottom: 20px;">
+                    <div id="services" class="container tab-pane" style="padding-bottom: 20px;">
                         <h3>Services</h3>
                         <div class="row">
                             <div class="col-md-6 col-xs-12 pro-details">
@@ -147,7 +149,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="patient_review" class="container tab-pane fade" style="padding-bottom: 20px;">
+                    <div id="patient_review" class="container tab-pane" style="padding-bottom: 20px;">
                         <h3>Doctor Review</h3>
                         <div class="table-responsive">
                             <table class="table">
@@ -177,68 +179,68 @@
                         </div>
                     </div>
 
-                    <div id="book_appointment" class="container tab-pane fade" style="padding-bottom: 20px;">
-                        <h3>Book an Appointment Now</h3>
-
+                    <div id="book_appointment" class="container tab-pane" style="padding-bottom: 20px;">
+                      <br/>
                         <span><a @click="ShowSchedule(result.user_id)"  id="show_hide" class="view-availability-btn btn___ btn-register btn-sm"><i class="fas fa-calendar"></i>&nbsp; Book Appointment</a></span>
-                    </div>
-                    <div class="Providerschedule1 col-md-12" style="display:none;"></div>
-                    <div class="schedule-loader text-center">Loading availability...</div>
-                    <div class="provider-availability-div scheduler" :id="'scheduler'+result.user_id">
-                        <div class="schedule_list">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <button class="btn next btn-flat btn-sm btn-success pull-right" style="margin-right: 20px;" v-on:click="next(result.user_id)">Next</button>
-                                    <button class="btn prev btn-flat btn-sm btn-success pull-right" style="margin-right: 5px;" v-on:click="previous(result.user_id)">Prev</button>
+                        <div class="Providerschedule1 col-md-12" style="display:none;"></div>
+                        <div class="schedule-loader text-center">Loading availability...</div>
+                        <div class="provider-availability-div scheduler" :id="'scheduler'+result.user_id">
+                            <div class="schedule_list">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button class="btn next btn-flat btn-sm btn-success pull-right" style="margin-right: 20px;" v-on:click="next(result.user_id)">Next</button>
+                                        <button class="btn prev btn-flat btn-sm btn-success pull-right" style="margin-right: 5px;" v-on:click="previous(result.user_id)">Prev</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="Providerschedule1 col-md-12" style="display:none;"></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 display-schedule">
+                                <div class="row">
+                                    <div class="Providerschedule1 col-md-12" style="display:none;"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 display-schedule">
 
-                                    <div class="col-md-3">
-                                      <h6>{{ time }}</h6>
-                                      <ul>
-                                        <li v-for="(time,index) in timeslots">
-                                        <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
-                                        </li>
-                                      </ul>
+                                        <div class="col-md-3">
+                                          <h6>{{ time }}</h6>
+                                          <ul>
+                                            <li v-for="(time,index) in timeslots">
+                                            <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                            </li>
+                                          </ul>
+
+                                        </div>
+
+                                        <div class="col-md-3">
+                                        <h6>{{ time2 }}</h6>
+                                          <ul>
+                                            <li v-for="(time,index) in timeslots2">
+                                            <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                            </li>
+                                          </ul>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                          <h6>{{ time3 }}</h6>
+                                          <ul>
+                                            <li v-for="(time,index) in timeslots3">
+                                            <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                            </li>
+                                          </ul>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                        <h6>{{ time4 }}</h6>
+                                          <ul>
+                                            <li v-for="(time,index) in timeslots4">
+                                            <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                            </li>
+                                          </ul>
+                                        </div>
 
                                     </div>
-
-                                    <div class="col-md-3">
-                                     <h6>{{ time2 }}</h6>
-                                      <ul>
-                                        <li v-for="(time,index) in timeslots2">
-                                        <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
-                                        </li>
-                                      </ul>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                      <h6>{{ time3 }}</h6>
-                                      <ul>
-                                        <li v-for="(time,index) in timeslots3">
-                                        <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
-                                        </li>
-                                      </ul>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                     <h6>{{ time4 }}</h6>
-                                      <ul>
-                                        <li v-for="(time,index) in timeslots4">
-                                        <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
-                                        </li>
-                                      </ul>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             <!-- </div> -->
         </div>

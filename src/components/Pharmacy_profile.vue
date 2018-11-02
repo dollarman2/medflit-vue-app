@@ -8,6 +8,7 @@
                             <div class="provider_avatar">
                                 <img v-if="result.profile" v-bind:src="'https://app.medflit.com/'+result.profile.profile_picture" class="img-responsive profile_img" alt="">
                                 <img v-else src="images/img/evie_default_bg.jpeg" class="img-responsive profile_img" alt="">
+                                <router-link :to="{ path: '/search/2/Lagos' }"><i id="bck" class="fas fa-arrow-left pull-right"></i> </router-link>
                             </div>
                         </div>
                         <div class="col-md-10">
@@ -48,7 +49,7 @@
                     <a class="nav-link" data-toggle="tab" href="#gallery">Gallery</a>
                     </li>
                 </ul>
-                    
+
                 <!-- Tab panes -->
                 <div class="tab-content card provider_profile_card">
                     <div id="overview" class="container tab-pane active">
@@ -62,12 +63,11 @@
                                                 <th><i class="fas fa-edit ic"></i>&nbsp; CAC Reg. No:</th>
                                                 <td>AF1234</td>
                                             </tr> -->
-                                        
+
                                             <tr>
                                                 <th><i class="fas fa-edit ic"></i>&nbsp; Licence No:</th>
-                                                <label v-if="result.licence !== 'undefined'">{{ result.licence}}</label>
                                                 <td  v-if="result.status == 0" class="unverified"> Not Confirmed <span class="fa fa-check"></span></td>
-                                                <td  v-else class="verified"> Not Confirmed <span class="fa fa-check"></span></td>
+                                                <td  v-else class="verified"> Confirmed <span class="fa fa-check"></span></td>
                                             </tr>
                                             <tr>
                                                 <th><i class="fas fa-user ic"></i>&nbsp; Pharmaceutical Reg. Bodies:</th>
@@ -85,7 +85,7 @@
                                                 <th><i class="fas fa-phone ic"></i>&nbsp; Telephone:</th>
                                                 <td><span class="">{{ result.telephone }}</span></td>
                                             </tr>
-                                        
+
                                             <tr>
                                                 <th><i class="fas fa-envelope ic"></i>&nbsp; Email:</th>
                                                 <td><span class=""><a v-if="result.user" :href="'mailto:'+result.user.email">Send Email to Pharmacy</a></span></td>
@@ -121,7 +121,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Review messages</th>
-                                    <th>Rating</th>                                      
+                                    <th>Rating</th>
                                 </tr>
                                 </thead>
                                 <tbody>

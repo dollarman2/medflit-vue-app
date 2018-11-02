@@ -9,7 +9,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <i class="fas fa-search search-icon" @click="searchUser()"></i>
-                                <input type="text" class="input3"  v-model="search" id="search" placeholder="Search doctor by city, name etc...">
+                                <input type="text" class="input3"  v-model="search" id="search" placeholder="Search doctor by city, name etc..." v-on:keyup.enter="searchUser()">
                             </div>
                             <div class="col-md-3">
                                 <select name="" id="" class="select3" v-model="specialty" v-on:change="searchPlanSpecialty()">
@@ -30,8 +30,8 @@
                     <div class="card search_area" v-if="option == 2">
                         <div class="row">
                             <div class="col-md-12">
-                                <i class="fas fa-search search-icon"></i>
-                                <input type="text" class="input3" name="" id='' placeholder="Search for pharmacy by city, name etc...">
+                                <i class="fas fa-search search-icon" @click="searchUser()"></i>
+                                <input type="text" class="input3" name="" id='' placeholder="Search for pharmacy by city, name etc..." v-on:keyup.enter="searchUser()">
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <i class="fas fa-search search-icon"></i>
-                                <input type="text" class="input3" name="" id='' placeholder="Search for hospital by city, name etc...">
+                                <input type="text" class="input3" name="" id='' placeholder="Search for hospital by city, name etc..." v-on:keyup.enter="searchUser()">
                             </div>
                         </div>
                     </div>
@@ -87,13 +87,19 @@
                                     </router-link>
                                 </h3>
                                 <h6><i class="fas fa-user-md ic"></i>&nbsp; <span v-for="(special,index) in specialization">{{ (index == result.specialty_id) ? special : '' }}</span></h6>
+                                <h6 v-if="result.user">
+                                  {{ showOnline(result.user.id) }}
+                                  <span id="online_status" v-if="user_status == 'Online'">Online</span>
+                                  <span id="online_status" v-else>Offline</span>
+                                </h6>
+                                <h6 v-else>{{ showOnline(result.id) }}
+                                  <span id="online_status" v-if="user_status == 'Online'">Online</span>
+                                  <span id="online_status" v-else>Offline</span>
+                                </h6>
                                 <h6 class="h6" v-if="result.years_of_experience">{{ result.years_of_experience }} Years Of Experience</h6>
                                 <h6 v-if="result.medium_of_service == 1">Medium: Online</h6>
                                 <h6 v-if="result.medium_of_service == 2">Medium: Home Service</h6>
                                 <h6 v-if="result.medium_of_service == 3">Medium: Online & Home Service</h6>
-                                <div class="sub_details">
-                                    <h6 class=""><i class="fas fa-map-pin ic"></i> {{ result.medical_organization }}<br><b v-if="result.profile">{{ result.profile.address }}</b><b v-else>{{ result.address }}</b></h6>
-                                </div>
                                 <div class="" v-if="result.rating">
                                     <span v-bind:class="(result.rating.rating_count >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
                                     <span v-bind:class="(result.rating.rating_count >= 2) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
@@ -111,8 +117,8 @@
                                     <span>({{ (result.total_rating) ? result.total_rating : 0 }} review)</span><br>
                                 </div>
                                 <div class="provider-appointment-button buttons">
-                                    <span><a v-if="result.profile" v-bind:href="'tel:'+result.profile.telephone" class="btn____ btn-login btn-sm"><i class="fas fa-phone"></i>&nbsp; Call Hospital</a>
-                                    <a v-else-if="result.telephone" v-bind:href="'tel:'+result.telephone" class="btn____ btn-login btn-sm"><i class="fas fa-phone"></i>&nbsp; Call Hospital</a></span>
+                                    <span><a v-if="result.profile" v-bind:href="'tel:'+result.profile.telephone" class="btn____ btn-login btn-sm"><i class="fas fa-phone"></i>&nbsp; Call Doctor</a>
+                                    <a v-else-if="result.telephone" v-bind:href="'tel:'+result.telephone" class="btn____ btn-login btn-sm"><i class="fas fa-phone"></i>&nbsp; Call Doctor</a></span>
                                     <span><a @click="ShowSchedule(result.user_id)" class="view-availability-btn btn____ btn-register btn-sm" id="show_hide"><i class="fas fa-calendar"></i>&nbsp; Book Appointment</a></span>
                                 </div>
                                 <div class="Providerschedule1 col-md-12" style="display:none;"></div>
@@ -222,25 +228,35 @@
                         <div class="row">
                             <div class="col-md-2">
                                 <div class="">
-                                    <img src="images/img/evie_default_bg.jpeg" class="img-responsive pro_img" alt="">
+                                    <img v-bind:src="'https://app.medflit.com/'+result.hospital_image" class="img-responsive pro_img" alt="">
                                 </div>
                             </div>
                             <div class="col-md-8">
                                 <div class="pharm-details">
-                                    <h3><a href="hospital-profile.html">Dove Specialist Hospital</a></h3>
-                                    <div class="ratings">
-                                        <span class="fas fa-star"></span>
-                                        <span class="fas fa-star"></span>
-                                        <span class="fas fa-star"></span>
-                                        <span class="fas fa-star"></span>
-                                        <span class="fas fa-star"></span>
-                                        <span class="reviews">(44 reviews)</span>
+                                    <router-link :to="{ name: 'HospitalProfile',params:{ id: result.slug } }">
+                                     <h3>{{ result.hospital_name }}</h3>
+                                    </router-link>
+                                    <div class="" v-if="result.rating">
+                                        <span v-bind:class="(result.rating.rating_count >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 2) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 3) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 4) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 5) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                        <span>({{ (result.rating.total_rating != '') ? result.rating.total_rating : 0  }} review)</span>
+                                    </div>
+                                    <div class="" v-else>
+                                        <span v-bind:class="(result.rating_count >= 1) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(result.rating_count >= 2) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(result.rating_count >= 3) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(result.rating_count >= 4) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(result.rating_count >= 5) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                        <span>({{ (result.total_rating) ? result.total_rating : 0 }} review)</span><br>
                                     </div>
                                     <div class="sub_details">
-                                        <h6 class=""><i class="fas fa-map-pin ic"></i> 40, Balogun Street, Lagos, Nigeria.</h6>
+                                        <h6 class=""><i class="fas fa-map-pin ic"></i>{{ result.hospital_address }}</h6>
                                     </div>
                                     <div class="buttons">
-                                        <span><a href="" class="btn____ btn-register btn-sm"><i class="fas fa-phone"></i>&nbsp; Contact Hospital</a></span>
+                                        <span><a :href="'tel:'+result.hospital_phone" class="btn____ btn-register btn-sm"><i class="fas fa-phone"></i>&nbsp; Contact Hospital</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -301,20 +317,6 @@
                         </div>
                         <hr>
                         </div>
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="provider_avatar">
-                                    <img src="images/img/evie_default_bg.jpeg" class="img-responsive doc_img" alt="">
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="doc_details">
-                                    <h6 class="ic name">MedBoss Pharmacy</h6>
-                                    <h6 class="hosp">40, Olayiwola Close, Epe, Lagos, Nigeria.</h6>
-                                    <h6 class="dir ic"><i class="fas fa-map-pin"></i>&nbsp; Get directions</h6>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <!--Hospital Closeby-->
@@ -323,18 +325,18 @@
                             Hospital Closeby
                         </div>
                         <hr>
-                        <div>
+                        <div v-for="(result,index) in near_results">
                         <div class="row">
                             <div class="col-4">
                                 <div class="provider_avatar">
-                                    <img src="images/img/evie_default_bg.jpeg" class="img-responsive doc_img" alt="">
+                                    <img v-bind:src="'https://app.medflit.com/'+result.hospital_image" class="img-responsive doc_img" alt="">
                                 </div>
                             </div>
                             <div class="col-8">
                                 <div class="doc_details">
-                                    <h6 class="ic name">Dove Specialist Hospital</h6>
-                                    <h6 class="hosp">40, Olayiwola Close, Epe, Lagos, Nigeria.</h6>
-                                    <h6 class="dir ic"><i class="fas fa-map-pin"></i>&nbsp; Get directions</h6>
+                                    <h6 class="ic name">{{ result.hospital_name }}</h6>
+                                    <h6 class="hosp">{{ result.address }}</h6>
+                                    <h6 class="dir ic"><a target="_blank" :href="'https://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'"><i class="fas fa-map-pin"></i>&nbsp; Get directions</a></h6>
                                 </div>
                             </div>
                         </div>
@@ -449,7 +451,8 @@
                 time4:'',
                 counter:0,
                 direction:'',
-                function_name:{}
+                function_name:{},
+                user_status:''
             }
         },
         components:{
@@ -756,6 +759,13 @@
                         $('.schedule-loader').hide();
                       },2000);
                     console.log(this.cities);
+                });
+            },
+
+            showOnline(value){
+              axios.get('http://app.medflit.com/api/online/'+value).then(response => {
+                    console.log(response.data.status);
+                    this.user_status = response.data.status;
                 });
             }
         }
