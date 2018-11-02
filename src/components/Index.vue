@@ -88,21 +88,21 @@
                             <img src="/static/images/svg/patient.svg" class="step__image">
                         </div>
                         <h4>Patients</h4>
-                        <p class="step__text text-center">Medflit is a convenient and affordable telemedicine platform that allows you to talk to a board-certified doctor by phone or video.</p>
+                        <p class="step__text text-center">Medflit is a convenient and affordable platform that allows you to book hospital, talk to a doctor and get medication from nearest pharmacy.</p>
                     </div>
                     <div class="step">
                         <div class="step__media">
                             <img src="/static/images/svg/provider.svg" class="step__image">
                         </div>
                         <h4>Providers</h4>
-                        <p class="step__text text-center">This is for doctors to sign up as family medicine, dermatologists, cardiologists, and other medical specialists.</p>
+                        <p class="step__text text-center">Our app allows you to put up your profession online as family medicine, dermatologists, cardiologists, and other medical specialists.</p>
                     </div>
                     <div class="step">
                         <div class="step__media">
                             <img src="/static/images/svg/pharmacy.svg" class="step__image">
                         </div>
                         <h4>Pharmacies</h4>
-                        <p class="step__text text-center">If you are a pharmacy owner, this page is for you to register your pharmacy business and your pharmacist.</p>
+                        <p class="step__text text-center">If you are a pharmacy owner, our app is for you to register your pharmacy business and your pharmacist.</p>
                     </div>
                 </div>
             </div>
@@ -121,7 +121,7 @@
                             <img src="/static/images/svg/partner.svg" class="step__image">
                         </div>
                         <h4>Partners</h4>
-                        <p class="step__text text-center">We welcome schools, companies, organizations to take advantage of telemedicine software and use it for their respective businesses.</p>
+                        <p class="step__text text-center">We welcome schools, companies, organizations to take advantage of telemedicine platform and use it for their respective businesses.</p>
                     </div>
                 </div>
             </div>

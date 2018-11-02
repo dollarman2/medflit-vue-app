@@ -18,7 +18,7 @@
                                 <h6 v-if="result.status == 0" class="unverified"><i class="fas fa-thumbs-down"></i>&nbsp; Pharmacy registration not verified</h6>
                                 <h6 v-else class="verified"><i class="fas fa-thumbs-down"></i>&nbsp; Pharmacy registration not verified</h6>
 
-                                <div class="ratings" v-if="result.rating">
+                                <div class="" v-if="result.rating">
                                     <span v-bind:class="(result.rating.rating_count >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
                                     <span v-bind:class="(result.rating.rating_count >= 2) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
                                     <span v-bind:class="(result.rating.rating_count >= 3) ? 'fas fa-star ratings' : 'fas fa-star'"></span>

@@ -6,27 +6,27 @@
                   <div class="row">
                       <!-- <div class="col-md-2"> -->
                           <div class="provider_avatar">
-                              <img src="images/img/evie_default_bg.jpeg" class="img-responsive profile_img" alt="">
+                              <img v-if="result.hospital_image" v-bind:src="'https://app.medflit.com/'+result.hospital_image" class="img-responsive profile_img" alt="">
+                              <img v-else src="/static/images/img/evie_default_bg.jpeg" class="img-responsive profile_img" alt="">
                               <router-link :to="{ path: '/search/3/Lagos' }"><i id="bck" class="fas fa-arrow-left pull-right"></i> </router-link>
                           </div>
                       <!-- </div> -->
                       <!-- <div class="col-md-10"> -->
                           <div class="pro-details">
-                              <h3>Dove Specialist Hospital</h3>
-                              <h6 class=""><i class="fas fa-map-pin ic"></i> 40, Balogun Street, Lagos, Nigeria.</h6>
-                              <h6 class="verified"><i class="fas fa-thumbs-up"></i>&nbsp; Hospital registration verified</h6>
+                              <h3>{{result.hospital_name}}</h3>
+                              <h6 class=""><i class="fas fa-map-pin ic"></i> {{result.hospital_address}}</h6>
 
-                              <div class="ratings">
-                                  <span class="fas fa-star"></span>
-                                  <span class="fas fa-star"></span>
-                                  <span class="fas fa-star"></span>
-                                  <span class="fas fa-star"></span>
-                                  <span class="fas fa-star"></span>
-                                  <span class="reviews">(reviews)</span>
-                              </div>
+                              <div class="" v-if="result.rating">
+                                    <span v-bind:class="(result.rating.rating_count >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 2) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 3) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 4) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 5) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span>({{ (result.rating.total_rating != '') ? result.rating.total_rating : 0  }} review)</span>
+                                </div>
                               <div class="buttons">
-                                  <span><a href="" class="btn____ btn-login btn-sm"><i class="fas fa-map-marker"></i>&nbsp; Get Direction</a></span>
-                                  <span><a href="" class="btn____ btn-register btn-sm"><i class="fas fa-phone"></i>&nbsp; Call Hospital</a></span>
+                                  <span><a  v-if="result.profile" target="_blank" :href="'https://www.google.com/maps/dir/'+direction+'/'+result.hospital_address+'/?hl=en-US'" class="btn____ btn-login btn-sm"><i class="fas fa-map-marker"></i>&nbsp; Get Direction</a></span>
+                                  <span><a v-if="result.hospital_phone" v-bind:href="'tel:'+result.hospital_phone" class="btn____ btn-register btn-sm"><i class="fas fa-phone"></i>&nbsp; Call Hospital</a></span>
                               </div>
                           </div>
                       <!-- </div> -->
@@ -35,21 +35,11 @@
 
               <!-- Nav tabs -->
               <ul class="nav nav-tabs" role="tablist">
-                  <li class="nav-item">
-                      <a class="nav-link active" data-toggle="tab" href="#overview">Overview</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" data-toggle="tab" href="#doctors">Doctors(1)</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" data-toggle="tab" href="#review">Review</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" data-toggle="tab" href="#services">Services</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" data-toggle="tab" href="#hospital_branch">Hospital Branch(1)</a>
-                  </li>
+                <li class="nav-item"><a class="nav-link active" href="#overview" data-toggle="tab">Overview</a></li>
+                <li class="nav-item"><a class="nav-link" href="#doctors" data-toggle="tab">Doctors <span v-if="result.hospital_provider">{{ result.hospital_provider.length }}</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="#review" data-toggle="tab">Feedback <span v-if="result.reviews">{{ result.reviews.length }}</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="#services" data-toggle="tab" @click="Procedure()">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="#hospital_branch" data-toggle="tab">Hospital Branch <span v-if="result.hospital_branch"> {{ result.hospital_branch.length }}</span></a></li>
               </ul>
 
               <!-- Tab panes -->
@@ -57,8 +47,8 @@
                   <div id="overview" class="container tab-pane active" style="margin-bottom: 20px">
                       <div class="row">
                           <div class="col-md-8">
-                              <h3>About Dove Specialist Hospital</h3>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                              <h3>About {{ result.hospital_name }}</h3>
+                              <p>{{ result.description}}</p>
                           </div>
                       </div>
                       <div class="row">
@@ -67,35 +57,12 @@
                               <p>Mon - Sun</p>
                               <h6>12:00am - 11:59pm</h6>
                           </div>
-                          <div class="col-md-4">
-                              <h4>Services</h4>
-                              <ul class="list-group">
-                                  <li class="list-group-item d-flex justify-content-between align-items-center">
-                                      Dermatology
-                                      <span class="badge badge-success badge-pill"><i class="fas fa-check"></i></span>
-                                  </li>
-                                  <li class="list-group-item d-flex justify-content-between align-items-center">
-                                      Oncology
-                                      <span class="badge badge-success badge-pill"><i class="fas fa-check"></i></span>
-                                  </li>
-                              </ul>
-                          </div>
                           <div class="col-md-6">
                               <h4>Photos</h4>
                               <div class="row">
-                                  <div class="gall">
-                                      <a href="images/img/evie_default_bg.jpeg" data-toggle="lightbox" data-gallery="gallery">
-                                      <img src="images/img/evie_default_bg.jpeg" class="img-responsive pro_img" alt="">
-                                      </a>
-                                  </div>
-                                  <div class="gall">
-                                      <a href="images/img/hero_sm.png" data-toggle="lightbox" data-gallery="gallery">
-                                      <img src="images/img/hero_sm.png" class="img-responsive pro_img" alt="">
-                                      </a>
-                                  </div>
-                                  <div class="gall">
-                                      <a href="images/img/3.jpg" data-toggle="lightbox" data-gallery="gallery">
-                                      <img src="images/img/3.jpg" class="img-responsive pro_img" alt="">
+                                  <div class="gall" v-if="result.gallery" v-for="(gallery,index) in result.gallery">
+                                      <a v-bind:href="'https://app.medflit.com/images/gallery/'+gallery.filename" data-toggle="lightbox" data-gallery="gallery">
+                                      <img v-bind:src="'https://app.medflit.com/images/gallery/'+gallery.resized_name" class="img-responsive pro_img" alt="">
                                       </a>
                                   </div>
                               </div>
@@ -104,115 +71,200 @@
                   </div>
                   <div id="doctors" class="container tab-pane fade" style="padding-bottom: 20px;">
                       <h3>Doctors</h3>
-                      <div class="card provider_details_card">
+                      <div class="card provider_details_card" v-if="doctors" v-for="(result,index) in doctors">
                           <div class="row">
                               <div class="col-4">
                                   <div class="">
-                                      <img src="images/img/evie_default_bg.jpeg" class="img-responsive pro_img" alt="">
+                                    <img v-if="result.profile" v-bind:src="'https://app.medflit.com/'+result.profile.profile_picture" class="img-responsive pro_img" alt="">
+                                    <img v-else v-bind:src="'https://app.medflit.com/'+result.profile_picture" class="img-responsive pro_img" alt="">
                                   </div>
                               </div>
                               <div class="col-8">
-                                  <div class="mos">
-                                      <p>N1000/Basic Session</p>
-                                  </div>
+                                      <div class="mos" v-if="result.price">
+                                          <p>N{{ result.price }} / Online Session</p>
+                                      </div>
+                                      <div class="mos" v-if="result.hospital_price">
+                                          <p>N{{ result.hospital_price }} / Hospital Consultation</p>
+                                      </div>
+                                      <div class="mos" v-if="result.home_service_price">
+                                          <p>N{{ result.home_service_price }} / Home Consultation</p>
+                                      </div>
+                                      <input type="hidden" id="date_ref" :value="time">
+                                      <input type="hidden" id="date_ref" :value="time2">
+                                      <input type="hidden" id="date_ref" :value="time3">
+                                      <input type="hidden" id="date_ref" :value="time4">
                               </div>
                           </div>
                           <div class="row">
                               <div class="pro-details">
-                                  <h3><a href="doctor-profile.html" target="_blank">Dr. Jack Daniels, MD</a></h3>
-                                  <h6><i class="fas fa-user-md ic"></i>&nbsp; General practice <span class="yoe">(4 years experience)</span></h6>
-                                  <h6>Medium: Online</h6>
-                                  <div class="sub_details">
-                                      <h6 class="h6">May Clinic International</h6>
-                                      <h6 class=""><i class="fas fa-map-pin ic"></i> 40, Balogun Street, Lagos, Nigeria.</h6>
+                                  <h3 class="doc_details">
+                                    <router-link v-if="result.profile" :to="{ name: 'ProviderProfile',params:{ id: result.slug } }">
+                                        <span class="text-capitalize" style="text-decoration: none; color: #1D4BB7;">
+                                            <span v-for="(special,index) in classes" >{{ (index == result.profile.title == 1 ) ? "Dr." : '' }}</span>
+                                            {{ result.profile.first_name+' ' + result.profile.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.profile.title) ? special : '' }}</span>
+                                        </span>
+                                    </router-link>
+                                    <router-link v-else :to="{ name: 'ProviderProfile',params:{ id: result.slug } }">
+                                        <span class="text-capitalize" style="text-decoration: none; color: #1D4BB7;">
+                                            {{ result.first_name+' ' + result.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.title) ? special : '' }}</span>
+                                        </span>
+                                    </router-link>
+                                </h3>
+                                  <h6><i class="fas fa-user-md ic"></i>&nbsp; <span v-for="(special,index) in specialization">{{ (index == result.specialty_id) ? special : '' }}</span></h6>
+
+                                <h6 class="h6" v-if="result.years_of_experience">{{ result.years_of_experience }} Years Of Experience</h6>
+                                <h6 v-if="result.medium_of_service == 1">Medium: Online</h6>
+                                <h6 v-if="result.medium_of_service == 2">Medium: Home Service</h6>
+                                <h6 v-if="result.medium_of_service == 3">Medium: Online & Home Service</h6>
+                                <div class="" v-if="result.rating">
+                                    <span v-bind:class="(result.rating.rating_count >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 2) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 3) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 4) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 5) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span>({{ (result.rating.total_rating != '') ? result.rating.total_rating : 0  }} review)</span>
+                                </div>
+                                  <div class="provider-appointment-button buttons">
+                                    <span><a v-if="result.profile" v-bind:href="'tel:'+result.profile.telephone" class="btn____ btn-login btn-sm"><i class="fas fa-phone"></i>&nbsp; Call Doctor</a>
+                                    <a v-else-if="result.telephone" v-bind:href="'tel:'+result.telephone" class="btn____ btn-login btn-sm"><i class="fas fa-phone"></i>&nbsp; Call Doctor</a></span>
+                                    <span><a @click="ShowSchedule(result.user_id)" class="view-availability-btn btn____ btn-register btn-sm" id="show_hide"><i class="fas fa-calendar"></i>&nbsp; Book Appointment</a></span>
                                   </div>
-                                  <div class="ratings">
-                                      <span class="fas fa-star"></span>
-                                      <span class="fas fa-star"></span>
-                                      <span class="fas fa-star"></span>
-                                      <span class="fas fa-star"></span>
-                                      <span class="fas fa-star"></span>
-                                      <span class="reviews">(46 reviews)</span>
-                                  </div>
-                                  <div class="buttons">
-                                      <span><a href="" class="btn___ btn-login btn-sm"><i class="fas fa-phone"></i>&nbsp; Call Hospital</a></span>
-                                      <span><a href="" class="btn___ btn-register btn-sm"><i class="fas fa-calendar"></i>&nbsp; Book Appointment</a></span>
-                                  </div>
+                                  <div class="Providerschedule1 col-md-12" style="display:none;"></div>
+                                    <div class="schedule-loader text-center">Loading availability...</div>
+                                    <div class="provider-availability-div scheduler" :id="'scheduler'+result.user_id">
+                                        <div class="schedule_list">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <button class="btn next btn-flat btn-sm btn-success pull-right" style="margin-right: 20px;" v-on:click="next(result.user_id)">Next</button>
+                                                    <button class="btn prev btn-flat btn-sm btn-success pull-right" style="margin-right: 5px;" v-on:click="previous(result.user_id)">Prev</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="Providerschedule1 col-md-12" style="display:none;"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 display-schedule">
+
+                                                    <div class="col-md-3">
+                                                      <h6>{{ time }}</h6>
+                                                      <ul>
+                                                        <li v-for="(time,index) in timeslots">
+                                                        <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                                        </li>
+                                                      </ul>
+
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                    <h6>{{ time2 }}</h6>
+                                                      <ul>
+                                                        <li v-for="(time,index) in timeslots2">
+                                                        <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                                        </li>
+                                                      </ul>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                      <h6>{{ time3 }}</h6>
+                                                      <ul>
+                                                        <li v-for="(time,index) in timeslots3">
+                                                        <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                                        </li>
+                                                      </ul>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                    <h6>{{ time4 }}</h6>
+
+                                              <ul>
+                                        <li v-for="(time,index) in timeslots4">
+                                                        <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
+                                                        </li>
+                                                      </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                               </div>
                           </div>
                       </div>
                   </div>
                   <div id="review" class="container tab-pane fade" style="padding-bottom: 20px;">
                       <h3>Hospital Review</h3>
-                      <div class="table-responsive">
-                          <table class="table">
+                        <div class="table-responsive">
+                            <table class="table">
                               <thead>
-                              <tr>
+                                <tr>
                                   <th>#</th>
                                   <th>Review messages</th>
                                   <th>Rating</th>
-                              </tr>
+                                </tr>
                               </thead>
                               <tbody>
-                              <tr>
-                                  <td>1</td>
-                                  <td>Good Pharmacy</td>
+                                <tr v-if="result.reviews" v-for="(review,index) in result.reviews">
+                                  <td>{{ index+1 }}</td>
+                                  <td> {{ review.message}}</td>
                                   <td>
-                                  <div class="ratings">
-                                      <span class="fas fa-star"></span>
-                                      <span class="fas fa-star"></span>
-                                      <span class="fas fa-star"></span>
-                                      <span class="fas fa-star"></span>
-                                      <span class="fas fa-star"></span>
-                                  </div>
+                                    <div style="margin-top: 0px">
+                                        <span v-bind:class="(review.rating >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                        <span v-bind:class="(review.rating >= 2) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                        <span v-bind:class="(review.rating >= 3) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                        <span v-bind:class="(review.rating >= 4) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                        <span v-bind:class="(review.rating >= 5) ? 'fas fa-star ratings' : 'fas fa-star'"></span><br>
+                                    </div>
                                   </td>
-                              </tr>
+                                </tr>
                               </tbody>
-                          </table>
-                      </div>
-                  </div>
+                            </table>
+                        </div>
+                    </div>
                   <div id="services" class="container tab-pane fade" style="padding-bottom: 20px;">
                       <h3>Services</h3>
                       <div class="row">
                           <div class="col-md-6 col-xs-12 pro-details">
                               <ul class="list-group">
-                                  <li class="list-group-item d-flex justify-content-between align-items-center">
-                                      Dermatology
-                                      <span class="badge badge-success badge-pill"><i class="fas fa-check"></i></span>
-                                  </li>
-                                  <li class="list-group-item d-flex justify-content-between align-items-center">
-                                      Oncology
-                                      <span class="badge badge-success badge-pill"><i class="fas fa-check"></i></span>
-                                  </li>
+                                  <li class="list-group-item d-flex justify-content-between align-items-center" v-if="result.services_and_procedures" v-for="(delivery,index) in procedure">{{ delivery }}<span class="badge badge-success badge-pill"><i class="fas fa-check"></i></span></li>
                               </ul>
                           </div>
                       </div>
                   </div>
-                  <div id="hospital_branch" class="container tab-pane fade" style="padding-bottom: 20px;">
+                  <div id="hospital_branch" class="container tab-pane fade" style="padding-bottom: 20px;" >
                       <h3>Our Branches</h3>
-                      <div class="card provider_details_card">
+                      <div class="card provider_details_card" v-if="hospitals" v-for="(result,index) in hospitals">
                           <div class="row">
                               <div class="col-md-2">
                                   <div class="">
-                                      <img src="images/img/evie_default_bg.jpeg" class="img-responsive pro_img" alt="">
+                                      <img v-bind:src="'https://app.medflit.com/'+result.hospital_image" class="img-responsive pro_img" alt="">
                                   </div>
                               </div>
                               <div class="col-md-8">
                                   <div class="pharm-details">
-                                      <h3><a href="hospital-profile.html">Dove Specialist Hospital</a></h3>
-                                      <div class="ratings">
-                                          <span class="fas fa-star"></span>
-                                          <span class="fas fa-star"></span>
-                                          <span class="fas fa-star"></span>
-                                          <span class="fas fa-star"></span>
-                                          <span class="fas fa-star"></span>
-                                          <span class="reviews">(32 reviews)</span>
+                                      <router-link :to="{ name: 'HospitalProfile',params:{ id: result.slug } }">
+                                      <h3>{{ result.hospital_name }}</h3>
+                                      </router-link>
+                                      <div class="" v-if="result.rating">
+                                          <span v-bind:class="(result.rating.rating_count >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                          <span v-bind:class="(result.rating.rating_count >= 2) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                          <span v-bind:class="(result.rating.rating_count >= 3) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                          <span v-bind:class="(result.rating.rating_count >= 4) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                          <span v-bind:class="(result.rating.rating_count >= 5) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                          <span>({{ (result.rating.total_rating != '') ? result.rating.total_rating : 0  }} review)</span>
+                                      </div>
+                                      <div class="" v-else>
+                                          <span v-bind:class="(result.rating_count >= 1) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                          <span v-bind:class="(result.rating_count >= 2) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                          <span v-bind:class="(result.rating_count >= 3) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                          <span v-bind:class="(result.rating_count >= 4) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                          <span v-bind:class="(result.rating_count >= 5) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                          <span>({{ (result.total_rating) ? result.total_rating : 0 }} review)</span><br>
                                       </div>
                                       <div class="sub_details">
-                                          <h6 class=""><i class="fas fa-map-pin ic"></i> 40, Balogun Street, Lagos, Nigeria.</h6>
+                                          <h6 class=""><i class="fas fa-map-pin ic"></i>{{ result.hospital_address }}</h6>
                                       </div>
                                       <div class="buttons">
-                                          <span><a href="" class="btn____ btn-register btn-sm"><i class="fas fa-phone"></i>&nbsp; Contact Hospital</a></span>
+                                          <span><a :href="'tel:'+result.hospital_phone" class="btn____ btn-register btn-sm"><i class="fas fa-phone"></i>&nbsp; Contact Hospital</a></span>
                                       </div>
                                   </div>
                               </div>

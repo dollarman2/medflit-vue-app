@@ -22,7 +22,7 @@
                                     <h6 class="h6">{{ result.medical_organization }}</h6>
                                     <!-- <h6 class=""v-if="result.profile"><i class="fas fa-map-pin ic"></i> {{ result.profile.address }}</h6> -->
                                 </div>
-                                <div class="ratings" v-if="result.rating">
+                                <div class="" v-if="result.rating">
                                     <span v-bind:class="(result.rating.rating_count >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
                                     <span v-bind:class="(result.rating.rating_count >= 2) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
                                     <span v-bind:class="(result.rating.rating_count >= 3) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
