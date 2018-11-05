@@ -52,10 +52,10 @@
                           </div>
                       </div>
                       <div class="row">
-                          <div class="col-md-2">
+                          <div class="col-md-4" v-if="result.availability_start">
                               <h4>Timing</h4>
                               <p>Mon - Sun</p>
-                              <h6>12:00am - 11:59pm</h6>
+                              <h6>{{ result.availability_start }} - {{ result.availability_end }}</h6>
                           </div>
                           <div class="col-md-6">
                               <h4>Photos</h4>
@@ -76,7 +76,6 @@
                               <div class="col-4">
                                   <div class="">
                                     <img v-if="result.profile" v-bind:src="'https://app.medflit.com/'+result.profile.profile_picture" class="img-responsive pro_img" alt="">
-                                    <img v-else v-bind:src="'https://app.medflit.com/'+result.profile_picture" class="img-responsive pro_img" alt="">
                                   </div>
                               </div>
                               <div class="col-8">
@@ -236,14 +235,18 @@
                           <div class="row">
                               <div class="col-md-2">
                                   <div class="">
-                                      <img v-bind:src="'https://app.medflit.com/'+result.hospital_image" class="img-responsive pro_img" alt="">
+                                      <img  v-if="result.hospital_image" v-bind:src="'https://app.medflit.com/'+result.hospital_image" class="img-responsive pro_img" alt="">
+                                      <img v-else src="/static/images/img/evie_default_bg.jpeg" class="img-responsive profile_img" alt="">
                                   </div>
                               </div>
                               <div class="col-md-8">
-                                  <div class="pharm-details">
-                                      <router-link :to="{ name: 'HospitalProfile',params:{ id: result.slug } }">
-                                      <h3>{{ result.hospital_name }}</h3>
+                                  <div class="pro-details">
+                                      <h3 class="doc_details">
+                                        <router-link :to="{ name: 'HospitalProfile',params:{ id: result.slug } }">
+                                        <h3>{{ result.hospital_name }}</h3>
                                       </router-link>
+                                      </h3>
+
                                       <div class="" v-if="result.rating">
                                           <span v-bind:class="(result.rating.rating_count >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
                                           <span v-bind:class="(result.rating.rating_count >= 2) ? 'fas fa-star ratings' : 'fas fa-star'"></span>

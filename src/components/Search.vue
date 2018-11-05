@@ -77,7 +77,7 @@
                                     <router-link v-if="result.profile" :to="{ name: 'ProviderProfile',params:{ id: result.slug } }">
                                         <span class="text-capitalize" style="text-decoration: none; color: #1D4BB7;">
                                             <span v-for="(special,index) in classes" >{{ (index == result.profile.title == 1 ) ? "Dr." : '' }}</span>
-                                            {{ result.profile.first_name+' ' + result.profile.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.profile.title) ? special : '' }}</span>
+                                            {{ result.profile.first_name+' ' + result.profile.last_name }}<span v-for="(special,index) in classes" >{{ (index == result.profile.title) ? ','+special : '' }}</span>
                                         </span>
                                     </router-link>
                                     <router-link v-else :to="{ name: 'ProviderProfile',params:{ id: result.slug } }">
