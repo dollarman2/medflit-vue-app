@@ -8,9 +8,9 @@
 							<router-link :to="{ name: 'Home' }"><img src="/static/images/Medflit-LogoBlue.png" class="img-responsive" style="width: 90px; height: auto"></router-link>
 						</div>
 						<div class="contacts">
-							<i class="fa fa-envelope">&nbsp;<a href="mailto: info@medflithealthresources.com">info@medflithealthresources.com</a></i><br>
-							<i class="fa fa-phone">&nbsp;<a href="tel:+2348135845010">+234 813 584 5010</a></i><br>
-							<i class="fa fa-map-marker">&nbsp;24, Prince Ibrahim Eletu Avenue, Osapa London, Lekki, Lagos, Nigeria.</i>
+							<i class="fas fa-envelope">&nbsp;&nbsp;</i><a href="mailto: info@medflithealthresources.com"> info@medflithealthresources.com</a><br>
+							<i class="fas fa-phone">&nbsp;&nbsp;</i><a href="tel:+2348135845010"> +234 813 584 5010</a><br>
+							<i class="fas fa-map-marker">&nbsp;&nbsp;</i> 24, Prince Ibrahim Eletu Avenue, Osapa London, Lekki, Lagos, Nigeria.
 						</div>
 					</div>
 					<div class="col-md-9">
@@ -22,7 +22,7 @@
 											<h4 class="footer__heading">PATIENTS</h4>
 										</div>
 										<div class="footer__row">
-											<router-link :to="{ name: 'Condition' }" target="_blank" class="footer__link">Condition</router-link>
+											<router-link :to="{ name: 'Condition' }" class="footer__link">Condition</router-link>
 										</div>
 										<div class="footer__row">
 											<router-link :to="{ name: 'Home' }" target="_blank" class="footer__link">Sign Up</router-link>
@@ -31,7 +31,7 @@
 											<router-link :to="{ path: '/search/1/Lagos' }" class="footer__link">Search for a doctor</router-link>
 										</div>
 										<div class="footer__row">
-											<router-link :to="{ path: '/search/1/Lagos' }" class="footer__link">Search for a pharmacy</router-link>
+											<router-link :to="{ path: '/search/2/Lagos' }" class="footer__link">Search for a pharmacy</router-link>
 										</div>
 									</div>
 
@@ -40,16 +40,16 @@
 											<h4 class="footer__heading">PROVIDER</h4>
 										</div>
 										<div class="footer__row">
-											<a href="#" target="_blank" class="footer__link">How you earn</a>
+											<a href="http://app.medflit.com/register" target="_blank" class="footer__link">How you earn</a>
 										</div>
 										<div class="footer__row">
-											<a href="#" target="_blank" class="footer__link">Providers FAQ</a>
+											<router-link :to="{ name: 'Provider' }"  target="_blank" class="footer__link">Providers FAQ</router-link>
 										</div>
 										<div class="footer__row">
 											<a href="#" target="_blank" class="footer__link">Partnering hospitals</a>
 										</div>
 										<div class="footer__row">
-											<a href="#" class="footer__link">Become a provider</a>
+											<a href="http://app.medflit.com/register" class="footer__link">Become a provider</a>
 										</div>
 									</div>
 								</div>
@@ -59,16 +59,16 @@
 											<h4 class="footer__heading">PHARMACY</h4>
 										</div>
 										<div class="footer__row">
-											<router-link :to="{ name: 'Home' }" target="_blank" class="footer__link">Register your pharmacy</router-link>
+											<a href="https://app.medflit.com/register" target="_blank" class="footer__link">Register your pharmacy</a>
 										</div>
 										<div class="footer__row">
-											<router-link :to="{ name: 'Pharmacy' }" target="_blank" class="footer__link">Pharmacy FAQ</router-link>
+											<router-link :to="{ name: 'Pharmacy' }" class="footer__link">Pharmacy FAQ</router-link>
 										</div>
 										<div class="footer__row">
-											<router-link :to="{ name: 'Home' }" target="_blank" class="footer__link">Partnering programs</router-link>
+											<router-link :to="{ name: 'Home' }" class="footer__link">Partnering programs</router-link>
 										</div>
 										<div class="footer__row">
-											<router-link :to="{ name: 'Home' }" class="footer__link">Refer a pharmacy</router-link>
+											<a href="https://app.medflit.com/register" target="_blank" class="footer__link">Refer a pharmacy</a>
 										</div>
 									</div>
 
@@ -77,13 +77,13 @@
 											<h4 class="footer__heading">PARTNERS</h4>
 										</div>
 										<div class="footer__row">
-											<router-link :to="{ name: 'Home' }" target="_blank" class="footer__link">Join Us</router-link>
+											<a href="https://app.medflit.com/register" target="_blank" class="footer__link">Join Us</a>
 										</div>
 										<div class="footer__row">
-											<router-link :to="{ name: 'Home' }" target="_blank" class="footer__link">Health Checkup</router-link>
+											<a href="https://app.medflit.com/login" target="_blank" class="footer__link">Health Checkup</a>
 										</div>
 										<div class="footer__row">
-											<router-link :to="{ name: 'Home' }" target="_blank" class="footer__link">Our Clients</router-link>
+											<router-link :to="{ name: 'Home' }" class="footer__link">Our Clients</router-link>
 										</div>
 										<div class="footer__row">
 											<router-link :to="{ name: 'Partner' }" class="footer__link">Partners</router-link>
@@ -99,10 +99,10 @@
 		<div class="footer--dark2">
 			<div class="container">
 				<div class="pull-left socials">
-					<i class="fa fa-facebook"></i>
-					<i class="fa fa-instagram"></i>
-					<i class="fa fa-twitter"></i>
-					<i class="fa fa-linkedin"></i>
+					<i class="fas fa-facebook">&nbsp;</i>
+					<i class="fas fa-instagram">&nbsp;</i>
+					<i class="fas fa-twitter">&nbsp;</i>
+					<i class="fas fa-linkedin">&nbsp;</i>
 				</div>
 				<div class="cp"><h6 style="text-align: right">© 2018 <a href="http://medflithealthresources.com" target="_blank" class="">Medflit Health Resources</a>.</h6></div>
 			</div>

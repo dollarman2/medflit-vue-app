@@ -14,7 +14,7 @@
                                 <div class="row no-gutters text-center">
                                     <div class="col-3">
                                         <div class="form-group">
-                                            <select name="" id="" class="select2" v-model="option">
+                                            <select class="select2" v-model="option">
                                               <option value="">--Select Type--</option>
                                               <option value="1" :selected="1 == option ? 'true' : 'false'">Find Doctors</option>
                                               <option value="2" :selected="2 == option ? 'true' : 'false'">Find Pharmacies</option>
@@ -27,7 +27,8 @@
                                     </div>
                                     <div class="col-1">
                                         <a @click="Search()" class="btn__ btn-register btn-sm">
-                                            <i class="fa fa-search"></i></a>
+                                          <i class="fas fa-search"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

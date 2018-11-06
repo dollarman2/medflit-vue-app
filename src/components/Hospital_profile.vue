@@ -242,7 +242,7 @@
                               <div class="col-md-8">
                                   <div class="pro-details">
                                       <h3 class="doc_details">
-                                        <router-link :to="{ name: 'HospitalProfile',params:{ id: result.slug } }">
+                                        <router-link target="_blank" :to="{ name: 'HospitalProfile',params:{ id: result.slug } }">
                                         <h3>{{ result.hospital_name }}</h3>
                                       </router-link>
                                       </h3>

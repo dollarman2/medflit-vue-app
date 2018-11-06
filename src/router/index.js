@@ -6,6 +6,7 @@ import Partner from '@/components/Partner'
 import Provider from '@/components/Provider'
 import Pharmacy from '@/components/Pharmacy'
 import Condition from '@/components/Condition'
+import Contact from '@/components/Contact'
 import Faq from '@/components/Faq'
 import ProviderProfile from '@/components/Provider_profile'
 import PharmacyProfile from '@/components/Pharmacy_profile'
@@ -48,6 +49,10 @@ export default new Router({
         path: '/condition',
         name: 'Condition',
         component: Condition
+    }, {
+        path: '/contact',
+        name: 'Contact',
+        component: Contact
     }, {
         path: '/faq',
         name: 'Faq',

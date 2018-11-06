@@ -13,18 +13,14 @@
 
 			<ul class="list-unstyled components">
 				<li>
-          <router-link :to="{ name: 'Home' }">
-						<i class="fas fa-home"></i>
-						&nbsp;&nbsp;&nbsp;Home
-					</router-link>
 					<router-link :to="{ name: 'Condition' }">
-						<i class="fas fa-bars"></i>
+						<i class="fa fa-bars"></i>
 						&nbsp;&nbsp;&nbsp;Conditions
 					</router-link>
-					<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
-						<i class="fas fa-file"></i>
+					<router-link :to="{ name: 'Home' }" data-toggle="collapse" aria-expanded="false">
+						<i class="fa fa-file"></i>
 						&nbsp;&nbsp;&nbsp;Solutions
-					</a>
+					</router-link>
 					<ul class="collapse list-unstyled" id="pageSubmenu">
 						<li><router-link :to="{ name: 'Home' }">Patient</router-link></li>
 						<li><router-link :to="{ name: 'Provider' }">Provider</router-link></li>
@@ -33,22 +29,22 @@
 					</ul>
 				</li>
 				<li>
-					<router-link :to="{ name: 'Faq' }">
+					<router-link :to="{ name: 'Partner' }">
 						<i class="fa fa-paperclip"></i>
 						&nbsp;&nbsp;&nbsp;FAQs
 					</router-link>
 				</li>
 				<li>
-					<router-link :to="{ name: 'Contact' }">
+					<a href="#">
 						<i class="fa fa-send"></i>
 						&nbsp;&nbsp;&nbsp;Contact
-					</router-link>
+					</a>
 				</li>
 			</ul>
 
 			<ul class="list-unstyled CTAs">
-				<li><a href="https://app.medflit.com/login" class="btn_ btn-login2">LOGIN</a></li>
-				<li><a href="https://app.medflit.com/register" class="btn_ btn-register2">REGISTER</a></li>
+				<li><a href="login.html" class="btn_ btn-login2">LOGIN</a></li>
+				<li><a href="register.html" class="btn_ btn-register2">REGISTER</a></li>
 			</ul>
 		</nav>
 
@@ -63,8 +59,8 @@
 								<i class="fa fa-align-left"></i>
 							</button>
 						</span>
-						<span><a href="https://app.medflit.com/register" id="register" class="btn_ btn-register btn-sm reg">REGISTER</a></span>
-						<span><a href="https://app.medflit.com/login" id="login" class="btn_ btn-login btn-sm reg" style="">LOGIN</a></span>
+						<span><a href="register.html" id="register" class="btn_ btn-register btn-sm reg">REGISTER</a></span>
+						<span><a href="login.html" id="login" class="btn_ btn-login btn-sm reg" style="">LOGIN</a></span>
 					</div>
 				</div>
 			</nav>

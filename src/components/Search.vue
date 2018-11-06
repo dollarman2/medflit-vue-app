@@ -123,7 +123,7 @@
                                 </div>
                                 <div class="Providerschedule1 col-md-12" style="display:none;"></div>
                                   <div class="schedule-loader text-center">Loading availability...</div>
-                                  <div class="provider-availability-div scheduler" :id="'scheduler'+result.user_id">
+                                  <div class="provider-availability-div scheduler col-12" :id="'scheduler'+result.user_id">
                                       <div class="schedule_list">
                                           <div class="row">
                                               <div class="col-md-12">
@@ -763,7 +763,7 @@
             },
 
             showOnline(value){
-              axios.get('http://app.medflit.com/api/online/'+value).then(response => {
+              axios.get('https://app.medflit.com/api/online/'+value).then(response => {
                     console.log(response.data.status);
                     this.user_status = response.data.status;
                 });
@@ -772,3 +772,65 @@
     }
 
 </script>
+<style scoped>
+ .scheduler {
+    margin-top: 1em;
+}
+
+.scheduler.container {
+    margin-top: 2em;
+}
+
+.scheduler .col-md-3 {
+    /* width: 10% !important; */
+    float: left;
+}
+
+.schedule_list {
+    height: 250px;
+    overflow: hidden;
+    overflow-y: scroll;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+}
+
+.scheduler .sm-width {
+    width: 100px;
+    float: left;
+    margin: 5px;
+}
+
+.scheduler ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.scheduler li a {
+    display: block;
+    background: #efefef;
+    padding: 10px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.scheduler .time-slot-item-span {
+    margin-left: 10px;
+}
+
+.timeslot-item {
+    background: none;
+    padding: 5px;
+    width: 100%;
+    margin: 1px;
+    border: 1px solid #777;
+}
+
+.panels-heading {
+    padding: 10px 15px 5px 15px;
+}
+
+.panels-body {
+    padding: 15px 15px 15px 15px;
+}
+</style>
