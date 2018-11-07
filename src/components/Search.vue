@@ -659,7 +659,7 @@
             },
             searchPlanSpecialty(){
               let component = this;
-                axios.get('http://127.0.0.1:8000/api/search_filter?search='+component.search+'&option='+component.option+'&specialty='+component.specialty+'&plan='+component.plan+'&page='+this.results.current_page)
+                axios.get('http://app.medflit.com/api/search_filter?search='+component.search+'&option='+component.option+'&specialty='+component.specialty+'&plan='+component.plan+'&page='+this.results.current_page)
                     .then(function (response) {
                       component.results = response.data.doctors;
                       component.items = response.data.count;
@@ -696,7 +696,7 @@
             },
             searchMeduim(value){
               let component = this;
-                axios.get('http://127.0.0.1:8000/api/search_filter?service='+value+'&option='+component.option+'&page='+this.results.current_page)
+                axios.get('http://app.medflit.com/api/search_filter?service='+value+'&option='+component.option+'&page='+this.results.current_page)
                     .then(function (response) {
                       component.results = response.data.doctors;
                       if(response.data.doctors.data == "" || response.data.doctors == ""){
