@@ -87,15 +87,15 @@
                                     </router-link>
                                 </h3>
                                 <h6><i class="fas fa-user-md ic"></i>&nbsp; <span v-for="(special,index) in specialization">{{ (index == result.specialty_id) ? special : '' }}</span></h6>
-                                <h6 v-if="result.user">
+                                <!-- <h6 v-if="result.user">
                                   {{ showOnline(result.user.id) }}
                                   <span id="online_status" v-if="user_status == 'Online'">Online</span>
                                   <span id="online_status" v-else>Offline</span>
-                                </h6>
-                                <h6 v-else>{{ showOnline(result.id) }}
+                                </h6> -->
+                                <!-- <h6 v-else>{{ showOnline(result.id) }}
                                   <span id="online_status" v-if="user_status == 'Online'">Online</span>
                                   <span id="online_status" v-else>Offline</span>
-                                </h6>
+                                </h6> -->
                                 <h6 class="h6" v-if="result.years_of_experience">{{ result.years_of_experience }} Years Of Experience</h6>
                                 <h6 v-if="result.medium_of_service == 1">Medium: Online</h6>
                                 <h6 v-if="result.medium_of_service == 2">Medium: Home Service</h6>
@@ -286,7 +286,7 @@
                                     </router-link>
                                     <h6 class="spec"><i class="fas fa-user-md ic"></i>&nbsp; <span v-for="(special,index) in specialization" >{{ (index == result.specialty_id) ? special : '' }}</span></h6>
                                     <h6 class="hosp">{{ result.medical_organization }}</h6>
-                                    <a target="_blank" :href="'https://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'" class="dir ic"><i class="fas fa-map-pin"></i>&nbsp; Get directions</a>
+                                    <a target="_blank" :href="'http://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'" class="dir ic"><i class="fas fa-map-pin"></i>&nbsp; Get directions</a>
                                 </div>
                             </div>
                         </div>
@@ -311,7 +311,7 @@
                                 <div class="doc_details">
                                     <h6 class="ic name">{{ result.business_name }}</h6>
                                     <h6 class="hosp">{{ result.address }}</h6>
-                                    <h6 class="dir ic"><a target="_blank" v-if="result.profile" :href="'https://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'"><i class="fas fa-map-pin"></i>&nbsp; Get directions</a></h6>
+                                    <h6 class="dir ic"><a target="_blank" v-if="result.profile" :href="'http://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'"><i class="fas fa-map-pin"></i>&nbsp; Get directions</a></h6>
                                 </div>
                             </div>
                         </div>
@@ -336,7 +336,7 @@
                                 <div class="doc_details">
                                     <h6 class="ic name">{{ result.hospital_name }}</h6>
                                     <h6 class="hosp">{{ result.address }}</h6>
-                                    <h6 class="dir ic"><a target="_blank" :href="'https://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'"><i class="fas fa-map-pin"></i>&nbsp; Get directions</a></h6>
+                                    <h6 class="dir ic"><a target="_blank" :href="'http://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'"><i class="fas fa-map-pin"></i>&nbsp; Get directions</a></h6>
                                 </div>
                             </div>
                         </div>
@@ -350,9 +350,17 @@
                         </div>
                         <hr>
                         <div class="row mos__">
-                            <div class="col-md-12" v-for="(serv,index) in services">
-                                <input name="m_o_s" @click="searchMeduim(index)" type="radio" id="online" />
-                                <label for="online">{{ serv }}</label>
+                            <div class="col-md-12">
+                                <input name="m_o_s" @click="searchMeduim(1)" type="radio" id="online" />
+                                <label for="online">Online</label>
+                            </div>
+                            <div class="col-md-12">
+                                <input name="m_o_s" @click="searchMeduim(2)" type="radio" id="home_service" />
+                                <label for="home_service">Home Service</label>
+                            </div>
+                            <div class="col-md-12">
+                                <input name="m_o_s" @click="searchMeduim(3)" type="radio" id="online_home" />
+                                <label for="online_home">Online &amp; Home Service</label>
                             </div>
                         </div>
                     </div>
@@ -374,10 +382,30 @@
                         </div>
                     </div>
 
-                    <div class="card provider_closeby_card" id="state">
+                    <div class="card provider_closeby_card" id="country">
                         <div class="row doc_title">
-                            Select State
+                            Select Country
                         </div>
+                        <hr>
+                        <div class="row mos__">
+                            <div class="state-info" v-for="(country,index) in countries">
+                                <p @click="getStates(country.id)"> {{ country.name }}
+                                  <span class="state-count">{{ (Counters(items[index])) ? Counters(items[index]) : 0 }}</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card provider_closeby_card" id="state">
+                        <div class="row state-title">
+                            <div class="col-6">
+                                Select State
+                            </div>
+                            <div class="col-6" id="back_btn">
+                                <i class="fas fa-arrow-left pull-right"></i>
+                            </div>
+                        </div>
+
                         <hr>
                         <div class="row mos__">
                             <div class="state-info" v-for="(state,index) in states">
@@ -425,6 +453,7 @@
                 specialty:'',
                 specialization:[],
                 results:[],
+                countries:[],
                 states:[],
                 cities:[],
                 services:[],
@@ -438,6 +467,7 @@
                 timeslots3:[],
                 timeslots4:[],
                 items:[],
+                state_count:[],
                 city_count:[],
                 plan:'',
                 type:'',
@@ -460,6 +490,7 @@
         },
         mounted() {
             $('#city').hide();
+            $('#state').hide();
 
             this.option = this.$route.params.id;
             this.getSpecialties();
@@ -484,6 +515,12 @@
                 $('#state').show();
                 $('#city').hide();
               });
+
+              $("#back_btn").on('click', function(){
+                $('#country').show();
+                $('#state').hide();
+              });
+
         },
         methods: {
             Counters(value){
@@ -627,7 +664,7 @@
                     }, function (error) {
                     });
             },
-            searchMeduim(value, VuejsPaginate){
+            searchMeduim(value){
               let component = this;
                 axios.get('https://app.medflit.com/api/search_filter?service='+value+'&option='+component.option+'&page='+this.results.current_page)
                     .then(function (response) {
@@ -666,14 +703,14 @@
                 }
               },
               GetAddress: function(lat,lng){
-                axios.post('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&key=AIzaSyDECOtEW9X3ctXS7lg3Xh_4rCrV2ervJf0')
+                axios.post('http://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&key=AIzaSyDECOtEW9X3ctXS7lg3Xh_4rCrV2ervJf0')
                   .then(response => {
                   console.log(response.data.results[0].formatted_address);
                     this.direction = response.data.results[0].formatted_address;
 
                   })
                   .catch(e => {
-                  this.errors.push(e)
+                  console.log(e);
                 })
               },
             nearbyDoctors: function(lat,lng){
@@ -713,7 +750,52 @@
                     this.plans = response.data.plan;
                     this.services = response.data.services;
                     this.classes = response.data.classAbb;
+                    this.countries = response.data.countries;
+                });
+            },
+
+            getStates(value){
+              axios.get('https://app.medflit.com/api/state/'+value+'/'+this.option).then(response => {
+                    $('#country').hide();
+                    $('#state').show();
                     this.states = response.data.states;
+                    if(response.data.doctors){
+                        this.results = response.data.doctors;
+                        this.state_count = response.data.state;
+                      setTimeout(function() {
+                        $('.provider-availability-div').hide();
+                        $('.schedule-loader').hide();
+                      },2000);
+                    }
+                    else if (response.data.pharmacies){
+                      this.results = response.data.pharmacies;
+                      this.state_count = response.data.state;
+                    }
+                    else{
+                      this.results = response.data.hospitals;
+                      this.state_count = response.data.state;
+                    }
+                    console.log(this.cities);
+                });
+            },
+
+            getStatesUsers(value){
+              axios.get('https://app.medflit.com/api/stateuser/'+value+'/'+this.option).then(response => {
+                    $('#country').hide();
+                    $('#states').show();
+                    if(response.data.doctors){
+                        this.results = response.data.doctors;
+                    }
+                    else if (response.data.pharmacies){
+                      this.results = response.data.pharmacies;
+                    }
+                    else{
+                      this.results = response.data.hospitals;
+                    }
+                    setTimeout(function() {
+                        $('.provider-availability-div').hide();
+                        $('.schedule-loader').hide();
+                      },2000);
                 });
             },
             getCities(value){
@@ -763,10 +845,10 @@
             },
 
             showOnline(value){
-              axios.get('https://app.medflit.com/api/online/'+value).then(response => {
-                    console.log(response.data.status);
-                    this.user_status = response.data.status;
-                });
+              // axios.get('https://app.medflit.com/api/online/'+value).then(response => {
+              //       console.log(response.data.status);
+              //       this.user_status = response.data.status;
+              //   });
             }
         }
     }
