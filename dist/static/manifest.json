@@ -1,7 +1,7 @@
 {
     "name": "Medflit",
     "short_name": "Medflit",
-    "theme_color": "#1d4bb7",
+    "theme_color": "#2753ba",
     "background_color": "#1d4bb7",
     "display": "standalone",
     "Scope": "/",
