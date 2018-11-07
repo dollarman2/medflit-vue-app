@@ -30,8 +30,8 @@
                     <div class="card search_area" v-if="option == 2">
                         <div class="row">
                             <div class="col-md-12">
-                                <i class="fas fa-search search-icon" @click="searchUser()"></i>
-                                <input type="text" class="input3" name="" id='' placeholder="Search for pharmacy by city, name etc..." v-on:keyup.enter="searchUser()">
+                                <i class="fas fa-search search-icon"></i>
+                                <input type="text" class="input3" v-model="search" placeholder="Search for pharmacy by city, name etc..." v-on:keyup.enter="searchUser()">
                             </div>
                         </div>
                     </div>
@@ -41,11 +41,15 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <i class="fas fa-search search-icon"></i>
-                                <input type="text" class="input3" name="" id='' placeholder="Search for hospital by city, name etc..." v-on:keyup.enter="searchUser()">
+                                <input type="text" class="input3" v-model="search" placeholder="Search for hospital by city, name etc..." v-on:keyup.enter="searchUser()">
                             </div>
                         </div>
                     </div>
-
+                    <div class="card provider_details_card" id="notfound">
+                        <div class="row">
+                            <h3 style="margin: 0 auto;padding-bottom:5px;">Result Not Found</h3>
+                        </div>
+                    </div>
                     <!--Provider Search result-->
                     <div class="card provider_details_card" v-if="option == 1" v-for="(result,index) in (results.data) ? results.data : results">
                         <div class="row">
@@ -491,6 +495,7 @@
         mounted() {
             $('#city').hide();
             $('#state').hide();
+            $("#notfound").hide();
 
             this.option = this.$route.params.id;
             this.getSpecialties();
@@ -615,17 +620,32 @@
                     .then(function (response) {
                       if(response.data.doctors){
                           component.results = response.data.doctors;
+                          if(response.data.doctors.data == "" || response.data.doctors == ""){
+                            $("#notfound").show();
+                          }else{
+                            $("#notfound").hide();
+                          }
                           component.items = response.data.count;
                           component.city_count = response.data.city;
                           // console.log(component.items[1].length + 'here');
                       }
                       else if (response.data.pharmacies){
                         component.results = response.data.pharmacies;
+                        if(response.data.pharmacies.data == "" || response.data.pharmacies == ""){
+                            $("#notfound").show();
+                          }else{
+                            $("#notfound").hide();
+                          }
                         component.items = response.data.count;
                           component.city_count = response.data.city;
                       }
                       else{
                         component.results = response.data.hospitals;
+                        if(response.data.hospitals.data == "" || response.data.hospitals == ""){
+                            $("#notfound").show();
+                          }else{
+                            $("#notfound").hide();
+                          }
                         component.items = response.data.count;
                           component.city_count = response.data.city;
                       }
@@ -639,10 +659,15 @@
             },
             searchPlanSpecialty(){
               let component = this;
-                axios.get('https://app.medflit.com/api/search_filter?search='+component.search+'&option='+component.option+'&specialty='+component.specialty+'&plan='+component.plan+'&page='+this.results.current_page)
+                axios.get('http://127.0.0.1:8000/api/search_filter?search='+component.search+'&option='+component.option+'&specialty='+component.specialty+'&plan='+component.plan+'&page='+this.results.current_page)
                     .then(function (response) {
                       component.results = response.data.doctors;
                       component.items = response.data.count;
+                      if(response.data.doctors.data == "" || response.data.doctors == ""){
+                        $("#notfound").show();
+                      }else{
+                            $("#notfound").hide();
+                          }
                       setTimeout(function() {
                         $('.provider-availability-div').hide();
                         $('.schedule-loader').hide();
@@ -655,6 +680,11 @@
                 axios.get('https://app.medflit.com/api/search_filter?gender='+value+'&option='+component.option+'&page='+this.results.current_page)
                     .then(function (response) {
                       component.results = response.data.doctors;
+                      if(response.data.doctors.data == "" || response.data.doctors == ""){
+                        $("#notfound").show();
+                      }else{
+                            $("#notfound").hide();
+                          }
                       component.items = response.data.count;
                       component.city_count = response.data.city;
                       setTimeout(function() {
@@ -666,9 +696,14 @@
             },
             searchMeduim(value){
               let component = this;
-                axios.get('https://app.medflit.com/api/search_filter?service='+value+'&option='+component.option+'&page='+this.results.current_page)
+                axios.get('http://127.0.0.1:8000/api/search_filter?service='+value+'&option='+component.option+'&page='+this.results.current_page)
                     .then(function (response) {
                       component.results = response.data.doctors;
+                      if(response.data.doctors.data == "" || response.data.doctors == ""){
+                        $("#notfound").show();
+                      }else{
+                            $("#notfound").hide();
+                          }
                       setTimeout(function() {
                         $('.provider-availability-div').hide();
                         $('.schedule-loader').hide();
@@ -761,6 +796,11 @@
                     this.states = response.data.states;
                     if(response.data.doctors){
                         this.results = response.data.doctors;
+                        if(response.data.doctors.data == "" || response.data.doctors == ""){
+                          $("#notfound").show();
+                        }else{
+                            $("#notfound").hide();
+                          }
                         this.state_count = response.data.state;
                       setTimeout(function() {
                         $('.provider-availability-div').hide();
@@ -769,10 +809,20 @@
                     }
                     else if (response.data.pharmacies){
                       this.results = response.data.pharmacies;
+                      if(response.data.pharmacies.data == "" || response.data.pharmacies == ""){
+                          $("#notfound").show();
+                        }else{
+                            $("#notfound").hide();
+                          }
                       this.state_count = response.data.state;
                     }
                     else{
                       this.results = response.data.hospitals;
+                      if(response.data.hospitals.data == "" || response.data.hospitals == ""){
+                          $("#notfound").show();
+                        }else{
+                            $("#notfound").hide();
+                          }
                       this.state_count = response.data.state;
                     }
                     console.log(this.cities);
@@ -785,12 +835,27 @@
                     $('#states').show();
                     if(response.data.doctors){
                         this.results = response.data.doctors;
+                        if(response.data.doctors.data == "" || response.data.doctors == ""){
+                          $("#notfound").show();
+                        }else{
+                            $("#notfound").hide();
+                          }
                     }
                     else if (response.data.pharmacies){
                       this.results = response.data.pharmacies;
+                      if(response.data.pharmacies.data == "" || response.data.pharmacies == ""){
+                          $("#notfound").show();
+                        }else{
+                            $("#notfound").hide();
+                          }
                     }
                     else{
                       this.results = response.data.hospitals;
+                      if(response.data.hospitals.data == "" || response.data.hospitals == ""){
+                          $("#notfound").show();
+                        }else{
+                            $("#notfound").hide();
+                          }
                     }
                     setTimeout(function() {
                         $('.provider-availability-div').hide();
@@ -805,14 +870,29 @@
                     this.cities = response.data.cities;
                     if(response.data.doctors){
                         this.results = response.data.doctors;
+                        if(response.data.doctors.data == "" || response.data.doctors == ""){
+                          $("#notfound").show();
+                        }else{
+                            $("#notfound").hide();
+                          }
                           this.city_count = response.data.city;
                     }
                     else if (response.data.pharmacies){
                       this.results = response.data.pharmacies;
+                      if(response.data.pharmacies.data == "" || response.data.pharmacies == ""){
+                          $("#notfound").show();
+                        }else{
+                            $("#notfound").hide();
+                          }
                           this.city_count = response.data.city;
                     }
                     else{
                       this.results = response.data.hospitals;
+                      if(response.data.hospitals.data == "" || response.data.hospitals == ""){
+                          $("#notfound").show();
+                        }else{
+                            $("#notfound").hide();
+                          }
                           this.city_count = response.data.city;
                     }
                     setTimeout(function() {
@@ -829,12 +909,27 @@
                     $('#city').show();
                     if(response.data.doctors){
                         this.results = response.data.doctors;
+                        if(response.data.doctors.data == "" || response.data.doctors == ""){
+                          $("#notfound").show();
+                        }else{
+                            $("#notfound").hide();
+                          }
                     }
                     else if (response.data.pharmacies){
                       this.results = response.data.pharmacies;
+                      if(response.data.pharmacies.data == "" || response.data.pharmacies == ""){
+                          $("#notfound").show();
+                        }else{
+                            $("#notfound").hide();
+                          }
                     }
                     else{
                       this.results = response.data.hospitals;
+                      if(response.data.hospitals.data == "" || response.data.hospitals == ""){
+                          $("#notfound").show();
+                        }else{
+                            $("#notfound").hide();
+                          }
                     }
                     setTimeout(function() {
                         $('.provider-availability-div').hide();
