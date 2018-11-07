@@ -659,7 +659,7 @@
             },
             searchPlanSpecialty(){
               let component = this;
-                axios.get('http://app.medflit.com/api/search_filter?search='+component.search+'&option='+component.option+'&specialty='+component.specialty+'&plan='+component.plan+'&page='+this.results.current_page)
+                axios.get('https://app.medflit.com/api/search_filter?search='+component.search+'&option='+component.option+'&specialty='+component.specialty+'&plan='+component.plan+'&page='+this.results.current_page)
                     .then(function (response) {
                       component.results = response.data.doctors;
                       component.items = response.data.count;
@@ -696,7 +696,7 @@
             },
             searchMeduim(value){
               let component = this;
-                axios.get('http://app.medflit.com/api/search_filter?service='+value+'&option='+component.option+'&page='+this.results.current_page)
+                axios.get('https://app.medflit.com/api/search_filter?service='+value+'&option='+component.option+'&page='+this.results.current_page)
                     .then(function (response) {
                       component.results = response.data.doctors;
                       if(response.data.doctors.data == "" || response.data.doctors == ""){
@@ -738,7 +738,7 @@
                 }
               },
               GetAddress: function(lat,lng){
-                axios.post('http://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&key=AIzaSyDECOtEW9X3ctXS7lg3Xh_4rCrV2ervJf0')
+                axios.post('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&key=AIzaSyDECOtEW9X3ctXS7lg3Xh_4rCrV2ervJf0')
                   .then(response => {
                   console.log(response.data.results[0].formatted_address);
                     this.direction = response.data.results[0].formatted_address;
