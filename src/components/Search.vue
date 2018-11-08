@@ -14,7 +14,7 @@
                             <div class="col-md-3">
                                 <select name="" id="" class="select3" v-model="specialty" v-on:change="searchPlanSpecialty()">
                                     <option value="">--Select Speciality--</option>
-                                    <option v-for="(special,index) in specialization" v-bind:value="index">{{ special }}</option>
+                                    <option v-for="(special,index) in specialization" :value="index">{{ special }}</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <!--Provider Search result-->
-                    <div class="card provider_details_card" v-if="option == 1" v-for="(result,index) in (results.data) ? results.data : results">
+                    <div class="card provider_details_card" v-if="option == 1" v-for="result in (results.data) ? results.data : results">
                         <div class="row">
                             <div class="col-4">
                                 <div class="">
