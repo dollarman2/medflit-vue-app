@@ -14,15 +14,15 @@
 			<ul class="list-unstyled components">
 				<li>
           <router-link :to="{ name: 'Home' }">
-						<i class="fas fa-home"></i>
+						<i class="fa fa-home"></i>
 						&nbsp;&nbsp;&nbsp;Home
 					</router-link>
 					<router-link :to="{ name: 'Condition' }">
-						<i class="fas fa-bars"></i>
+						<i class="fa fa-bars"></i>
 						&nbsp;&nbsp;&nbsp;Conditions
 					</router-link>
 					<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
-						<i class="fas fa-file"></i>
+						<i class="fa fa-file"></i>
 						&nbsp;&nbsp;&nbsp;Solutions
 					</a>
 					<ul class="collapse list-unstyled" id="pageSubmenu">

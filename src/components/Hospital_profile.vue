@@ -8,25 +8,26 @@
                           <div class="provider_avatar">
                               <img v-if="result.hospital_image" v-bind:src="'https://app.medflit.com/'+result.hospital_image" class="img-responsive profile_img" alt="">
                               <img v-else src="/static/images/img/evie_default_bg.jpeg" class="img-responsive profile_img" alt="">
-                              <router-link :to="{ path: '/search/3/Lagos' }"><i id="bck" class="fas fa-arrow-left pull-right"></i> </router-link>
+                              <router-link :to="{ path: '/search/3/Lagos' }"><i id="bck" class="fa fa-arrow-left pull-right"></i> </router-link>
                           </div>
                       <!-- </div> -->
                       <!-- <div class="col-md-10"> -->
                           <div class="pro-details">
+                            <router-link :to="{ path: '/search/3/Lagos' }"><i id="back" class="fa fa-arrow-left pull-right"></i></router-link>
                               <h3>{{result.hospital_name}}</h3>
-                              <h6 class=""><i class="fas fa-map-pin ic"></i> {{result.hospital_address}}</h6>
+                              <h6 class=""><i class="fa fa-map-pin ic"></i> {{result.hospital_address}}</h6>
 
                               <div class="" v-if="result.rating">
-                                    <span v-bind:class="(result.rating.rating_count >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                    <span v-bind:class="(result.rating.rating_count >= 2) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                    <span v-bind:class="(result.rating.rating_count >= 3) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                    <span v-bind:class="(result.rating.rating_count >= 4) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                    <span v-bind:class="(result.rating.rating_count >= 5) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 1) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 2) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 3) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 4) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 5) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
                                     <span>({{ (result.rating.total_rating != '') ? result.rating.total_rating : 0  }} review)</span>
                                 </div>
                               <div class="buttons">
-                                  <span><a  v-if="result.profile" target="_blank" :href="'https://www.google.com/maps/dir/'+direction+'/'+result.hospital_address+'/?hl=en-US'" class="btn____ btn-login btn-sm"><i class="fas fa-map-marker"></i>&nbsp; Get Direction</a></span>
-                                  <span><a v-if="result.hospital_phone" v-bind:href="'tel:'+result.hospital_phone" class="btn____ btn-register btn-sm"><i class="fas fa-phone"></i>&nbsp; Call Hospital</a></span>
+                                  <span><a  v-if="result.profile" target="_blank" :href="'https://www.google.com/maps/dir/'+direction+'/'+result.hospital_address+'/?hl=en-US'" class="btn____ btn-login btn-sm"><i class="fa fa-map-marker"></i>&nbsp; Get Direction</a></span>
+                                  <span><a v-if="result.hospital_phone" v-bind:href="'tel:'+result.hospital_phone" class="btn____ btn-register btn-sm"><i class="fa fa-phone"></i>&nbsp; Call Hospital</a></span>
                               </div>
                           </div>
                       <!-- </div> -->
@@ -109,24 +110,24 @@
                                         </span>
                                     </router-link>
                                 </h3>
-                                  <h6><i class="fas fa-user-md ic"></i>&nbsp; <span v-for="(special,index) in specialization">{{ (index == result.specialty_id) ? special : '' }}</span></h6>
+                                  <h6><i class="fa fa-user-md ic"></i>&nbsp; <span v-for="(special,index) in specialization">{{ (index == result.specialty_id) ? special : '' }}</span></h6>
 
                                 <h6 class="h6" v-if="result.years_of_experience">{{ result.years_of_experience }} Years Of Experience</h6>
                                 <h6 v-if="result.medium_of_service == 1">Medium: Online</h6>
                                 <h6 v-if="result.medium_of_service == 2">Medium: Home Service</h6>
                                 <h6 v-if="result.medium_of_service == 3">Medium: Online & Home Service</h6>
                                 <div class="" v-if="result.rating">
-                                    <span v-bind:class="(result.rating.rating_count >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                    <span v-bind:class="(result.rating.rating_count >= 2) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                    <span v-bind:class="(result.rating.rating_count >= 3) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                    <span v-bind:class="(result.rating.rating_count >= 4) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                    <span v-bind:class="(result.rating.rating_count >= 5) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 1) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 2) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 3) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 4) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 5) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
                                     <span>({{ (result.rating.total_rating != '') ? result.rating.total_rating : 0  }} review)</span>
                                 </div>
                                   <div class="provider-appointment-button buttons">
-                                    <span><a v-if="result.profile" v-bind:href="'tel:'+result.profile.telephone" class="btn____ btn-login btn-sm"><i class="fas fa-phone"></i>&nbsp; Call Doctor</a>
-                                    <a v-else-if="result.telephone" v-bind:href="'tel:'+result.telephone" class="btn____ btn-login btn-sm"><i class="fas fa-phone"></i>&nbsp; Call Doctor</a></span>
-                                    <span><a @click="ShowSchedule(result.user_id)" class="view-availability-btn btn____ btn-register btn-sm" id="show_hide"><i class="fas fa-calendar"></i>&nbsp; Book Appointment</a></span>
+                                    <span><a v-if="result.profile" v-bind:href="'tel:'+result.profile.telephone" class="btn____ btn-login btn-sm"><i class="fa fa-phone"></i>&nbsp; Call Doctor</a>
+                                    <a v-else-if="result.telephone" v-bind:href="'tel:'+result.telephone" class="btn____ btn-login btn-sm"><i class="fa fa-phone"></i>&nbsp; Call Doctor</a></span>
+                                    <span><a @click="ShowSchedule(result.user_id)" class="view-availability-btn btn____ btn-register btn-sm" id="show_hide"><i class="fa fa-calendar"></i>&nbsp; Book Appointment</a></span>
                                   </div>
                                   <div class="Providerschedule1 col-md-12" style="display:none;"></div>
                                     <div class="schedule-loader text-center">Loading availability...</div>
@@ -198,20 +199,19 @@
                                 <tr>
                                   <th>#</th>
                                   <th>Review messages</th>
-                                  <th>Rating</th>
+                                  <!-- <th>Rating</th> -->
                                 </tr>
                               </thead>
                               <tbody>
                                 <tr v-if="result.reviews" v-for="(review,index) in result.reviews">
                                   <td>{{ index+1 }}</td>
-                                  <td> {{ review.message}}</td>
-                                  <td>
+                                  <td> {{ review.message}}<br><br>
                                     <div style="margin-top: 0px">
-                                        <span v-bind:class="(review.rating >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                        <span v-bind:class="(review.rating >= 2) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                        <span v-bind:class="(review.rating >= 3) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                        <span v-bind:class="(review.rating >= 4) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                        <span v-bind:class="(review.rating >= 5) ? 'fas fa-star ratings' : 'fas fa-star'"></span><br>
+                                        <span v-bind:class="(review.rating >= 1) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(review.rating >= 2) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(review.rating >= 3) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(review.rating >= 4) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(review.rating >= 5) ? 'fa fa-star ratings' : 'fa fa-star'"></span><br>
                                     </div>
                                   </td>
                                 </tr>
@@ -224,7 +224,7 @@
                       <div class="row">
                           <div class="col-md-6 col-xs-12 pro-details">
                               <ul class="list-group">
-                                  <li class="list-group-item d-flex justify-content-between align-items-center" v-if="result.services_and_procedures" v-for="(delivery,index) in procedure">{{ delivery }}<span class="badge badge-success badge-pill"><i class="fas fa-check"></i></span></li>
+                                  <li class="list-group-item d-flex justify-content-between align-items-center" v-if="result.services_and_procedures" v-for="(delivery,index) in procedure">{{ delivery }}<span class="badge badge-success badge-pill"><i class="fa fa-check"></i></span></li>
                               </ul>
                           </div>
                       </div>
@@ -248,11 +248,11 @@
                                       </h3>
 
                                       <div class="" v-if="result.rating">
-                                          <span v-bind:class="(result.rating.rating_count >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                          <span v-bind:class="(result.rating.rating_count >= 2) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                          <span v-bind:class="(result.rating.rating_count >= 3) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                          <span v-bind:class="(result.rating.rating_count >= 4) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                          <span v-bind:class="(result.rating.rating_count >= 5) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                          <span v-bind:class="(result.rating.rating_count >= 1) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                          <span v-bind:class="(result.rating.rating_count >= 2) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                          <span v-bind:class="(result.rating.rating_count >= 3) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                          <span v-bind:class="(result.rating.rating_count >= 4) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                          <span v-bind:class="(result.rating.rating_count >= 5) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
                                           <span>({{ (result.rating.total_rating != '') ? result.rating.total_rating : 0  }} review)</span>
                                       </div>
                                       <div class="" v-else>
@@ -264,10 +264,10 @@
                                           <span>({{ (result.total_rating) ? result.total_rating : 0 }} review)</span><br>
                                       </div>
                                       <div class="sub_details">
-                                          <h6 class=""><i class="fas fa-map-pin ic"></i>{{ result.hospital_address }}</h6>
+                                          <h6 class=""><i class="fa fa-map-pin ic"></i>{{ result.hospital_address }}</h6>
                                       </div>
                                       <div class="buttons">
-                                          <span><a :href="'tel:'+result.hospital_phone" class="btn____ btn-register btn-sm"><i class="fas fa-phone"></i>&nbsp; Contact Hospital</a></span>
+                                          <span><a :href="'tel:'+result.hospital_phone" class="btn____ btn-register btn-sm"><i class="fa fa-phone"></i>&nbsp; Contact Hospital</a></span>
                                       </div>
                                   </div>
                               </div>

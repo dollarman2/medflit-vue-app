@@ -8,7 +8,7 @@
                     <div class="card search_area" v-if="option == 1">
                         <div class="row">
                             <div class="col-md-6">
-                                <i class="fas fa-search search-icon" @click="searchUser()"></i>
+                                <i class="fa fa-search search-icon" @click="searchUser()"></i>
                                 <input type="text" class="input3"  v-model="search" id="search" placeholder="Search doctor by city, name etc..." v-on:keyup.enter="searchUser()">
                             </div>
                             <div class="col-md-3">
@@ -30,7 +30,7 @@
                     <div class="card search_area" v-if="option == 2">
                         <div class="row">
                             <div class="col-md-12">
-                                <i class="fas fa-search search-icon"></i>
+                                <i class="fa fa-search search-icon"></i>
                                 <input type="text" class="input3" v-model="search" placeholder="Search for pharmacy by city, name etc..." v-on:keyup.enter="searchUser()">
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                     <div class="card search_area" v-if="option == 3">
                         <div class="row">
                             <div class="col-md-12">
-                                <i class="fas fa-search search-icon"></i>
+                                <i class="fa fa-search search-icon"></i>
                                 <input type="text" class="input3" v-model="search" placeholder="Search for hospital by city, name etc..." v-on:keyup.enter="searchUser()">
                             </div>
                         </div>
@@ -90,7 +90,7 @@
                                         </span>
                                     </router-link>
                                 </h3>
-                                <h6><i class="fas fa-user-md ic"></i>&nbsp; <span v-for="(special,index) in specialization">{{ (index == result.specialty_id) ? special : '' }}</span></h6>
+                                <h6><i class="fa fa-user-md ic"></i>&nbsp; <span v-for="(special,index) in specialization">{{ (index == result.specialty_id) ? special : '' }}</span></h6>
                                 <!-- <h6 v-if="result.user">
                                   {{ showOnline(result.user.id) }}
                                   <span id="online_status" v-if="user_status == 'Online'">Online</span>
@@ -105,11 +105,11 @@
                                 <h6 v-if="result.medium_of_service == 2">Medium: Home Service</h6>
                                 <h6 v-if="result.medium_of_service == 3">Medium: Online & Home Service</h6>
                                 <div class="" v-if="result.rating">
-                                    <span v-bind:class="(result.rating.rating_count >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                    <span v-bind:class="(result.rating.rating_count >= 2) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                    <span v-bind:class="(result.rating.rating_count >= 3) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                    <span v-bind:class="(result.rating.rating_count >= 4) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                    <span v-bind:class="(result.rating.rating_count >= 5) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 1) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 2) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 3) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 4) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                    <span v-bind:class="(result.rating.rating_count >= 5) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
                                     <span>({{ (result.rating.total_rating != '') ? result.rating.total_rating : 0  }} review)</span>
                                 </div>
                                 <div class="" v-else>
@@ -121,9 +121,9 @@
                                     <span>({{ (result.total_rating) ? result.total_rating : 0 }} review)</span><br>
                                 </div>
                                 <div class="provider-appointment-button buttons">
-                                    <span><a v-if="result.profile" v-bind:href="'tel:'+result.profile.telephone" class="btn____ btn-login btn-sm"><i class="fas fa-phone"></i>&nbsp; Call Doctor</a>
-                                    <a v-else-if="result.telephone" v-bind:href="'tel:'+result.telephone" class="btn____ btn-login btn-sm"><i class="fas fa-phone"></i>&nbsp; Call Doctor</a></span>
-                                    <span><a @click="ShowSchedule(result.user_id)" class="view-availability-btn btn____ btn-register btn-sm" id="show_hide"><i class="fas fa-calendar"></i>&nbsp; Book Appointment</a></span>
+                                    <span><a v-if="result.profile" v-bind:href="'tel:'+result.profile.telephone" class="btn____ btn-login btn-sm"><i class="fa fa-phone"></i>&nbsp; Call Doctor</a>
+                                    <a v-else-if="result.telephone" v-bind:href="'tel:'+result.telephone" class="btn____ btn-login btn-sm"><i class="fa fa-phone"></i>&nbsp; Call Doctor</a></span>
+                                    <span><a @click="ShowSchedule(result.user_id)" class="view-availability-btn btn____ btn-register btn-sm" id="show_hide"><i class="fa fa-calendar"></i>&nbsp; Book Appointment</a></span>
                                 </div>
                                 <div class="Providerschedule1 col-md-12" style="display:none;"></div>
                                   <div class="schedule-loader text-center">Loading availability...</div>
@@ -201,11 +201,11 @@
                                       <router-link :to="{ name: 'PharmacyProfile',params:{ id: result.slug } }">{{ result.business_name }}</router-link>
                                     </h3>
                                     <div class="" v-if="result.rating">
-                                        <span v-bind:class="(result.rating.rating_count >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                        <span v-bind:class="(result.rating.rating_count >= 2) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                        <span v-bind:class="(result.rating.rating_count >= 3) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                        <span v-bind:class="(result.rating.rating_count >= 4) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                        <span v-bind:class="(result.rating.rating_count >= 5) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 1) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 2) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 3) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 4) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 5) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
                                         <span>({{ (result.rating.total_rating != '') ? result.rating.total_rating : 0  }} review)</span>
                                     </div>
                                     <div class="" v-else>
@@ -217,10 +217,10 @@
                                         <span>({{ (result.total_rating) ? result.total_rating : 0 }} review)</span><br>
                                     </div>
                                     <div class="sub_details">
-                                        <h6 class=""><i class="fas fa-map-pin ic"></i> {{ result.address }}</h6>
+                                        <h6 class=""><i class="fa fa-map-pin ic"></i> {{ result.address }}</h6>
                                     </div>
                                     <div class="buttons">
-                                        <span><a v-bind:href="'tel:'+result.telephone" class="btn____ btn-register btn-sm"><i class="fas fa-phone"></i>&nbsp; Contact Pharmacy</a></span>
+                                        <span><a v-bind:href="'tel:'+result.telephone" class="btn____ btn-register btn-sm"><i class="fa fa-phone"></i>&nbsp; Contact Pharmacy</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -241,11 +241,11 @@
                                      <h3>{{ result.hospital_name }}</h3>
                                     </router-link>
                                     <div class="" v-if="result.rating">
-                                        <span v-bind:class="(result.rating.rating_count >= 1) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                        <span v-bind:class="(result.rating.rating_count >= 2) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                        <span v-bind:class="(result.rating.rating_count >= 3) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                        <span v-bind:class="(result.rating.rating_count >= 4) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
-                                        <span v-bind:class="(result.rating.rating_count >= 5) ? 'fas fa-star ratings' : 'fas fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 1) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 2) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 3) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 4) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
+                                        <span v-bind:class="(result.rating.rating_count >= 5) ? 'fa fa-star ratings' : 'fa fa-star'"></span>
                                         <span>({{ (result.rating.total_rating != '') ? result.rating.total_rating : 0  }} review)</span>
                                     </div>
                                     <div class="" v-else>
@@ -257,10 +257,10 @@
                                         <span>({{ (result.total_rating) ? result.total_rating : 0 }} review)</span><br>
                                     </div>
                                     <div class="sub_details">
-                                        <h6 class=""><i class="fas fa-map-pin ic"></i>{{ result.hospital_address }}</h6>
+                                        <h6 class=""><i class="fa fa-map-pin ic"></i>&nbsp;{{ result.hospital_address }}</h6>
                                     </div>
                                     <div class="buttons">
-                                        <span><a :href="'tel:'+result.hospital_phone" class="btn____ btn-register btn-sm"><i class="fas fa-phone"></i>&nbsp; Contact Hospital</a></span>
+                                        <span><a :href="'tel:'+result.hospital_phone" class="btn____ btn-register btn-sm"><i class="fa fa-phone"></i>&nbsp; Contact Hospital</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -288,9 +288,9 @@
                                     <router-link :to="{ name: 'ProviderProfile',params:{ id: result.slug } }">
                                     <h6 class="ic name">{{ result.profile.first_name+' ' + result.profile.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.title) ? special : '' }}</span></h6>
                                     </router-link>
-                                    <h6 class="spec"><i class="fas fa-user-md ic"></i>&nbsp; <span v-for="(special,index) in specialization" >{{ (index == result.specialty_id) ? special : '' }}</span></h6>
+                                    <h6 class="spec"><i class="fa fa-user-md ic"></i>&nbsp; <span v-for="(special,index) in specialization" >{{ (index == result.specialty_id) ? special : '' }}</span></h6>
                                     <h6 class="hosp">{{ result.medical_organization }}</h6>
-                                    <a target="_blank" :href="'http://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'" class="dir ic"><i class="fas fa-map-pin"></i>&nbsp; Get directions</a>
+                                    <a target="_blank" :href="'http://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'" class="dir ic"><i class="fa fa-map-pin"></i>&nbsp; Get directions</a>
                                 </div>
                             </div>
                         </div>
@@ -315,7 +315,7 @@
                                 <div class="doc_details">
                                     <h6 class="ic name">{{ result.business_name }}</h6>
                                     <h6 class="hosp">{{ result.address }}</h6>
-                                    <h6 class="dir ic"><a target="_blank" v-if="result.profile" :href="'http://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'"><i class="fas fa-map-pin"></i>&nbsp; Get directions</a></h6>
+                                    <h6 class="dir ic"><a target="_blank" v-if="result.profile" :href="'http://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'"><i class="fa fa-map-pin"></i>&nbsp; Get directions</a></h6>
                                 </div>
                             </div>
                         </div>
@@ -340,7 +340,7 @@
                                 <div class="doc_details">
                                     <h6 class="ic name">{{ result.hospital_name }}</h6>
                                     <h6 class="hosp">{{ result.address }}</h6>
-                                    <h6 class="dir ic"><a target="_blank" :href="'http://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'"><i class="fas fa-map-pin"></i>&nbsp; Get directions</a></h6>
+                                    <h6 class="dir ic"><a target="_blank" :href="'http://www.google.com/maps/dir/'+direction+'/'+result.profile.address+'/?hl=en-US'"><i class="fa fa-map-pin"></i>&nbsp; Get directions</a></h6>
                                 </div>
                             </div>
                         </div>
@@ -406,7 +406,7 @@
                                 Select State
                             </div>
                             <div class="col-6" id="back_btn">
-                                <i class="fas fa-arrow-left pull-right"></i>
+                                <i class="fa fa-arrow-left pull-right"></i>
                             </div>
                         </div>
 
@@ -426,7 +426,7 @@
                                 Select City
                             </div>
                             <div class="col-6" id="back-btn">
-                                <i class="fas fa-arrow-left pull-right"></i>
+                                <i class="fa fa-arrow-left pull-right"></i>
                             </div>
                         </div>
                         <hr>

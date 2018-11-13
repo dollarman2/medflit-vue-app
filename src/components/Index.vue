@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="col-1">
                                         <a @click="Search()" class="btn__ btn-register btn-sm">
-                                          <i class="fas fa-search"></i>
+                                          <i class="fa fa-search"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -169,7 +169,11 @@
                                     <p><i class="fa fa-check check"></i>&nbsp; No Waiting Line</p>
                                     <p><i class="fa fa-check check"></i>&nbsp; Flexible Booking</p>
                                     <p><i class="fa fa-check check"></i>&nbsp; Flat-Rate Price</p>
-                                    <p><i class="fa fa-check check"></i>&nbsp; Select From Varieties <br>of Hospitals</p>
+                                    <p><i class="fa fa-check check"></i>&nbsp; Varieties of Hospitals</p>
+                                    <p><i class="fa fa-check check"></i>&nbsp; Personal Health Record</p>
+                                    <p><i class="fa fa-check check"></i>&nbsp; ₦200/booking <br>
+                                    <span style="font-size: 12px; color: red">(Excluding hospital & doctor charges)</span>
+                                    </p>
                                     <span><a href="" class="btn_ btn-register btn-sm">SELECT</a></span>
                                 </div>
                             </div>
@@ -187,7 +191,7 @@
                                     <p><i class="fa fa-check check"></i>&nbsp; Home Visit</p>
                                     <p><i class="fa fa-check check"></i>&nbsp; Flexible Schedule</p>
                                     <p><i class="fa fa-check check"></i>&nbsp; Quality Home Service</p>
-                                    <p><i class="fa fa-check check"></i>&nbsp; Select From Varieties of <br>Healthcare Professionals</p>
+                                    <p><i class="fa fa-check check"></i>&nbsp; Varieties of Healthcare Professionals</p>
                                     <span><a href="" class="btn_ btn-register btn-sm">SELECT</a></span>
                                 </div>
                             </div>

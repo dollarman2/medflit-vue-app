@@ -3,17 +3,17 @@
     <div class="footer footer--dark">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<div style="margin-top: 30px">
 							<router-link :to="{ name: 'Home' }"><img src="/static/images/Medflit-LogoBlue.png" class="img-responsive" style="width: 90px; height: auto"></router-link>
 						</div>
 						<div class="contacts">
-							<i class="fas fa-envelope">&nbsp;&nbsp;</i><a href="mailto: info@medflithealthresources.com"> info@medflithealthresources.com</a><br>
-							<i class="fas fa-phone">&nbsp;&nbsp;</i><a href="tel:+2348135845010"> +234 813 584 5010</a><br>
-							<i class="fas fa-map-marker">&nbsp;&nbsp;</i> 24, Prince Ibrahim Eletu Avenue, Osapa London, Lekki, Lagos, Nigeria.
+							<i class="fa fa-envelope">&nbsp;&nbsp;</i><a href="mailto: info@medflithealthresources.com"> info@medflithealthresources.com</a><br>
+							<i class="fa fa-phone">&nbsp;&nbsp;</i><a href="tel:+2348135845010"> +234 813 584 5010</a><br>
+							<i class="fa fa-map-marker">&nbsp;&nbsp;</i> 24, Prince Ibrahim Eletu Avenue, Osapa London, Lekki, Lagos, Nigeria.
 						</div>
 					</div>
-					<div class="col-md-9">
+					<div class="col-md-8">
 						<div class="footer__inner">
 							<div class="footer__data">
 								<div class="row">
@@ -98,13 +98,13 @@
 		</div>
 		<div class="footer--dark2">
 			<div class="container">
-				<div class="pull-left socials">
-					<i class="fas fa-facebook">&nbsp;</i>
-					<i class="fas fa-instagram">&nbsp;</i>
-					<i class="fas fa-twitter">&nbsp;</i>
-					<i class="fas fa-linkedin">&nbsp;</i>
+				<div class="text-center socials">
+					<i class="fa fa-facebook">&nbsp;</i>
+					<i class="fa fa-instagram">&nbsp;</i>
+					<i class="fa fa-twitter">&nbsp;</i>
+					<i class="fa fa-linkedin">&nbsp;</i>
 				</div>
-				<div class="cp"><h6 style="text-align: right">© 2018 <a href="http://medflithealthresources.com" target="_blank" class="">Medflit Health Resources</a>.</h6></div>
+				<div class="cp" style="margin-top: 10px"><h6 class="text-center">© 2018 <a href="http://medflithealthresources.com" target="_blank" class="">Medflit Health Resources</a>.</h6></div>
 			</div>
 		</div>
 
