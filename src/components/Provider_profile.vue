@@ -197,7 +197,7 @@
                                     <div class="col-md-12 display-schedule">
 
                                         <div class="col-md-3 timeslots">
-                                          <h6>{{ time }}</h6>
+                                          <h6 class="time">{{ time }}</h6>
                                           <ul>
                                             <li v-for="(time,index) in timeslots">
                                             <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
@@ -207,7 +207,7 @@
                                         </div>
 
                                         <div class="col-md-3 timeslots">
-                                        <h6>{{ time2 }}</h6>
+                                        <h6 class="time">{{ time2 }}</h6>
                                           <ul>
                                             <li v-for="(time,index) in timeslots2">
                                             <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
@@ -216,7 +216,7 @@
                                         </div>
   
                                         <div class="col-md-3 timeslots">
-                                          <h6>{{ time3 }}</h6>
+                                          <h6 class="time">{{ time3 }}</h6>
                                           <ul>
                                             <li v-for="(time,index) in timeslots3">
                                             <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
@@ -225,7 +225,7 @@
                                         </div>
 
                                         <div class="col-md-3 timeslots">
-                                        <h6>{{ time4 }}</h6>
+                                        <h6 class="time">{{ time4 }}</h6>
                                           <ul>
                                             <li v-for="(time,index) in timeslots4">
                                             <a :href="'https://app.medflit.com/patients/confirm-schedule?provider_id='+result.id+'&schedule_time_id='+time.id+'&medium_of_service='+result.medium_of_service" target="_blank">{{ time.start_label }}</a>
