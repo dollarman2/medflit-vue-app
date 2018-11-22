@@ -84,7 +84,7 @@
                                             {{ result.profile.first_name+' ' + result.profile.last_name }}<span v-for="(special,index) in classes" >{{ (index == result.profile.title) ? ','+special : '' }}</span>
                                         </span>
                                     </router-link>
-                                    <router-link v-else :to="{ name: 'ProviderProfile',params:{ id: result.slug } }">
+                                    <router-link v-else :to="{ name: 'ProviderProfile',params:{ id: result.id } }">
                                         <span class="text-capitalize" style="text-decoration: none; color: #1D4BB7;">
                                             {{ result.first_name+' ' + result.last_name }},<span v-for="(special,index) in classes" >{{ (index == result.title) ? special : '' }}</span>
                                         </span>
@@ -411,11 +411,11 @@
 
                         <hr>
                         <div class="row mos__">
-                            <div class="state-info" v-for="(state,index) in states">
-                                <p @click="getCities(state.id)"> {{ state.name }}
-                                  <span class="state-count">{{ (Counters(items[index])) ? Counters(items[index]) : 0 }}</span>
-                                </p>
-                            </div>
+                                <select class="select3" v-model="state_id" v-on:change="getCities(state_id)">
+                                    <option value="">--Select State--</option>
+                                    <option v-for="(state,index) in states" :value="state.id">{{ state.name }}
+                                  <span class="state-count">{{ (Counters(items[index])) ? Counters(items[index]) : 0 }}</span></option>
+                                </select>
                         </div>
                     </div>
 
@@ -430,12 +430,13 @@
                         </div>
                         <hr>
                         <div class="row mos__">
-                            <div class="city-info" v-for="(city,index) in cities">
-                                <p @click="getCitiesUsers(city.id)">
-                                  {{ city.name }}
-                                  <span class="city-count">{{ (Counters(city_count[index])) ?Counters(city_count[index]) : 0 }}</span>
-                                </p>
-                            </div>
+                          <select class="select3" v-model="city_id" v-on:change="getCitiesUsers(city_id)">
+                              <option value="">--Select City--</option>
+                              <option v-for="(city,index) in cities">
+                                    {{ city.name }}
+                                    <span class="city-count">{{ (Counters(city_count[index])) ?Counters(city_count[index]) : 0 }}</span>
+                              </option>
+                          </select>
                         </div>
                     </div>
                 </div>
@@ -472,6 +473,8 @@ export default {
       items: [],
       state_count: [],
       city_count: [],
+      state_id:Number,
+      city_id:Number,
       plan: "",
       type: "",
       option: "",

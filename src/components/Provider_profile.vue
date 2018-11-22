@@ -214,7 +214,7 @@
                                             </li>
                                           </ul>
                                         </div>
-  
+
                                         <div class="col-md-3 timeslots">
                                           <h6 class="time">{{ time3 }}</h6>
                                           <ul>
