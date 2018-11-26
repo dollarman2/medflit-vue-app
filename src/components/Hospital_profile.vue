@@ -125,8 +125,8 @@
                                     <span>({{ (result.rating.total_rating != '') ? result.rating.total_rating : 0  }} review)</span>
                                 </div>
                                   <div class="provider-appointment-button buttons">
-                                    <span><a v-if="result.profile" v-bind:href="'tel:'+result.profile.telephone" class="btn____ btn-login btn-sm"><i class="fa fa-phone"></i>&nbsp; Call Doctor</a>
-                                    <a v-else-if="result.telephone" v-bind:href="'tel:'+result.telephone" class="btn____ btn-login btn-sm"><i class="fa fa-phone"></i>&nbsp; Call Doctor</a></span>
+                                    <span><a v-if="result.profile" v-bind:href="'tel:'+result.profile.telephone" class="btn____ btn-login btn-sm"><i class="fa fa-phone"></i>&nbsp; Call Hospital</a>
+                                    <a v-else-if="result.telephone" v-bind:href="'tel:'+result.telephone" class="btn____ btn-login btn-sm"><i class="fa fa-phone"></i>&nbsp; Call Hospital</a></span>
                                     <span><a @click="ShowSchedule(result.user_id)" class="view-availability-btn btn____ btn-register btn-sm" id="show_hide"><i class="fa fa-calendar"></i>&nbsp; Book Appointment</a></span>
                                   </div>
                                   <div class="Providerschedule1 col-md-12" style="display:none;"></div>

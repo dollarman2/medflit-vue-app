@@ -430,7 +430,7 @@
                         </div>
                         <hr>
                         <div class="row mos__">
-                          <select class="select3" v-model="city_id" v-on:change="getCitiesUsers(city_id)">
+                          <select class="select3 myselect" style="width:100%" v-model="city_id" v-on:change="getCitiesUsers(city_id)">
                               <option value="">--Select City--</option>
                               <option v-for="(city,index) in cities">
                                     {{ city.name }}
@@ -527,6 +527,7 @@ export default {
       $("#country").show();
       $("#state").hide();
     });
+    $(".myselect").select2();
   },
   methods: {
     Counters(value) {
