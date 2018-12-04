@@ -9,7 +9,7 @@
 						</div>
 						<div class="contacts">
 							<i class="fa fa-envelope">&nbsp;&nbsp;</i><a href="mailto: info@medflithealthresources.com"> info@medflithealthresources.com</a><br>
-							<i class="fa fa-phone">&nbsp;&nbsp;</i><a href="tel:+2348135845010"> +234 813 584 5010</a><br>
+							<i class="fa fa-phone">&nbsp;&nbsp;</i><a href="tel:+07055209679"> +2347055209679 </a><br>
 							<i class="fa fa-map-marker">&nbsp;&nbsp;</i> 24, Prince Ibrahim Eletu Avenue, Osapa London, Lekki, Lagos, Nigeria.
 						</div>
 					</div>
